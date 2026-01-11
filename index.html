@@ -14,7 +14,6 @@
             --text-main: #1E293B;
             --text-muted: #64748B;
             --bg-page: #FFFFFF;
-            --timeline-left: 20px;
         }
 
         body {
@@ -25,6 +24,26 @@
         }
 
         .font-display { font-family: 'Playfair Display', serif; }
+
+        /* --- HERO --- */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542332213-31f87348057f?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- THEMES --- */
+        body.is-conference { background-color: #FFF9E3; color: #5D0E11; }
+        body.is-conference .day-nav { background: rgba(255, 249, 227, 0.95); border-bottom-color: rgba(93, 14, 17, 0.2); }
+        body.is-conference .day-btn { color: rgba(93, 14, 17, 0.6); }
+        body.is-conference .day-btn.active { color: #5D0E11; border-bottom-color: #5D0E11; }
+        body.is-conference .timeline-dot { border-color: #5D0E11; background: #FFF9E3; }
+        body.is-conference .timeline-dot.filled { background: #5D0E11; }
+        body.is-conference .speaker-card { background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(93, 14, 17, 0.1); }
+        body.is-conference .timeline-visual::before { background: rgba(93, 14, 17, 0.2); }
+        body.is-conference #header-bg-text { color: #5D0E11; opacity: 0.05; }
+        body.is-conference .meta-text.time-text { color: #B8860B; }
+        body.is-conference .meta-text.loc-text { color: #5D0E11; }
 
         /* --- STICKY NAV --- */
         .day-nav {
@@ -37,152 +56,60 @@
         }
 
         .day-btn {
-            padding: 1.25rem 0.75rem;
+            padding: 0.7rem 1.25rem;
+            margin: 0.5rem 0.15rem;
             font-size: 0.65rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--text-muted);
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s;
+            border-radius: 999px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            border: 2px solid transparent;
         }
 
-        .day-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-        .day-btn.is-conf { font-weight: 900; }
+        .day-btn.active { 
+            background: #f1f5f9;
+            color: var(--text-main);
+            border-color: #cbd5e1;
+        }
+        
+        .day-btn.is-conf { 
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(184, 134, 11, 0.2);
+        }
+        
+        .day-btn.is-conf.active {
+            background: #8B6508;
+            border-color: white;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        body.is-conference .day-btn.is-conf {
+            background: #5D0E11;
+            color: white;
+        }
+
+        body.is-conference .day-btn.is-conf.active {
+            background: #3D090B;
+            border-color: #FFF9E3;
+            box-shadow: 0 0 0 2px #5D0E11;
+        }
+        
+        body.is-conference .day-btn:not(.is-conf).active {
+            background: #5D0E11;
+            color: white;
+        }
 
         /* --- TIMELINE --- */
-        .timeline-wrapper {
-            position: relative;
-            margin-top: 2rem;
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 32px 1fr;
-            gap: 24px;
-            position: relative;
-        }
-
-        /* Column for line and dot */
-        .timeline-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            height: 100%;
-        }
-
-        /* The vertical line */
-        .timeline-visual::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--slate-border);
-            z-index: 1;
-        }
-
-        /* Adjust line for first and last items if needed */
+        .timeline-wrapper { position: relative; }
+        .timeline-item { display: grid; grid-template-columns: 32px 1fr; gap: 24px; position: relative; }
+        .timeline-visual { position: relative; display: flex; justify-content: center; height: 100%; }
+        .timeline-visual::before { content: ''; position: absolute; top: 0; bottom: 0; width: 2px; background: var(--slate-border); z-index: 1; }
         .timeline-item:first-child .timeline-visual::before { top: 16px; }
         .timeline-item:last-child .timeline-visual::before { bottom: calc(100% - 16px); }
-
-        /* Grand theme for conference days (Day 8 & 9) */
-        body.is-conference {
-            background-color: #FFF9E3; /* Sandal Background */
-            color: #5D0E11; /* Maroon Text */
-        }
-
-        body.is-conference .day-nav {
-            background: rgba(255, 249, 227, 0.95);
-            border-bottom-color: rgba(93, 14, 17, 0.2);
-        }
-
-        body.is-conference .day-btn {
-            color: rgba(93, 14, 17, 0.6);
-        }
-
-        body.is-conference .day-btn.active {
-            color: #5D0E11; /* Maroon */
-            border-bottom-color: #5D0E11;
-        }
-
-        body.is-conference main {
-            background-color: #FFF9E3;
-        }
-
-        body.is-conference .timeline-visual::before {
-            background: rgba(93, 14, 17, 0.2);
-        }
-
-        body.is-conference .timeline-dot {
-            background: #FFF9E3;
-            border-color: #5D0E11;
-            box-shadow: 0 0 0 4px #FFF9E3;
-        }
-
-        body.is-conference .timeline-dot.filled {
-            background: #5D0E11; /* Maroon Fill */
-        }
-
-        body.is-conference .event-name {
-            color: #5D0E11;
-        }
-
-        body.is-conference #day-theme-title {
-            color: #5D0E11;
-            opacity: 0.8;
-        }
-
-        body.is-conference #current-day-display {
-            color: #5D0E11;
-        }
-
-        body.is-conference #phase-label {
-            color: #5D0E11;
-        }
-
-        body.is-conference #header-bg-text {
-            color: rgba(93, 14, 17, 0.08);
-        }
-
-        body.is-conference .speaker-card {
-            background: rgba(93, 14, 17, 0.03);
-            border: 1px solid rgba(93, 14, 17, 0.1);
-        }
-
-        body.is-conference .speaker-name {
-            color: var(--gold);
-        }
-
-        body.is-conference .bio-text {
-            color: rgba(93, 14, 17, 0.8);
-        }
-
-        body.is-conference .loc-text {
-            color: #5D0E11;
-        }
-
-        body.is-conference footer {
-            background-color: #f7f0d5;
-            border-top-color: rgba(93, 14, 17, 0.1);
-        }
-
-        body.is-conference .bg-slate-50.border-b {
-            background-color: #f7f0d5;
-            border-bottom-color: rgba(93, 14, 17, 0.1);
-            color: rgba(93, 14, 17, 0.5);
-        }
-
-        body.is-conference .badge-main {
-            background: rgba(93, 14, 17, 0.1);
-            color: #5D0E11;
-            border: 1px solid rgba(93, 14, 17, 0.3);
-        }
-
-        body.is-conference .speaker-photo {
-            border-color: #5D0E11;
-        }
 
         .timeline-dot {
             position: absolute;
@@ -193,94 +120,51 @@
             z-index: 10;
             border: 2px solid var(--gold);
             background: white;
-            box-shadow: 0 0 0 4px white; /* Hides line segment directly behind dot */
+            box-shadow: 0 0 0 4px white;
         }
+        body.is-conference .timeline-dot { box-shadow: 0 0 0 4px #FFF9E3; }
+        .timeline-dot.filled { background: var(--gold); }
 
-        .timeline-dot.filled {
-            background: var(--gold);
-        }
-
-        .timeline-content {
-            padding-bottom: 3.5rem;
-        }
-
-        /* Filled dots for Speaker Events */
-        .timeline-dot.filled {
-            background: var(--gold);
-        }
-
-        .meta-text {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-
+        /* --- TYPOGRAPHY --- */
+        .meta-text { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; display: inline-block; }
         .time-text { color: var(--gold); }
         .loc-text { color: var(--maroon); }
 
-        .event-name {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #1e293b;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
+        .event-name { font-size: 1.6rem; font-weight: 800; color: inherit; line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
 
-        /* Speaker Block */
-        .speaker-card {
-            display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-            margin-top: 1rem;
-            padding: 1.25rem;
-            background: #f8fafc;
-            border-radius: 0.75rem;
+        .speaker-card { 
+            display: flex; 
+            flex-direction: column;
+            gap: 1.25rem; 
+            align-items: flex-start; 
+            margin-top: 1.5rem; 
+            padding: 1.5rem; 
+            background: #fdfdfd; 
+            border: 1px solid #eef2f6;
+            border-radius: 1rem; 
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.03);
         }
-
-        .speaker-photo {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            object-fit: cover;
-            background: #e2e8f0;
-            border: 2px solid white;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            flex-shrink: 0;
+        @media (min-width: 640px) {
+            .speaker-card { flex-direction: row; }
         }
-
-        .speaker-info {
-            flex-grow: 1;
+        .speaker-photo { 
+            width: 56px; 
+            height: 56px; 
+            border-radius: 1rem; 
+            object-fit: cover; 
+            background: #f1f5f9; 
+            border: 2px solid white; 
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
+            flex-shrink: 0; 
         }
-
-        .speaker-name {
-            color: var(--gold);
-            font-weight: 800;
-            font-size: 1.1rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .bio-text {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.6;
-            font-weight: 400;
-        }
+        .speaker-info { flex: 1; }
+        .bio-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; font-weight: 400; }
+        body.is-conference .bio-text { color: rgba(93, 14, 17, 0.8); }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        .phase-badge {
-            font-size: 0.65rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 999px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        .phase-badge { font-size: 0.65rem; padding: 0.25rem 0.6rem; border-radius: 999px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
         .badge-pre { background: #fee2e2; color: #991b1b; }
         .badge-main { background: #fef3c7; color: #92400e; }
         .badge-post { background: #f1f5f9; color: #475569; }
@@ -288,36 +172,75 @@
 </head>
 <body class="antialiased">
 
-    <!-- Venue & Info Strip -->
-    <div class="bg-slate-50 border-b border-slate-100 py-3 px-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-4">
-            <div class="flex items-center gap-6">
-                <span>Ragihalli Village, Bengaluru-560083</span>
-                <span class="hidden md:inline">|</span>
-                <span class="text-maroon">Webolim Presents Sri Ramayana Satram</span>
-            </div>
-            <div class="flex items-center gap-6">
-                <a href="tel:9369637283" class="hover:text-gold transition">Acco: 9369637283</a>
-                <a href="mailto:webolimclasses@gmail.com" class="hover:text-gold transition">webolimclasses@gmail.com</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header class="pt-20 pb-10 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h1 id="header-bg-text" class="text-slate-200 font-black text-5xl md:text-7xl uppercase tracking-tighter opacity-20 mb-[-1.2rem] md:mb-[-1.5rem] select-none">March 2026</h1>
-            <div class="relative z-10">
-                <div class="flex items-center gap-3 mb-6">
-                    <span id="phase-badge" class="phase-badge badge-pre">Pre-Conference Satram</span>
-                    <span class="text-slate-300">|</span>
-                    <span id="phase-label" class="meta-text !mb-0 text-gold font-bold">Recensions / Readings and Commentaries of Valmiki Ramayana</span>
+    <!-- Grand Hero -->
+    <section class="hero-bg text-white py-24 px-6 overflow-hidden">
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex-1">
+                <div class="inline-block px-4 py-1.5 bg-gold/20 border border-gold/30 rounded-full mb-6">
+                    <p class="text-gold font-bold uppercase tracking-[0.2em] text-[10px]">WEBOLIM presents SRI RAMAYANA SATRAM 2026</p>
                 </div>
-                <p id="day-theme-title" class="text-slate-400 font-bold uppercase tracking-[0.15em] text-xs md:text-sm mb-1">Day 01 • Inauguration Day</p>
-                <h2 id="current-day-display" class="font-display text-4xl md:text-6xl">Saturday, Mar 28</h2>
+                <h1 class="font-display text-5xl md:text-8xl font-black leading-[0.9] mb-8 tracking-tighter">
+                    Valmiki <br>
+                    Ramayana <br>
+                    <span class="text-gold">Conference</span><br>
+                    No. 3
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-200 font-medium max-w-xl leading-snug">
+                    Recensions / Readings and Commentaries of Valmiki Ramayana
+                </p>
+            </div>
+
+            <!-- Overview Card -->
+            <div class="w-full lg:w-[480px] shrink-0">
+                <div class="bg-white/5 backdrop-blur-3xl p-10 rounded-[2.5rem] border border-white/20 shadow-2xl">
+                    <div class="space-y-4 mb-10">
+                        <!-- Pre Satram -->
+                        <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition">
+                            <span class="w-28 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Pre-Satram</span>
+                            <p class="text-base font-bold text-white">Mar 28 – Apr 03</p>
+                        </div>
+                        
+                        <!-- Main Conference Highlight -->
+                        <div class="flex items-center gap-4 p-5 bg-gold/10 border border-gold/30 rounded-2xl shadow-[0_0_20px_rgba(184,134,11,0.15)] scale-105">
+                            <span class="w-28 text-[11px] font-black uppercase tracking-[0.2em] text-gold">Conference</span>
+                            <div>
+                                <p class="text-xl font-black text-white leading-none">Apr 04 – 05</p>
+                            </div>
+                        </div>
+
+                        <!-- Post Satram -->
+                        <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition">
+                            <span class="w-28 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">Post-Satram</span>
+                            <p class="text-base font-bold text-white">Apr 06 – 07</p>
+                        </div>
+                    </div>
+
+                    <!-- Details Section -->
+                    <div class="pt-10 border-t border-white/10 space-y-8">
+                        <div>
+                            <p class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Venue</p>
+                            <p class="text-sm font-bold leading-relaxed text-slate-100">
+                                Srimad Valmiki Ashrama WEBOLIM,<br>
+                                Survey No. 11/3, Ragihalli Village,<br>
+                                Bengaluru, Karnataka 560083
+                            </p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
+                            <p class="text-[11px] font-black uppercase tracking-[0.2em] text-gold mb-3">Accommodation & Support</p>
+                            <div class="space-y-2">
+                                <p class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span class="text-gold">T:</span> 9369637283
+                                </p>
+                                <p class="text-sm font-bold text-white flex items-center gap-2">
+                                    <span class="text-gold">E:</span> webolimclasses@gmail.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- Navigation -->
     <nav class="day-nav">
@@ -326,8 +249,26 @@
         </div>
     </nav>
 
+    <!-- Header / Day ID -->
+    <header class="pt-20 pb-10 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 id="header-bg-text" class="text-slate-200 font-black text-6xl md:text-8xl uppercase tracking-tighter opacity-20 mb-[-1.5rem] md:mb-[-2rem] select-none">March 2026</h1>
+            <div class="relative z-10">
+                <div class="flex flex-col md:flex-row md:items-center gap-3 mb-6">
+                    <div class="flex items-center gap-3">
+                        <span id="phase-badge" class="phase-badge badge-pre">Pre-Conference Satram</span>
+                        <span class="hidden md:inline text-slate-300">|</span>
+                    </div>
+                    <span id="phase-label" class="meta-text !mb-0 text-gold font-bold leading-relaxed block md:inline-block">Recensions / Readings and Commentaries of Valmiki Ramayana</span>
+                </div>
+                <p id="day-theme-title" class="text-slate-400 font-bold uppercase tracking-[0.15em] text-[10px] md:text-xs mb-1">Day 01 • Inauguration Day</p>
+                <h2 id="current-day-display" class="font-display text-4xl md:text-6xl font-bold">Saturday, Mar 28</h2>
+            </div>
+        </div>
+    </header>
+
     <!-- Content Area -->
-    <main class="py-16 px-6 bg-white">
+    <main class="py-16 px-6">
         <div class="max-w-4xl mx-auto">
             <div class="timeline-wrapper" id="main-timeline">
                 <!-- Timeline injected here -->
@@ -491,7 +432,7 @@
                     { time: "8:00 am - 9:00 am", title: "Breakfast", loc: "Premika Madhura Bhavanam" },
                     { 
                         time: "9:00 am - 10:00 am", title: "Bori’s Critical Edition of Valmiki Ramayana", speaker: "Prof. Dr. Siddharth Y. Wakankar", loc: "Ramayana Shala",
-                        bio: "Dr Sidhartha Wakankar, an eminent scholar of Sanskrit specialising in manuscriptology and palaeography, authored several books and guided many in their post-doctoral work, an expert in games in Sanskrit literature, receipient of Ramakrishna Sanskrit Award from the Cannadian World Education Foundation."
+                        bio: "Dr Sidhartha Wakankar, an eminent scholar of Sanskrit specialising in manuscriptology and palaeography, authored several books and guided many in their post-doctoral work, an expert in games in Sanskrit literature, recipient of Ramakrishna Sanskrit Award from the Canadian World Education Foundation."
                     },
                     { 
                         time: "10:00 am - 11:00 am", title: "Different Editions of Valmiki Ramayana", speaker: "Dr. Shakutala Gawde", loc: "Ramayana Shala",
@@ -582,17 +523,15 @@
             }
         ];
 
-        let activeDayIndex = 7; // Default to Conference Day 1 (Index 7, Day 8)
+        let activeDayIndex = 7;
 
         function renderDay(index) {
             activeDayIndex = index;
             const data = scheduleData[index];
             
-            // UI Updates
             document.body.classList.toggle('is-conference', data.isConf);
             document.getElementById('header-bg-text').innerText = data.month;
             
-            // Handle display text for conference days
             if (data.isConf) {
                 document.getElementById('current-day-display').innerText = data.title;
                 document.getElementById('day-theme-title').innerText = `Day ${String(data.day).padStart(2, '0')} • ${data.date}`;
@@ -606,21 +545,22 @@
             badge.innerText = data.isConf ? "Main Conference" : data.phase;
             badge.className = "phase-badge " + (data.isConf ? "badge-main" : (data.day > 9 ? "badge-post" : "badge-pre"));
 
-            // Nav Highlight
             renderNav();
 
-            // Timeline
             const container = document.getElementById('main-timeline');
             container.innerHTML = data.events.map(ev => {
                 const isSpeakerEvent = !!ev.speaker;
+                const isSpecialTime = ev.time && ev.time.includes("7:30 pm - 8:30 pm");
+                const shouldFill = isSpeakerEvent || isSpecialTime;
+
                 const placeholderImg = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(ev.speaker || 'WB')}&backgroundColor=b8860b,5d0e11&fontFamily=Playfair+Display&fontWeight=700`;
 
                 return `
                     <div class="timeline-item">
                         <div class="timeline-visual">
-                            <div class="timeline-dot ${isSpeakerEvent ? 'filled' : ''}"></div>
+                            <div class="timeline-dot ${shouldFill ? 'filled' : ''}"></div>
                         </div>
-                        <div class="timeline-content">
+                        <div class="timeline-content pb-14">
                             <div class="mb-2">
                                 <span class="meta-text time-text">${ev.time}</span>
                                 ${ev.loc && ev.loc !== '-' ? `<span class="meta-text loc-text"> • ${ev.loc}</span>` : ''}
@@ -631,7 +571,7 @@
                                 <div class="speaker-card">
                                     <img src="${placeholderImg}" alt="${ev.speaker}" class="speaker-photo">
                                     <div class="speaker-info">
-                                        <div class="speaker-name">${ev.speaker}</div>
+                                        <div class="speaker-name text-gold font-bold mb-1">${ev.speaker}</div>
                                         <p class="bio-text">${ev.bio || 'Scholar details and insights for this session are being finalized and will be updated shortly.'}</p>
                                     </div>
                                 </div>
@@ -640,8 +580,6 @@
                     </div>
                 `;
             }).join('');
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderNav() {
@@ -653,7 +591,6 @@
             `).join('');
         }
 
-        // Init
         renderDay(7);
     </script>
 </body>
