@@ -305,6 +305,10 @@
     <main class="py-16 px-6">
         <div class="max-w-4xl mx-auto">
             <div class="timeline-wrapper" id="main-timeline">
+                <div id="timeline-loader" role="status" class="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm py-20" style="display: none;">
+                    <div class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-gold border-t-transparent" aria-hidden="true"></div>
+                    <span class="sr-only">Loading schedule...</span>
+                </div>
                 <!-- Timeline injected here -->
             </div>
         </div>
@@ -506,6 +510,9 @@
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
+            const loader = document.getElementById('timeline-loader');
+            if (loader) loader.style.display = 'flex';
+
             try {
                 const response = await fetch('schedule.json');
                 scheduleData = await response.json();
@@ -514,6 +521,8 @@
             } catch (error) {
                 console.error('Error loading schedule:', error);
                 document.getElementById('main-timeline').textContent = 'Error loading schedule.';
+            } finally {
+                if (loader) loader.style.display = 'none';
             }
         });
     </script>
