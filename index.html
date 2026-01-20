@@ -305,7 +305,15 @@
     <main class="py-16 px-6">
         <div class="max-w-4xl mx-auto">
             <div class="timeline-wrapper" id="main-timeline">
-                <!-- Timeline injected here -->
+                <div id="timeline-loader" role="status">
+                    <p class="sr-only">Loading schedule...</p>
+                    <div class="flex justify-center items-center py-20">
+                        <svg class="animate-spin h-8 w-8 text-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -381,7 +389,10 @@
             updateStepper();
 
             const container = document.getElementById('main-timeline');
-            container.innerHTML = data.events.map(ev => {
+            // Clear previous content (including loader) before rendering new day
+            container.innerHTML = '';
+
+            const eventsHtml = data.events.map(ev => {
                 const isSpeakerEvent = !!ev.speaker;
                 const isSpecialTime = ev.time && ev.time.includes("7:30 pm - 8:30 pm");
                 const isAbhishekham = ev.title.toLowerCase().includes("abhishekham");
@@ -448,6 +459,8 @@
                     </div>
                 `;
             }).join('');
+
+            container.innerHTML = eventsHtml;
         }
 
         function updateStepper() {
@@ -506,14 +519,31 @@
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
+            const timelineContainer = document.getElementById('main-timeline');
             try {
                 const response = await fetch('schedule.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 scheduleData = await response.json();
-                renderDay(getInitialDayIndex());
+                renderDay(getInitialDayIndex()); // This replaces the loader with the schedule
                 setInterval(() => renderDay(activeDayIndex), 30000);
             } catch (error) {
                 console.error('Error loading schedule:', error);
-                document.getElementById('main-timeline').textContent = 'Error loading schedule.';
+                timelineContainer.innerHTML = `
+                    <div class="text-center py-20 px-6">
+                        <svg class="mx-auto h-12 w-12 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <h3 class="mt-2 text-lg font-semibold text-text-main">Cannot Load Schedule</h3>
+                        <p class="mt-1 text-sm text-text-muted">We couldn't fetch the conference schedule at this time. Please check your internet connection and try again.</p>
+                        <div class="mt-6">
+                            <button type="button" onclick="location.reload()" class="inline-flex items-center rounded-md bg-gold px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gold/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold">
+                                Refresh Page
+                            </button>
+                        </div>
+                    </div>
+                `;
             }
         });
     </script>
