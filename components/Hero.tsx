@@ -1,12 +1,15 @@
 import React from 'react';
-import { ASSETS } from '../constants.ts';
 import { MapPin, ChevronDown, ExternalLink } from 'lucide-react';
+// import { ASSETS } from '../constants.ts'; // Now global
 
-const Hero: React.FC = () => {
+const Hero = () => {
+  // Access global assets
+  const ASSETS = window.ASSETS;
+
   return (
     <div className="relative w-full overflow-hidden bg-gradient-to-b from-maroon via-maroon to-black text-gold min-h-[500px] md:min-h-screen flex flex-col items-center justify-center pt-12 pb-10 md:pt-8 md:pb-20 px-4">
       
-      {/* Pillars - Absolute positioned to take full height of hero */}
+      {/* Pillars */}
       <img 
         src={ASSETS.pillarLeft} 
         alt="Pillar" 
@@ -23,11 +26,10 @@ const Hero: React.FC = () => {
         {/* Center Content */}
         <div className="flex flex-col items-center text-center w-full max-w-3xl">
             
-            {/* Deity Image Container with Centered Radiance */}
-            {/* Reduced margin-bottom on mobile */}
+            {/* Deity Image Container */}
             <div className="relative flex justify-center items-center mb-2 md:mb-6 w-fit mx-auto">
                 
-                {/* Rotating Rays Pattern 1 (Main) */}
+                {/* Rotating Rays Pattern 1 */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[128vw] h-[128vw] md:w-[720px] md:h-[720px] pointer-events-none z-0">
                     <div 
                         className="w-full h-full animate-spin-slow rounded-full"
@@ -39,7 +41,7 @@ const Hero: React.FC = () => {
                     ></div>
                 </div>
 
-                {/* Rotating Rays Pattern 2 (Inner Reverse) */}
+                {/* Rotating Rays Pattern 2 */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vw] md:w-[550px] md:h-[550px] pointer-events-none z-0">
                     <div 
                         className="w-full h-full animate-spin-reverse-medium rounded-full"
@@ -51,16 +53,11 @@ const Hero: React.FC = () => {
                     ></div>
                 </div>
 
-                {/* Gold Glow behind image */}
+                {/* Glows */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[320px] md:h-[320px] bg-gold/50 blur-[60px] md:blur-[70px] rounded-full z-10"></div>
-                
-                {/* White Pulsing Glow behind image */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] md:w-[280px] md:h-[280px] bg-white/60 blur-[40px] md:blur-[50px] rounded-full z-10 animate-pulse"></div>
-                
-                {/* Core Intensity Glow */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] md:w-[220px] md:h-[220px] bg-white/40 blur-[25px] rounded-full z-10"></div>
 
-                {/* Deity Image: Reduced height on mobile */}
                 <img src={ASSETS.heroImage} alt="Kalyana Ramar" className="h-[220px] md:h-[420px] object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.8)] z-20 relative transform hover:scale-105 transition-transform duration-700" />
             </div>
 
@@ -81,7 +78,7 @@ const Hero: React.FC = () => {
                 </p>
             </div>
 
-            {/* Dates Grid: Reduced gaps and margins */}
+            {/* Dates Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-5 md:mt-8 w-full max-w-4xl px-2 md:px-4 mb-5 md:mb-8">
                 <div className="bg-black/40 backdrop-blur-md border border-gold/30 p-3 md:p-4 rounded-xl flex flex-col items-center justify-center shadow-lg transform hover:-translate-y-1 transition-transform">
                     <span className="text-gold font-bold text-base md:text-lg uppercase tracking-wider mb-0.5 md:mb-1">Pre-Conference</span>
@@ -99,7 +96,6 @@ const Hero: React.FC = () => {
 
             {/* Buttons Container */}
             <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full justify-center items-center z-20 px-4">
-                 {/* Accommodation Link */}
                  <a 
                     href="https://docs.google.com/forms/d/"
                     target="_blank"
@@ -109,7 +105,6 @@ const Hero: React.FC = () => {
                     Accommodation Registration <ExternalLink size={18} />
                 </a>
 
-                {/* Location Link with ID for scroll tracking */}
                 <a 
                     id="hero-location-trigger"
                     href="https://www.google.com/maps/search/?api=1&query=Srimad+Valmiki+Ashrama+WEBOLIM+Ragihalli+Village+Bengaluru"
@@ -135,4 +130,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+window.Hero = Hero; // Export to window
