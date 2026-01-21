@@ -1,5 +1,5 @@
 import React from 'react';
-import { ASSETS } from '../constants';
+import { ASSETS } from '../constants.ts';
 import { MapPin, ChevronDown, ExternalLink } from 'lucide-react';
 
 const Hero: React.FC = () => {
