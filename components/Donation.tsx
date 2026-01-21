@@ -1,5 +1,5 @@
 import React from 'react';
-import { ASSETS } from '../constants';
+import { ASSETS } from '../constants.ts';
 import { QrCode, CreditCard } from 'lucide-react';
 
 const Donation: React.FC = () => {
