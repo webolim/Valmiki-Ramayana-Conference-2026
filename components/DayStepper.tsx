@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Day } from '../types';
+import { Day } from '../types.ts';
 
 interface DayStepperProps {
   days: Day[];
