@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Day } from '../types';
-import EventCard from './EventCard';
-import { getCurrentISTTime, getEventStatus } from '../utils/timeUtils';
+import { Day } from '../types.ts';
+import EventCard from './EventCard.tsx';
+import { getCurrentISTTime, getEventStatus } from '../utils/timeUtils.ts';
 
 interface ScheduleProps {
   day: Day;
