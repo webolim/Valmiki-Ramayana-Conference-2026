@@ -1,5 +1,5 @@
 import React from 'react';
-import { ASSETS } from '../constants';
+import { ASSETS } from '../constants.ts';
 import { Mail, Phone, Globe } from 'lucide-react';
 
 const Footer: React.FC = () => {
