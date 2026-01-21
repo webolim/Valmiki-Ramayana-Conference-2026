@@ -1,12 +1,10 @@
 import React from 'react';
-import { ASSETS } from '../constants.ts';
 import { Menu } from 'lucide-react';
+// import { ASSETS } from '../constants.ts'; // Global
 
-interface HeaderProps {
-    onMenuClick: () => void;
-}
+const Header = ({ onMenuClick }) => {
+  const ASSETS = window.ASSETS;
 
-const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   return (
     <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-md shadow-md border-b-2 border-maroon">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
@@ -33,4 +31,4 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
   );
 };
 
-export default Header;
+window.Header = Header;
