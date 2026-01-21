@@ -1,5 +1,5 @@
-import { SCHEDULE_DATA } from '../constants';
-import { Day, Event } from '../types';
+import { SCHEDULE_DATA } from '../constants.ts';
+import { Day, Event } from '../types.ts';
 
 // Helper to get current time in IST (Indian Standard Time)
 // Since the browser might be in any timezone, we force convert to IST for display logic
