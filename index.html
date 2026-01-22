@@ -98,7 +98,7 @@
       .fade-in { animation: fadeIn 0.5s ease-in; }
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-      /* Glittery Hero Background - UPDATED: Redder center, denser sparkles */
+      /* Glittery Hero Background - Updated for redder center and denser sparkles */
       .hero-glitter-bg {
           background: radial-gradient(circle at center, #850000 0%, #2a0a0a 100%);
           position: relative;
@@ -111,7 +111,7 @@
               radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
               radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
               radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
-          background-size: 350px 350px, 200px 200px, 150px 150px;
+          background-size: 350px 350px, 200px 200px, 150px 150px; /* Denser sparkles */
           background-position: 0 0, 40px 60px, 130px 270px;
           opacity: 0.4;
           animation: twinkle 5s infinite alternate;
@@ -734,7 +734,6 @@
             if (!day) return;
 
             const isConference = day.phase === 'Conference';
-            const borderColorClass = isConference ? 'border-gold' : 'border-deepGreen'; // Dynamic border color
             
             // Background
             const section = document.getElementById('schedule');
@@ -767,9 +766,9 @@
                 const itemsAlignClass = isEven ? 'md:items-end' : 'md:items-start';
                 const flexRowClass = isEven ? 'md:flex-row-reverse' : 'md:flex-row'; // For Icon+Text rows
 
-                // Card HTML
+                // Card HTML - REMOVED ACCENT BORDER (border-l-4 and border color)
                 const cardHtml = `
-                    <div id="event-${event.id}" class="relative overflow-hidden transition-all duration-300 group text-left ${textAlignClass} ${hasVideo ? `bg-white rounded-xl shadow-sm border-l-4 ${borderColorClass} hover:shadow-md p-6 md:p-8` : 'bg-transparent border-l-4 border-transparent pl-6 py-4 md:pl-8'} ${ytState === 'live' ? 'ring-2 ring-red-500 ring-offset-2' : ''}">
+                    <div id="event-${event.id}" class="relative overflow-hidden transition-all duration-300 group text-left ${textAlignClass} ${hasVideo ? `bg-white rounded-xl shadow-lg hover:shadow-xl p-6 md:p-8` : 'bg-transparent pl-6 py-4 md:pl-8'} ${ytState === 'live' ? 'ring-2 ring-red-500 ring-offset-2' : ''}">
                         <div id="event-live-${event.id}" class="${ytState === 'live' && hasVideo ? 'absolute top-3 ' + (isEven ? 'md:left-3' : 'right-3') + ' flex items-center gap-1 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse z-10' : 'hidden'}"><span class="w-2 h-2 bg-white rounded-full"></span> LIVE</div>
                         
                         <div class="flex flex-col ${itemsAlignClass}">
@@ -816,7 +815,7 @@
                 return `
                     <div class="relative flex flex-col md:flex-row ${isEven ? 'md:flex-row-reverse' : ''} items-stretch w-full py-4 fade-in">
                         ${!isLast ? `<div class="absolute left-4 md:left-1/2 w-1 -ml-0.5 z-0 ${isConference ? 'bg-gold/40' : 'bg-deepGreen/20'}" style="top: 1.75rem; bottom: -1.75rem;"></div>` : ''}
-                        <div class="absolute left-4 md:left-1/2 top-7 w-10 h-10 -ml-5 flex items-center justify-center z-10">
+                        <div class="absolute left-4 md:left-1/2 top-7 w-11 h-11 -ml-[1.375rem] flex items-center justify-center z-10">
                             <img src="${isConference ? ASSETS.timelineConference : ASSETS.timelineSatram}" class="w-full h-full object-contain drop-shadow-md" alt="marker">
                         </div>
                         <div class="hidden md:block w-1/2"></div>
