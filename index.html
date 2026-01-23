@@ -184,11 +184,11 @@
     <main class="min-h-screen flex flex-col font-sans bg-cream relative">
         
         <!-- HERO SECTION -->
-        <div id="hero" class="hero-glitter-bg relative w-full overflow-hidden text-gold min-h-[500px] md:min-h-screen lg:min-h-[700px] flex flex-col lg:flex-row items-center justify-center pt-12 pb-10 md:pt-8 md:pb-20 lg:pt-24 lg:pb-32 px-4 lg:px-16 gap-8 lg:gap-16">
+        <div id="hero" class="hero-glitter-bg relative w-full overflow-hidden text-gold min-h-[500px] md:min-h-screen lg:min-h-[700px] flex flex-col lg:flex-row items-center justify-center pt-12 pb-10 md:pt-8 md:pb-20 lg:pt-24 lg:pb-32 px-4 lg:px-16 gap-4 lg:gap-6">
             
-            <!-- Pillars -->
-            <img id="pillar-left" class="hidden lg:block absolute left-0 top-0 h-full w-auto object-cover z-0 opacity-90 drop-shadow-2xl" />
-            <img id="pillar-right" class="hidden lg:block absolute right-0 top-0 h-full w-auto object-cover z-0 opacity-90 drop-shadow-2xl" />
+            <!-- Pillars: Reduced width by half (w-4 mobile, w-7 md, w-10 lg) -->
+            <div id="pillar-left" class="absolute left-0 top-0 h-full w-4 md:w-7 lg:w-10 bg-[length:100%_25%] lg:bg-[length:100%_50%] bg-top bg-repeat-y z-0 opacity-90 drop-shadow-2xl pointer-events-none"></div>
+            <div id="pillar-right" class="absolute right-0 top-0 h-full w-4 md:w-7 lg:w-10 bg-[length:100%_25%] lg:bg-[length:100%_50%] bg-top bg-repeat-y z-0 opacity-90 drop-shadow-2xl pointer-events-none"></div>
             
             <!-- Left Column: Deity Image -->
             <div class="relative z-10 w-full lg:w-1/2 flex justify-center items-center order-1 lg:order-1">
@@ -383,6 +383,24 @@
         let EVENT_START_DATE;
         let EVENT_END_DATE;
 
+        // --- VISUAL CONFIGURATION (EDIT HERE) ---
+        // Define distinct gradients for different types of days
+        const GRADIENTS = {
+            // Day 1: Inauguration (Grand start - Peach/Gold/Red)
+            INAUGURATION: "linear-gradient(180deg, rgba(217, 244, 255, 1) 0%, rgba(217, 244, 255, 1) 20%, rgba(255, 233, 196, 1) 50%, rgba(47, 69, 102, 1) 99%, rgba(255, 206, 191, 1) 100%)",
+            
+            // Days 8 & 9: Conference (Professional/Rich - Cream/Gold/Brown)
+            CONFERENCE: "linear-gradient(180deg, rgba(255, 206, 191, 1) 0%, rgba(186, 231, 255, 1) 10%, rgba(217, 244, 255, 1) 60%, rgba(255, 233, 196, 1) 90%, rgba(47, 69, 102, 1) 99%, rgba(255, 206, 191, 1) 100%)",
+            
+            // Day 11: Valedictory (Conclusion - Soft Sunset/Peaceful)
+            VALEDICTORY: "linear-gradient(180deg, rgba(255, 206, 191, 1) 0%, rgba(186, 231, 255, 1) 10%, rgba(217, 244, 255, 1) 100%)",
+            
+            // Default: All other Pre/Post Conference Days (The multi-color flow you provided)
+            DEFAULT: "linear-gradient(180deg, rgba(255, 206, 191, 1) 0%, rgba(186, 231, 255, 1) 10%, rgba(217, 244, 255, 1) 60%, rgba(255, 233, 196, 1) 90%, rgba(47, 69, 102, 1) 99%, rgba(255, 206, 191, 1) 100%)"
+        };
+        
+        const SCHEDULE_BG_COLOR = "#ffcebf"; 
+
         // --- 1. UTILS ---
         const getCurrentISTTime = () => {
             const now = new Date();
@@ -410,8 +428,8 @@
         let isStepperInit = false;
 
         function initImages() {
-            if(document.getElementById('pillar-left')) document.getElementById('pillar-left').src = ASSETS.pillarLeft;
-            if(document.getElementById('pillar-right')) document.getElementById('pillar-right').src = ASSETS.pillarRight;
+            if(document.getElementById('pillar-left')) document.getElementById('pillar-left').style.backgroundImage = `url('${ASSETS.pillarLeft}')`;
+            if(document.getElementById('pillar-right')) document.getElementById('pillar-right').style.backgroundImage = `url('${ASSETS.pillarRight}')`;
             if(document.getElementById('hero-img')) document.getElementById('hero-img').src = ASSETS.heroImage;
             if(document.getElementById('sticky-logo')) document.getElementById('sticky-logo').src = ASSETS.logo;
             if(document.getElementById('footer-logo')) document.getElementById('footer-logo').src = ASSETS.logo;
@@ -648,9 +666,18 @@
                 const isConference = day.phase === 'Conference';
                 const borderColorClass = isConference ? 'border-gold' : 'border-deepGreen';
                 
-                // Background & Styles - #f1e8cc for Conference, #eeeedb for others
-                const bgStyle = isConference ? 'background-color: #f1e8cc;' : 'background-color: #eeeedb;';
-                const patternStyle = "background-image: url('data:image/svg+xml,%3Csvg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cfilter id=\\'noiseFilter\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.65\\' numOctaves=\\'3\\' stitchTiles=\\'stitch\\'/%3E%3C/filter%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' filter=\\'url(%23noiseFilter)\\' opacity=\\'0.05\\'/%3E%3C/svg%3E');";
+                // Background & Styles
+                // Determine which gradient to use
+                let bgGradient = GRADIENTS.DEFAULT;
+                if (day.dayNumber === 1) bgGradient = GRADIENTS.INAUGURATION;
+                else if (day.dayNumber === 11) bgGradient = GRADIENTS.VALEDICTORY;
+                else if (day.phase === 'Conference') bgGradient = GRADIENTS.CONFERENCE;
+
+                // Noise Pattern (Shared)
+                const noiseUrl = "url('data:image/svg+xml,%3Csvg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cfilter id=\\'noiseFilter\\'%3E%3CfeTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.65\\' numOctaves=\\'3\\' stitchTiles=\\'stitch\\'/%3E%3C/filter%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' filter=\\'url(%23noiseFilter)\\' opacity=\\'0.05\\'/%3E%3C/svg%3E')";
+                
+                // Unified background gradient logic
+                const sectionStyle = `background-image: ${noiseUrl}, ${bgGradient}; background-color: ${SCHEDULE_BG_COLOR};`;
 
                 // Events Generation
                 const eventsHtml = day.events.map((event, index) => {
@@ -734,7 +761,7 @@
                 }).join('');
 
                 return `
-                    <section id="day-section-${day.dayNumber}" class="py-12 relative transition-colors duration-500 border-b border-black/5" style="${bgStyle} ${patternStyle}">
+                    <section id="day-section-${day.dayNumber}" class="py-12 relative transition-colors duration-500 border-b border-black/5" style="${sectionStyle}">
                         <div class="container mx-auto px-4 md:px-8 max-w-5xl relative z-10">
                             <div class="text-center mb-8">
                                 <span class="inline-block px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider mb-2 ${isConference ? 'bg-gold/20 text-maroon' : 'bg-green-100 text-deepGreen'}">${day.phase}</span>
