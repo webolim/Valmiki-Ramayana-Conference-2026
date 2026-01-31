@@ -151,48 +151,69 @@
             linear-gradient(rgba(128, 0, 0, 0.95), rgba(128, 0, 0, 0.95));
       }
 
-      /* Rotating Gradient Border Animation */
-      @property --border-angle {
-        syntax: "<angle>";
-        initial-value: 0deg;
-        inherits: false;
-      }
-
-      @keyframes border-angle-rotate {
-        from { --border-angle: 0deg; }
-        to { --border-angle: 360deg; }
-      }
-
+      /* Rotating Gradient Border Animation - iOS Compatible Version (Pseudo-elements) */
       .gradient-border-base {
-        border: 3px solid transparent; 
-        animation: border-angle-rotate 3s linear infinite;
+        position: relative;
+        overflow: hidden;
+        border: none;
         box-shadow: 0 4px 15px -3px rgba(212, 175, 55, 0.4);
+        /* Hardware acceleration to prevent flickering on iOS */
+        transform: translateZ(0); 
+        -webkit-mask-image: -webkit-radial-gradient(white, black); /* Fix for iOS border-radius clipping */
+        isolation: isolate;
+      }
+
+      .gradient-border-base::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200%; 
+        height: 200%;
+        background: conic-gradient(
+            from 0deg, 
+            var(--c1, #800000) 0%, 
+            var(--c2, #D4AF37) 20%, 
+            var(--c3, #FFFDD0) 30%, 
+            var(--c2, #D4AF37) 40%, 
+            var(--c1, #800000) 60%
+        );
+        animation: spin-gradient 3s linear infinite;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+      }
+
+      .gradient-border-base::after {
+        content: '';
+        position: absolute;
+        top: 3px; left: 3px; right: 3px; bottom: 3px;
+        background: var(--bg-inner);
+        border-radius: inherit;
+        z-index: 0;
+      }
+
+      .gradient-border-base > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes spin-gradient {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
       }
 
       .gradient-border-active {
-        background: 
-          linear-gradient(#800000, #800000) padding-box, 
-          conic-gradient(
-            from var(--border-angle), 
-            #800000 0%, 
-            #D4AF37 20%, 
-            #FFFDD0 30%, 
-            #D4AF37 40%, 
-            #800000 60%
-          ) border-box;
+        --bg-inner: #800000;
+        --c1: #800000;
+        --c2: #D4AF37;
+        --c3: #FFFDD0;
       }
 
       .gradient-border-inactive {
-        background: 
-          linear-gradient(#FEFCE8, #FEFCE8) padding-box, 
-          conic-gradient(
-            from var(--border-angle), 
-            #FEFCE8 0%, 
-            #D4AF37 20%, 
-            #FFFDD0 30%, 
-            #D4AF37 40%, 
-            #FEFCE8 60%
-          ) border-box;
+        --bg-inner: #FEFCE8; 
+        --c1: #FEFCE8;
+        --c2: #D4AF37;
+        --c3: #FFFDD0;
       }
     </style>
 </head>
