@@ -410,8 +410,8 @@
                     <i data-lucide="chevron-right" class="w-6 h-6"></i>
                 </button>
 
-                <!-- Update gap to 1 -->
-                <div id="day-stepper-container" class="flex overflow-x-auto no-scrollbar py-4 px-4 gap-1 items-stretch w-full relative z-10" style="scroll-snap-type: x mandatory;">
+                <!-- Update gap to 1. Reduced padding from py-4 to py-2 -->
+                <div id="day-stepper-container" class="flex overflow-x-auto no-scrollbar py-2 px-4 gap-1 items-stretch w-full relative z-10" style="scroll-snap-type: x mandatory;">
                     <!-- JS will populate this -->
                 </div>
             </div>
@@ -623,20 +623,21 @@
                 // Initial classes will be set by updateStepperVisuals immediately after
                 // Note: The structure here supports both regular buttons and train-animated buttons
                 // The class assignment happens in updateStepperVisuals
+                // REDUCED: py-4 to py-2
                 return `
                     <button 
                         onclick="setDay(${day.dayNumber})"
                         id="day-btn-${day.dayNumber}"
-                        class="flex-shrink-0 flex flex-col items-center justify-center py-4 ${shapeClass} transition-all duration-300 snap-center cursor-pointer relative"
+                        class="flex-shrink-0 flex flex-col items-center justify-center py-2 ${shapeClass} transition-all duration-300 snap-center cursor-pointer relative"
                     >
                         <div class="relative z-10 flex flex-col items-center justify-center w-full">
                             <div id="day-conf-corner-${day.dayNumber}" class="absolute top-[-10px] right-[-10px] w-4 h-4 bg-gold/40 rounded-bl-full hidden"></div>
-                            <div class="flex items-baseline gap-2 leading-none mb-1">
+                            <div class="flex items-baseline gap-1 leading-none mb-0">
                                 <span id="day-month-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
                                 <span id="day-date-${day.dayNumber}" class="text-3xl md:text-4xl font-serif font-bold"></span>
                                 <span id="day-name-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
                             </div>
-                            <span id="day-theme-${day.dayNumber}" class="text-xs md:text-sm font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 mt-1"></span>
+                            <span id="day-theme-${day.dayNumber}" class="text-xs md:text-sm font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 mt-0"></span>
                         </div>
                     </button>
                 `;
@@ -659,8 +660,8 @@
                 const shortDayName = day.dayName.substring(0, 3).toUpperCase();
                 
                 // Base Classes
-                // Removed overflow-hidden from button to prevent clipping if padding isn't enough, relying on shape class
-                let classes = "flex-shrink-0 flex flex-col items-center justify-center py-4 transition-all duration-300 snap-center cursor-pointer relative ";
+                // REDUCED: py-4 to py-2
+                let classes = "flex-shrink-0 flex flex-col items-center justify-center py-2 transition-all duration-300 snap-center cursor-pointer relative ";
                 
                 // Shape Logic
                 if (isConference) {
@@ -670,11 +671,11 @@
                     classes += "rounded-full ";
                 }
 
-                // Sizing Logic
+                // Sizing Logic - Increased width to prevent text clipping
                 if (isActive) {
-                    classes += "min-w-[180px] md:min-w-[200px] scale-100 z-10 ";
+                    classes += "min-w-[160px] md:min-w-[180px] scale-100 z-10 ";
                 } else {
-                    classes += "min-w-[160px] md:min-w-[170px] scale-90 opacity-80 ";
+                    classes += "min-w-[145px] md:min-w-[155px] scale-90 opacity-80 ";
                 }
 
                 // Border & Background Logic
@@ -706,17 +707,19 @@
                 const dayColor = isActive ? 'text-gray-300' : (isConference ? 'text-maroon/80' : 'text-gray-400');
                 const themeColor = isActive ? 'text-gold' : (isConference ? 'text-maroon' : 'text-gray-600');
 
-                // Update Text Content & Classes safely
-                document.getElementById(`day-month-${day.dayNumber}`).className = `text-xs md:text-sm font-bold tracking-wider uppercase ${monthColor}`;
+                // Update Text Content & Classes safely - REDUCED FONT SIZES
+                // Labels: text-[10px] md:text-xs (was text-xs md:text-sm)
+                // Date: text-2xl md:text-3xl (was text-3xl md:text-4xl)
+                document.getElementById(`day-month-${day.dayNumber}`).className = `text-[10px] md:text-xs font-bold tracking-wider uppercase ${monthColor}`;
                 document.getElementById(`day-month-${day.dayNumber}`).textContent = month.substring(0,3);
 
-                document.getElementById(`day-date-${day.dayNumber}`).className = `text-3xl md:text-4xl font-serif font-bold ${dateColor}`;
+                document.getElementById(`day-date-${day.dayNumber}`).className = `text-2xl md:text-3xl font-serif font-bold ${dateColor}`;
                 document.getElementById(`day-date-${day.dayNumber}`).textContent = dateStr;
 
-                document.getElementById(`day-name-${day.dayNumber}`).className = `text-xs md:text-sm font-bold tracking-wider uppercase ${dayColor}`;
+                document.getElementById(`day-name-${day.dayNumber}`).className = `text-[10px] md:text-xs font-bold tracking-wider uppercase ${dayColor}`;
                 document.getElementById(`day-name-${day.dayNumber}`).textContent = shortDayName;
 
-                document.getElementById(`day-theme-${day.dayNumber}`).className = `text-xs md:text-sm font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 mt-1 ${themeColor}`;
+                document.getElementById(`day-theme-${day.dayNumber}`).className = `text-[10px] md:text-xs font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 mt-0 ${themeColor}`;
                 document.getElementById(`day-theme-${day.dayNumber}`).textContent = day.theme;
 
                 // Corner decoration - restored for rectangle conference buttons
@@ -880,7 +883,7 @@
                                             
                                             return `
                                             <div class="flex flex-col sm:flex-row ${alignClass} gap-4">
-                                                <img src="${s.photo}" alt="${s.name}" class="w-32 h-32 md:w-40 md:h-40 rounded-xl object-cover border border-gold/30 shadow-sm shrink-0 bg-gray-100">
+                                                <img src="${s.photo}" alt="${s.name}" class="w-36 h-36 md:w-40 md:h-40 rounded-xl object-cover border border-gold/30 shadow-sm shrink-0 bg-gray-100">
                                                 <div class="flex flex-col">
                                                     <p class="font-bold text-maroon text-base md:text-lg leading-tight mb-1">${s.name}</p>
                                                     ${hasBio ? `<p class="text-sm md:text-base text-gray-700 leading-relaxed">${s.bio}</p>` : ''}
@@ -1012,7 +1015,7 @@
             
             const el = document.getElementById(`day-section-${dayId}`);
             if (el) {
-                const headerOffset = 170; // Sticky header height
+                const headerOffset = 140; // REDUCED header offset
                 const elementPosition = el.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 window.scrollTo({ top: offsetPosition, behavior: "smooth" });
