@@ -152,7 +152,7 @@
         "bio": "Shri. Santhanaraman (To be updated shortly)"
     },
     "nandakumar": { "name": "Shri. Nandalal", "photo": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/generic-profile.gif" },
-    "vaidehi": { "name": "Shree Vaidehi", "photo": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/generic-profile.gif" },
+    "vayidehi": { "name": "Shree Vayidehi", "photo": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/generic-profile.gif" },
     "sethuraman": { "name": "Shri. Sethuraman", "photo": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/generic-profile.gif" },
     "shyamji": { "name": "Sri Shyam Sundar", "photo": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/generic-profile.gif" }
   },
@@ -280,7 +280,7 @@
           { "id": "d10-e2b", "startTime": "11:30 AM", "endTime": "12:00 PM", "title": "Poojai", "venue": "Kalyana Ramar Sannidhi", "speakerIds": [] },
           { "id": "d10-e2c", "startTime": "12:00 PM", "endTime": "1:00 PM", "title": "Lunch", "venue": "Premika Madhura Bhavanam", "speakerIds": [] },
           { "id": "d10-e2d", "startTime": "1:00 PM", "endTime": "3:00 PM", "title": "Parayanam", "venue": "Ramayana Shala", "speakerIds": [] },
-          { "id": "d10-e3", "startTime": "3:00 PM", "endTime": "4:00 PM", "title": "Agni Pravesha", "venue": "Ramayana Shala", "speakerIds": ["vaidehi", "sethuraman"], "youtubeLink": "https://youtu.be/champaka" },
+          { "id": "d10-e3", "startTime": "3:00 PM", "endTime": "4:00 PM", "title": "Agni Pravesha", "venue": "Ramayana Shala", "speakerIds": ["vayidehi", "sethuraman"], "youtubeLink": "https://youtu.be/champaka" },
           { "id": "d10-e3b", "startTime": "4:00 PM", "endTime": "5:00 PM", "title": "Parayanam", "venue": "Ramayana Shala", "speakerIds": [] },
           { "id": "d10-e4", "startTime": "5:00 PM", "endTime": "6:00 PM", "title": "Ayodhya Pravesha", "venue": "Ramayana Shala", "speakerIds": ["shyamji"], "youtubeLink": "https://youtu.be/shyamji" },
           { "id": "d10-e5", "startTime": "6:00 PM", "endTime": "6:30 PM", "title": "Sandhyavandanam", "venue": "Venue", "speakerIds": [] },
