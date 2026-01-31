@@ -673,9 +673,17 @@
 
                 // Sizing Logic - Increased width to prevent text clipping
                 if (isActive) {
-                    classes += "min-w-[160px] md:min-w-[180px] scale-100 z-10 ";
+                    if (isConference) {
+                        classes += "min-w-[210px] md:min-w-[240px] scale-100 z-10 ";
+                    } else {
+                        classes += "min-w-[160px] md:min-w-[180px] scale-100 z-10 ";
+                    }
                 } else {
-                    classes += "min-w-[145px] md:min-w-[155px] scale-90 opacity-80 ";
+                    if (isConference) {
+                         classes += "min-w-[190px] md:min-w-[210px] scale-90 opacity-80 ";
+                    } else {
+                         classes += "min-w-[145px] md:min-w-[155px] scale-90 opacity-80 ";
+                    }
                 }
 
                 // Border & Background Logic
@@ -719,7 +727,7 @@
                 document.getElementById(`day-name-${day.dayNumber}`).className = `text-[10px] md:text-xs font-bold tracking-wider uppercase ${dayColor}`;
                 document.getElementById(`day-name-${day.dayNumber}`).textContent = shortDayName;
 
-                document.getElementById(`day-theme-${day.dayNumber}`).className = `text-[10px] md:text-xs font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 mt-0 ${themeColor}`;
+                document.getElementById(`day-theme-${day.dayNumber}`).className = `text-[10px] md:text-xs font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 -mt-1 leading-none ${themeColor}`;
                 document.getElementById(`day-theme-${day.dayNumber}`).textContent = day.theme;
 
                 // Corner decoration - restored for rectangle conference buttons
