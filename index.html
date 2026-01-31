@@ -150,6 +150,50 @@
             url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"),
             linear-gradient(rgba(128, 0, 0, 0.95), rgba(128, 0, 0, 0.95));
       }
+
+      /* Rotating Gradient Border Animation */
+      @property --border-angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+      }
+
+      @keyframes border-angle-rotate {
+        from { --border-angle: 0deg; }
+        to { --border-angle: 360deg; }
+      }
+
+      .gradient-border-base {
+        border: 3px solid transparent; 
+        animation: border-angle-rotate 3s linear infinite;
+        box-shadow: 0 4px 15px -3px rgba(212, 175, 55, 0.4);
+      }
+
+      .gradient-border-active {
+        background: 
+          linear-gradient(#800000, #800000) padding-box, 
+          conic-gradient(
+            from var(--border-angle), 
+            #800000 0%, 
+            #D4AF37 20%, 
+            #FFFDD0 30%, 
+            #D4AF37 40%, 
+            #800000 60%
+          ) border-box;
+      }
+
+      .gradient-border-inactive {
+        background: 
+          linear-gradient(#FEFCE8, #FEFCE8) padding-box, 
+          conic-gradient(
+            from var(--border-angle), 
+            #FEFCE8 0%, 
+            #D4AF37 20%, 
+            #FFFDD0 30%, 
+            #D4AF37 40%, 
+            #FEFCE8 60%
+          ) border-box;
+      }
     </style>
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased">
@@ -234,19 +278,24 @@
                     <p class="font-sans text-cream text-base md:text-xl lg:text-2xl max-w-4xl lg:max-w-none font-medium leading-relaxed drop-shadow px-2 md:whitespace-nowrap lg:whitespace-normal opacity-95">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
                 </div>
 
-                <!-- Dates -->
-                <div class="flex flex-col md:flex-row gap-3 md:gap-4 mt-5 md:mt-8 w-full max-w-lg lg:max-w-xl px-2 md:px-0 mb-2 justify-center lg:justify-start items-stretch">
-                    <div onclick="setDay(1)" class="flex-1 bg-black/40 backdrop-blur-md border border-gold/20 p-3 rounded-lg flex flex-col items-center justify-center shadow-md hover:shadow-lg hover:bg-black/60 cursor-pointer transition-all duration-300 group hover:-translate-y-1">
-                        <span class="text-gold/80 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-1 group-hover:text-gold transition-colors">Pre-Conference</span>
-                        <span class="text-cream text-lg md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Mar 28 – Apr 3</span>
+                <!-- Dates - Updated layout for mobile horizontal distribution -->
+                <div class="flex flex-row gap-2 md:gap-4 mt-5 md:mt-8 w-full max-w-full lg:max-w-xl px-0 mb-2 justify-between lg:justify-start items-stretch">
+                    <div onclick="setDay(1)" class="flex-1 bg-black/40 backdrop-blur-md border border-gold/20 p-2 md:p-3 rounded-lg flex flex-col items-center justify-center shadow-md hover:shadow-lg hover:bg-black/60 cursor-pointer transition-all duration-300 group hover:-translate-y-1">
+                        <span class="text-gold/80 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-1 group-hover:text-gold transition-colors text-center">Pre-Conference</span>
+                        <span class="text-cream text-xs sm:text-sm md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Mar 28 – Apr 3</span>
                     </div>
-                    <div onclick="setDay(8)" class="flex-1 bg-maroon/80 backdrop-blur-md border border-gold/50 p-3 rounded-lg flex flex-col items-center justify-center shadow-lg hover:shadow-xl scale-100 md:scale-105 z-10 hover:bg-maroon/90 cursor-pointer transition-all duration-300 hover:-translate-y-1 animate-border-pulse">
-                        <span class="text-gold font-bold text-xs md:text-sm uppercase tracking-widest mb-1 group-hover:text-white transition-colors">Conference</span>
-                        <span class="text-white text-xl md:text-2xl font-serif font-extrabold tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] whitespace-nowrap">Apr 4 – 5</span>
+                    
+                    <!-- Hero Conference Button with Rotating Gradient Animation -->
+                    <div onclick="setDay(8)" class="flex-1 gradient-border-base gradient-border-active p-2 md:p-3 rounded-lg flex flex-col items-center justify-center shadow-lg hover:shadow-xl scale-100 md:scale-105 z-10 cursor-pointer transition-all duration-300 hover:-translate-y-1">
+                        <div class="relative z-10 flex flex-col items-center justify-center">
+                            <span class="text-gold font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-1 transition-colors text-center">Conference</span>
+                            <span class="text-white text-xs sm:text-sm md:text-2xl font-serif font-extrabold tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] whitespace-nowrap">Apr 4 – 5</span>
+                        </div>
                     </div>
-                    <div onclick="setDay(10)" class="flex-1 bg-black/40 backdrop-blur-md border border-gold/20 p-3 rounded-lg flex flex-col items-center justify-center shadow-md hover:shadow-lg hover:bg-black/60 cursor-pointer transition-all duration-300 group hover:-translate-y-1">
-                        <span class="text-gold/80 font-bold text-[10px] md:text-xs uppercase tracking-widest mb-1 group-hover:text-gold transition-colors">Post-Conference</span>
-                        <span class="text-cream text-lg md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Apr 6 – 7</span>
+
+                    <div onclick="setDay(10)" class="flex-1 bg-black/40 backdrop-blur-md border border-gold/20 p-2 md:p-3 rounded-lg flex flex-col items-center justify-center shadow-md hover:shadow-lg hover:bg-black/60 cursor-pointer transition-all duration-300 group hover:-translate-y-1">
+                        <span class="text-gold/80 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-1 group-hover:text-gold transition-colors text-center">Post-Conference</span>
+                        <span class="text-cream text-xs sm:text-sm md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Apr 6 – 7</span>
                     </div>
                 </div>
 
@@ -394,16 +443,16 @@
         // Define distinct gradients for different types of days
         const GRADIENTS = {
             // Day 1: Inauguration (Grand start - Peach/Gold/Red)
-            INAUGURATION: "linear-gradient(180deg, rgba(255, 248, 220, 1) 0%, rgba(255, 230, 150, 1) 20%, rgba(255, 248, 220, 1) 50%, rgba(218, 165, 32, 0.4) 80%, rgba(128, 0, 0, 0.8) 100%)",
+            INAUGURATION: "linear-gradient(180deg, rgba(217, 244, 255, 1) 0%, rgba(217, 244, 255, 1) 20%, rgba(255, 233, 196, 1) 50%, rgba(47, 69, 102, 1) 99%, rgba(255, 206, 191, 1) 100%)",
             
             // Days 8 & 9: Conference (Professional/Rich - Cream/Gold/Brown)
             CONFERENCE: "linear-gradient(180deg, rgba(255, 253, 208, 1) 0%, rgba(255, 248, 225, 1) 30%, rgba(255, 236, 179, 1) 70%, rgba(93, 64, 55, 0.9) 100%)",
             
             // Day 11: Valedictory (Conclusion - Soft Sunset/Peaceful)
-            VALEDICTORY: "linear-gradient(180deg, rgba(255, 245, 238, 1) 0%, rgba(255, 228, 225, 1) 40%, rgba(250, 218, 221, 1) 70%, rgba(128, 0, 0, 0.7) 100%)",
+            VALEDICTORY: "linear-gradient(180deg, rgba(255, 206, 191, 1) 0%, rgba(186, 231, 255, 1) 10%, rgba(217, 244, 255, 1) 100%)",
             
             // Default: All other Pre/Post Conference Days (The multi-color flow you provided)
-            DEFAULT: "linear-gradient(180deg, rgba(255, 206, 191, 1) 0%, rgba(186, 231, 255, 1) 10%, rgba(217, 244, 255, 1) 60%, rgba(255, 233, 196, 1) 80%, rgba(47, 69, 102, 1) 95%, rgba(255, 206, 191, 1) 100%)"
+            DEFAULT: "linear-gradient(180deg, rgba(255, 206, 191, 1) 0%, rgba(186, 231, 255, 1) 10%, rgba(217, 244, 255, 1) 60%, rgba(255, 233, 196, 1) 80%, rgba(47, 69, 102, 1) 99%, rgba(255, 206, 191, 1) 100%)"
         };
         
         const SCHEDULE_BG_COLOR = "#ffcebf"; 
@@ -511,19 +560,23 @@
             // Initial Render of all buttons
             container.innerHTML = SCHEDULE_DATA.days.map(day => {
                 // Initial classes will be set by updateStepperVisuals immediately after
+                // Note: The structure here supports both regular buttons and train-animated buttons
+                // The class assignment happens in updateStepperVisuals
                 return `
                     <button 
                         onclick="setDay(${day.dayNumber})"
                         id="day-btn-${day.dayNumber}"
-                        class="flex-shrink-0 flex flex-col items-center justify-center min-w-[160px] md:min-w-[180px] py-3 rounded-lg transition-all duration-300 snap-center border-2 cursor-pointer relative overflow-hidden"
+                        class="flex-shrink-0 flex flex-col items-center justify-center py-3 rounded-lg transition-all duration-300 snap-center cursor-pointer relative"
                     >
-                        <div id="day-conf-corner-${day.dayNumber}" class="absolute top-0 right-0 w-4 h-4 bg-gold/40 rounded-bl-full hidden"></div>
-                        <div class="flex items-baseline gap-2 leading-none mb-1">
-                            <span id="day-month-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
-                            <span id="day-date-${day.dayNumber}" class="text-3xl md:text-4xl font-serif font-bold"></span>
-                            <span id="day-name-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
+                        <div class="relative z-10 flex flex-col items-center justify-center w-full">
+                            <div id="day-conf-corner-${day.dayNumber}" class="absolute top-[-10px] right-[-10px] w-4 h-4 bg-gold/40 rounded-bl-full hidden"></div>
+                            <div class="flex items-baseline gap-2 leading-none mb-1">
+                                <span id="day-month-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
+                                <span id="day-date-${day.dayNumber}" class="text-3xl md:text-4xl font-serif font-bold"></span>
+                                <span id="day-name-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
+                            </div>
+                            <span id="day-theme-${day.dayNumber}" class="text-xs md:text-sm font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 mt-1"></span>
                         </div>
-                        <span id="day-theme-${day.dayNumber}" class="text-xs md:text-sm font-bold uppercase tracking-wide text-center w-full whitespace-nowrap overflow-hidden text-ellipsis px-2 mt-1"></span>
                     </button>
                 `;
             }).join('');
@@ -543,24 +596,40 @@
                 const isConference = day.phase === 'Conference';
                 const [month, dateStr] = day.displayDate.split(' ');
                 const shortDayName = day.dayName.substring(0, 3).toUpperCase();
-
-                // Active Background Logic
-                let activeClasses = '';
+                
+                // Base Classes
+                let classes = "flex-shrink-0 flex flex-col items-center justify-center py-3 rounded-lg transition-all duration-300 snap-center cursor-pointer relative overflow-hidden ";
+                
+                // Sizing Logic
                 if (isActive) {
-                    if (isConference) {
-                        activeClasses = 'bg-maroon border-gold text-white shadow-lg scale-105 ring-2 ring-gold/40 z-10 animate-border-pulse';
+                    classes += "min-w-[180px] md:min-w-[200px] scale-100 z-10 ";
+                } else {
+                    classes += "min-w-[160px] md:min-w-[170px] scale-90 opacity-80 ";
+                }
+
+                // Border & Background Logic
+                if (isConference) {
+                    // Conference: Rotating Gradient Border for BOTH active and inactive
+                    classes += "gradient-border-base ";
+                    if (isActive) {
+                        classes += "gradient-border-active text-white shadow-xl ";
                     } else {
-                        // Dark Green for Pre/Post
-                        activeClasses = 'bg-[#1b4d1b] border-gold text-white shadow-lg scale-105 ring-2 ring-gold/40 z-10'; 
+                        classes += "gradient-border-inactive text-maroon hover:shadow-md ";
+                    }
+                } else {
+                    // Non-Conference
+                    if (isActive) {
+                        // Active Regular: Gold Border (Green Bg)
+                        classes += "bg-[#1b4d1b] border-2 border-gold text-white shadow-lg ";
+                    } else {
+                         // Inactive Regular: White bg, Maroon Border
+                         classes += "bg-white border-2 border-maroon text-gray-500 hover:bg-gray-50 hover:shadow-sm ";
                     }
                 }
-                const confClasses = 'bg-yellow-50 border-yellow-400/60 text-charcoal hover:bg-yellow-100 hover:border-yellow-500 hover:shadow-md animate-border-pulse';
-                const defaultClasses = 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hover:border-gold/60 hover:shadow-sm';
 
-                // Set Container Class
-                btn.className = `flex-shrink-0 flex flex-col items-center justify-center min-w-[160px] md:min-w-[180px] py-3 rounded-lg transition-all duration-300 snap-center border-2 cursor-pointer relative overflow-hidden ${isActive ? activeClasses : (isConference ? confClasses : defaultClasses)}`;
+                btn.className = classes;
 
-                // Set Colors
+                // Text Colors
                 const monthColor = isActive ? 'text-gold' : (isConference ? 'text-maroon' : 'text-gray-400');
                 const dateColor = isActive ? 'text-white' : (isConference ? 'text-maroon' : 'text-gray-800');
                 const dayColor = isActive ? 'text-gray-300' : (isConference ? 'text-maroon/80' : 'text-gray-400');
