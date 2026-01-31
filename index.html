@@ -696,8 +696,12 @@
                     const hasVideo = !!event.youtubeLink;
                     const eventSpeakers = (event.speakerIds || []).map(id => SPEAKERS[id]).filter(Boolean);
                     
+                    const isFirst = index === 0;
+                    const isLast = index === day.events.length - 1;
+                    const roundedClass = (isFirst ? 'rounded-t-2xl md:rounded-t-3xl ' : '') + (isLast ? 'rounded-b-2xl md:rounded-b-3xl ' : '');
+
                     return `
-                        <div id="event-${event.id}" class="group relative p-6 md:p-8 flex flex-row gap-4 md:gap-8 bg-white/95 backdrop-blur-xl hover:bg-white transition-colors duration-300">
+                        <div id="event-${event.id}" class="${roundedClass} group relative p-6 md:p-8 flex flex-row gap-4 md:gap-8 bg-white/95 backdrop-blur-xl hover:bg-white transition-colors duration-300">
                             <!-- Live Badge (Floating Mobile) -->
                             <div id="event-live-${event.id}" class="hidden absolute top-4 right-4 md:static md:hidden flex items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse z-10"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</div>
 
@@ -760,9 +764,9 @@
                             </div>
                             
                             <!-- The Single Card -->
-                            <div class="rounded-2xl md:rounded-3xl shadow-2xl border border-white/40 overflow-hidden ring-1 ring-black/5">
+                            <div class="rounded-2xl md:rounded-3xl shadow-2xl border border-white/40 overflow-hidden ring-1 ring-black/5 transform-gpu isolate">
                                 <div class="flex flex-col gap-[2px] bg-transparent">
-                                    ${eventsHtml || '<div class="text-center py-12 text-gray-400 italic bg-white/95 backdrop-blur-xl">Schedule details coming soon.</div>'}
+                                    ${eventsHtml || '<div class="text-center py-12 text-gray-400 italic bg-white/95 backdrop-blur-xl rounded-2xl md:rounded-3xl">Schedule details coming soon.</div>'}
                                 </div>
                             </div>
                         </div>
