@@ -232,6 +232,16 @@
         pointer-events: none;
       }
 
+      /* Custom diagonal shape for conference buttons */
+      .rounded-diagonal {
+          border-radius: 15px 50px;
+      }
+      
+      /* Reversed diagonal shape for second conference button */
+      .rounded-diagonal-reverse {
+          border-radius: 50px 15px;
+      }
+
       @keyframes spin-gradient {
         0% { transform: translate(-50%, -50%) rotate(0deg); }
         100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -322,20 +332,20 @@
 
                 <!-- Dates - Updated layout: rounded-[2rem] for pre/post, rounded-lg for conference -->
                 <div class="flex flex-row gap-1 md:gap-2 mt-5 md:mt-8 w-full max-w-full lg:max-w-xl px-0 mb-2 justify-between lg:justify-start items-stretch">
-                    <div onclick="setDay(1)" class="flex-1 bg-black/40 backdrop-blur-md border border-gold/20 p-2 md:p-3 rounded-[2rem] flex flex-col items-center justify-center shadow-md hover:shadow-lg hover:bg-black/60 cursor-pointer transition-all duration-300 group hover:-translate-y-1 scale-95 opacity-90">
+                    <div onclick="setDay(1)" class="flex-1 border border-gold/20 p-2 md:p-3 rounded-[2rem] flex flex-col items-center justify-center shadow-sm hover:shadow-md hover:bg-white/5 cursor-pointer transition-all duration-300 group hover:-translate-y-1 scale-95 opacity-90">
                         <span class="text-gold/80 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-1 group-hover:text-gold transition-colors text-center">Pre-Conference</span>
                         <span class="text-cream text-xs sm:text-sm md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Mar 28 – Apr 3</span>
                     </div>
                     
-                    <!-- Hero Conference Button: Rounded Rectangle Shape -->
-                    <div onclick="setDay(8)" class="flex-[1.5] hero-glow-border rounded-lg p-2 md:p-3 flex flex-col items-center justify-center shadow-lg hover:shadow-xl scale-100 md:scale-105 z-10 cursor-pointer transition-all duration-300 hover:-translate-y-1">
+                    <!-- Hero Conference Button: Reduced width by changing flex-[1.5] to flex-1 or specific width class -->
+                    <div onclick="setDay(8)" class="flex-1 hero-glow-border rounded-lg p-2 md:p-3 flex flex-col items-center justify-center shadow-lg hover:shadow-xl scale-100 md:scale-105 z-10 cursor-pointer transition-all duration-300 hover:-translate-y-1">
                         <div class="relative z-10 flex flex-col items-center justify-center">
                             <span class="text-gold font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest mb-1 transition-colors text-center">Conference</span>
                             <span class="text-white text-sm sm:text-lg md:text-3xl font-serif font-extrabold tracking-tight drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] whitespace-nowrap">Apr 4 – 5</span>
                         </div>
                     </div>
 
-                    <div onclick="setDay(10)" class="flex-1 bg-black/40 backdrop-blur-md border border-gold/20 p-2 md:p-3 rounded-[2rem] flex flex-col items-center justify-center shadow-md hover:shadow-lg hover:bg-black/60 cursor-pointer transition-all duration-300 group hover:-translate-y-1 scale-95 opacity-90">
+                    <div onclick="setDay(10)" class="flex-1 border border-gold/20 p-2 md:p-3 rounded-[2rem] flex flex-col items-center justify-center shadow-sm hover:shadow-md hover:bg-white/5 cursor-pointer transition-all duration-300 group hover:-translate-y-1 scale-95 opacity-90">
                         <span class="text-gold/80 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-1 group-hover:text-gold transition-colors text-center">Post-Conference</span>
                         <span class="text-cream text-xs sm:text-sm md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Apr 6 – 7</span>
                     </div>
@@ -401,7 +411,7 @@
                 </button>
 
                 <!-- Update gap to 1 -->
-                <div id="day-stepper-container" class="flex overflow-x-auto no-scrollbar py-3 px-4 gap-1 items-stretch w-full relative z-10" style="scroll-snap-type: x mandatory;">
+                <div id="day-stepper-container" class="flex overflow-x-auto no-scrollbar py-4 px-4 gap-1 items-stretch w-full relative z-10" style="scroll-snap-type: x mandatory;">
                     <!-- JS will populate this -->
                 </div>
             </div>
@@ -603,8 +613,12 @@
             container.innerHTML = SCHEDULE_DATA.days.map(day => {
                 // Determine shape based on phase
                 const isConference = day.phase === 'Conference';
-                // Updated default to rounded-lg or rounded-[2rem]
-                const shapeClass = isConference ? 'rounded-lg' : 'rounded-[2rem]';
+                // Updated default to rounded-diagonal or rounded-full
+                let shapeClass = 'rounded-full';
+                if (isConference) {
+                    // Check if it's the second conference day (Day 9) for reverse shape
+                    shapeClass = (day.dayNumber === 9) ? 'rounded-diagonal-reverse' : 'rounded-diagonal';
+                }
 
                 // Initial classes will be set by updateStepperVisuals immediately after
                 // Note: The structure here supports both regular buttons and train-animated buttons
@@ -613,7 +627,7 @@
                     <button 
                         onclick="setDay(${day.dayNumber})"
                         id="day-btn-${day.dayNumber}"
-                        class="flex-shrink-0 flex flex-col items-center justify-center py-3 ${shapeClass} transition-all duration-300 snap-center cursor-pointer relative"
+                        class="flex-shrink-0 flex flex-col items-center justify-center py-4 ${shapeClass} transition-all duration-300 snap-center cursor-pointer relative"
                     >
                         <div class="relative z-10 flex flex-col items-center justify-center w-full">
                             <div id="day-conf-corner-${day.dayNumber}" class="absolute top-[-10px] right-[-10px] w-4 h-4 bg-gold/40 rounded-bl-full hidden"></div>
@@ -645,13 +659,15 @@
                 const shortDayName = day.dayName.substring(0, 3).toUpperCase();
                 
                 // Base Classes
-                let classes = "flex-shrink-0 flex flex-col items-center justify-center py-3 transition-all duration-300 snap-center cursor-pointer relative overflow-hidden ";
+                // Removed overflow-hidden from button to prevent clipping if padding isn't enough, relying on shape class
+                let classes = "flex-shrink-0 flex flex-col items-center justify-center py-4 transition-all duration-300 snap-center cursor-pointer relative ";
                 
                 // Shape Logic
                 if (isConference) {
-                    classes += "rounded-lg ";
+                    if (day.dayNumber === 9) classes += "rounded-diagonal-reverse ";
+                    else classes += "rounded-diagonal ";
                 } else {
-                    classes += "rounded-[2rem] ";
+                    classes += "rounded-full ";
                 }
 
                 // Sizing Logic
@@ -859,7 +875,8 @@
                                         ${eventSpeakers.map(s => {
                                             // Determine alignment: Center if no bio (Pre/Post), Start if bio (Conference)
                                             const hasBio = event.isConference && s.bio;
-                                            const alignClass = hasBio ? 'items-start' : 'items-center';
+                                            // UPDATED: items-start for mobile default (left align), sm:items-center for desktop if no bio (center vertical)
+                                            const alignClass = hasBio ? 'items-start' : 'items-start sm:items-center';
                                             
                                             return `
                                             <div class="flex flex-col sm:flex-row ${alignClass} gap-4">
