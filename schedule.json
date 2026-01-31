@@ -192,7 +192,7 @@
           { "id": "d8-e7", "startTime": "5:00 PM", "endTime": "6:00 PM", "title": "Sri Shivashaya's Commentary", "venue": "Ramayana Shala", "isConference": true, "speakerIds": ["vishal"], "youtubeLink": "https://youtu.be/vishal" },
           { "id": "d8-e7b", "startTime": "6:00 PM", "endTime": "6:30 PM", "title": "Sandhyopasana", "venue": "Venue", "speakerIds": [] },
           { "id": "d8-e7c", "startTime": "6:00 PM", "endTime": "7:30 PM", "title": "Dinner", "venue": "Premika Madhura Bhavanam", "speakerIds": [] },
-          { "id": "d8-e8", "startTime": "7:30 PM", "endTime": "8:30 PM", "title": "Theppam Utsava", "venue": "Vijayji's Backyard", "speakerIds": [], "youtubeLink": "https://youtu.be/theppamUtsava" },
+          { "id": "d8-e8", "startTime": "7:30 PM", "endTime": "8:30 PM", "title": "Theppam", "venue": "Mithila", "speakerIds": [], "youtubeLink": "https://youtu.be/theppam" },
           { "id": "d8-e9", "startTime": "8:30 PM", "endTime": "9:00 PM", "title": "Dolotsava", "venue": "Kalyana Ramar Sannidhi", "speakerIds": [] }
       ]},
       { "dayNumber": 9, "date": "2026-04-05", "displayDate": "April 05", "dayName": "Sunday", "theme": "Conference Day 2", "phase": "Conference", "events": [
