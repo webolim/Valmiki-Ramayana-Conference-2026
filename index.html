@@ -251,8 +251,14 @@
       .special-event-border {
         border: 8px solid transparent;
         padding: 15px !important;
-        border-image: url('https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/border.png') 35% round;
+        border-image: url('https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/border.png') 22% round;
         margin-bottom: 15px;
+      }
+
+      /* Conference Day Button Border */
+      .conf-btn-border {
+        border: 8px solid transparent;
+        border-image: url('https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/border.png') 30 stretch;
       }
     </style>
 </head>
@@ -621,11 +627,10 @@
             container.innerHTML = SCHEDULE_DATA.days.map(day => {
                 // Determine shape based on phase
                 const isConference = day.phase === 'Conference';
-                // Updated default to rounded-diagonal or rounded-full
+                // Updated default to rounded-lg for conference, rounded-full for others
                 let shapeClass = 'rounded-full';
                 if (isConference) {
-                    // Check if it's the second conference day (Day 9) for reverse shape
-                    shapeClass = (day.dayNumber === 9) ? 'rounded-diagonal-reverse' : 'rounded-diagonal';
+                    shapeClass = 'rounded-lg';
                 }
 
                 // Initial classes will be set by updateStepperVisuals immediately after
@@ -640,7 +645,7 @@
                     >
                         <div class="relative z-10 flex flex-col items-center justify-center w-full">
                             <div id="day-conf-corner-${day.dayNumber}" class="absolute top-[-10px] right-[-10px] w-4 h-4 bg-gold/40 rounded-bl-full hidden"></div>
-                            <div class="flex items-baseline gap-1 leading-none mb-0">
+                            <div class="flex items-center gap-1 leading-none mb-0">
                                 <span id="day-month-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
                                 <span id="day-date-${day.dayNumber}" class="text-3xl md:text-4xl font-serif font-bold"></span>
                                 <span id="day-name-${day.dayNumber}" class="text-xs md:text-sm font-bold tracking-wider uppercase"></span>
@@ -673,8 +678,7 @@
                 
                 // Shape Logic
                 if (isConference) {
-                    if (day.dayNumber === 9) classes += "rounded-diagonal-reverse ";
-                    else classes += "rounded-diagonal ";
+                    classes += "rounded-lg ";
                 } else {
                     classes += "rounded-full ";
                 }
@@ -696,13 +700,13 @@
 
                 // Border & Background Logic
                 if (isConference) {
-                    // Added sheen-bg for conference
+                    // Use special border class for conference
                     if (isActive) {
-                         // Active Conference: Maroon background with Gold border + Sheen
-                        classes += "sheen-bg border-2 border-gold text-white shadow-xl ";
+                         // Active Conference
+                        classes += "sheen-bg text-white shadow-xl conf-btn-border ";
                     } else {
-                         // Inactive Conference: Cream background with Maroon border
-                        classes += "bg-cream border-2 border-maroon text-maroon hover:shadow-md ";
+                         // Inactive Conference
+                        classes += "bg-cream text-maroon hover:shadow-md conf-btn-border ";
                     }
                 } else {
                     // Non-Conference
