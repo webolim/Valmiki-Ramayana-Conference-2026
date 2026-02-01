@@ -295,7 +295,7 @@
           { "id": "d11-e2", "startTime": "8:00 AM", "endTime": "8:30 AM", "title": "Breakfast", "venue": "Premika Madhura Bhavanam", "speakerIds": [] },
           { "id": "d11-e3", "startTime": "8:30 AM", "endTime": "10:00 AM", "title": "Ashtavadhaanam, Sadas", "venue": "Ramayana Shala", "speakerIds": [] },
           { "id": "d11-e4", "startTime": "10:00 AM", "endTime": "12:00 PM", "title": "Purappadu with Nadaswara", "venue": "Ramayana Shala", "speakerIds": [], "youtubeLink": "https://youtu.be/purappadu" },
-          { "id": "d11-e5", "startTime": "12:00 PM", "endTime": "1:00 PM", "title": "Lunch", "venue": "Premika Madhura Bhavanam", "speakerIds": [] }
+          { "id": "d11-e5", "startTime": "12:00 PM", "endTime": "", "title": "Lunch", "venue": "Premika Madhura Bhavanam", "speakerIds": [] }
       ]}
     ]
   }
