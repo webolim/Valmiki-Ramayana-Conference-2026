@@ -190,7 +190,7 @@
           { "id": "d8-e0", "startTime": "5:30 AM", "endTime": "6:15 AM", "title": "Sandhyopasana", "venue": "Venue", "speakerIds": [] },
           { "id": "d8-e0b", "startTime": "6:15 AM", "endTime": "6:30 AM", "title": "Suprabhatam", "venue": "Ramayana Shala", "speakerIds": [] },
           { "id": "d8-e0c", "startTime": "6:30 AM", "endTime": "7:00 AM", "title": "Meditation", "venue": "Venue", "speakerIds": [] },
-          { "id": "d8-e1", "startTime": "7:00 AM", "endTime": "8:00 AM", "title": "My Critical Edition of Valmiki Ramayana","subhead":"(Part 1)", "venue": "Ramayana Shala", "isConference": true, "speakerIds": ["dr_rangan"] },
+          { "id": "d8-e1", "startTime": "7:00 AM", "endTime": "8:00 AM", "title": "WEBOLIM's Critical Edition of Valmiki Ramayana","subhead":"(Part 1)", "venue": "Ramayana Shala", "isConference": true, "speakerIds": ["dr_rangan"] },
           { "id": "d8-e1b", "startTime": "8:00 AM", "endTime": "9:00 AM", "title": "Breakfast", "venue": "Premika Madhura Bhavanam", "speakerIds": [] },
           { "id": "d8-e2", "startTime": "9:00 AM", "endTime": "10:00 AM", "title": "Bori's Critical Edition of Valmiki Ramayana", "venue": "Ramayana Shala", "isConference": true, "speakerIds": ["wakankar"], "youtubeLink": "https://youtu.be/Wakankar" },
           { "id": "d8-e3", "startTime": "10:00 AM", "endTime": "11:00 AM", "title": "Different Editions of Valmiki Ramayana", "venue": "Ramayana Shala", "isConference": true, "speakerIds": ["gawde"], "youtubeLink": "https://youtu.be/Gawde" },
@@ -215,7 +215,7 @@
             "id": "d9-e1",
             "startTime": "7:00 AM",
             "endTime": "8:00 AM",
-            "title": "My Critical Edition of Valmiki Ramayana", "subhead": "(Part 2)",
+            "title": "WEBOLIM's Critical Edition of Valmiki Ramayana", "subhead": "(Part 2)",
             "venue": "Ramayana Shala",
             "isConference": true,
             "speakerIds": ["dr_rangan"]
