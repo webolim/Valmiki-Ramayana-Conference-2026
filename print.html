@@ -17,7 +17,6 @@
               maroon: '#800000',
             },
             fontFamily: {
-              // Override both to Inter to ensure Sans Serif throughout as requested
               serif: ['"Inter"', 'sans-serif'],
               sans: ['"Inter"', 'sans-serif'],
             },
@@ -30,12 +29,14 @@
     </script>
     <style>
         @media print {
-            @page { margin: 10mm 10mm; size: A4; }
+            @page { margin: 8mm 8mm; size: A4; }
             body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
             .no-print { display: none !important; }
-            .page-break { page-break-before: always; }
+            .page-break { page-break-after: always; break-after: page; display: block; height: 0; clear: both; }
             .break-inside-avoid { break-inside: avoid; }
             a { text-decoration: none; color: inherit; }
+            /* Force 2 columns in print regardless of Tailwind's responsive breakpoints */
+            .print-cols-2 { column-count: 2; column-gap: 2rem; }
         }
         /* Web View - Simulate Paper */
         body { background-color: white; font-size: 10pt; line-height: 1.3; color: #1a1a1a; font-family: 'Inter', sans-serif; }
@@ -65,48 +66,84 @@
 
     <div class="max-w-a4 px-6 md:px-0">
         
-        <!-- Header -->
-        <header class="text-center mb-8 border-b-2 border-gray-200 pb-6 break-inside-avoid">
-            <div class="flex items-center justify-center gap-4 mb-3">
-                <img id="print-hero-img" class="h-24 object-contain" />
+        <!-- HEADER (Appears on Page 1) -->
+        <header class="text-center mb-6 border-b-2 border-gray-200 pb-4 break-inside-avoid">
+            <div class="flex items-center justify-center gap-4 mb-2">
+                <img id="print-hero-img" class="h-20 object-contain" />
             </div>
-            <h1 class="font-bold text-2xl md:text-3xl text-maroon uppercase tracking-tight mb-2">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
-            <p class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-[0.2em] mb-4">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
+            <h1 class="font-bold text-2xl md:text-3xl text-maroon uppercase tracking-tight mb-1">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
+            <p class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-[0.2em] mb-3">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
             
             <!-- Dates Table -->
             <div class="flex border border-gray-200 rounded-lg overflow-hidden text-center max-w-lg mx-auto text-xs shadow-sm">
                 <div class="flex-1 border-r border-gray-200 bg-gray-50/50">
-                    <div class="bg-gray-100 py-1.5 font-bold text-gray-500 text-[9px] uppercase tracking-wide">Pre-Conference</div>
-                    <div class="py-1.5 font-bold text-charcoal">Mar 28 – Apr 3</div>
+                    <div class="bg-gray-100 py-1 font-bold text-gray-500 text-[9px] uppercase tracking-wide">Pre-Conference</div>
+                    <div class="py-1 font-bold text-charcoal">Mar 28 – Apr 3</div>
                 </div>
                 <div class="flex-1 border-r border-gray-200 bg-gold/10 print:bg-gray-50">
-                    <div class="bg-gold/90 print:bg-gray-200 print:text-black text-white py-1.5 font-bold text-[9px] uppercase tracking-wide">Conference</div>
-                    <div class="py-1.5 font-bold text-charcoal">Apr 4 – 5</div>
+                    <div class="bg-gold/90 print:bg-gray-200 print:text-black text-white py-1 font-bold text-[9px] uppercase tracking-wide">Conference</div>
+                    <div class="py-1 font-bold text-charcoal">Apr 4 – 5</div>
                 </div>
                 <div class="flex-1 bg-gray-50/50">
-                    <div class="bg-gray-100 py-1.5 font-bold text-gray-500 text-[9px] uppercase tracking-wide">Post-Conference</div>
-                    <div class="py-1.5 font-bold text-charcoal">Apr 6 – 7</div>
+                    <div class="bg-gray-100 py-1 font-bold text-gray-500 text-[9px] uppercase tracking-wide">Post-Conference</div>
+                    <div class="py-1 font-bold text-charcoal">Apr 6 – 7</div>
                 </div>
             </div>
         </header>
 
-        <!-- Schedule (2 Columns) -->
-        <div id="schedule-container" class="columns-1 md:columns-2 gap-8 space-y-8">
-            <div class="text-center py-10 text-gray-400 text-sm break-inside-avoid">Loading schedule data...</div>
+        <!-- --- SECTION 1: PRE-CONFERENCE (Fits in ~3 Pages) --- -->
+        <div id="section-pre-conf">
+            <div class="mb-4 flex items-center gap-2">
+                 <div class="h-4 w-1 bg-maroon rounded-full"></div>
+                 <h2 class="font-bold text-lg text-maroon uppercase tracking-tight">Pre-Conference Schedule</h2>
+            </div>
+            <!-- Container for Days 1-7 -->
+            <div id="pre-conf-container" class="columns-1 md:columns-2 print-cols-2 gap-8 space-y-6">
+                 <!-- Injected via JS -->
+            </div>
         </div>
 
-        <!-- Section Break -->
-        <div class="w-full h-px bg-gray-200 my-8 break-inside-avoid"></div>
+        <div class="page-break"></div>
 
-        <!-- Speakers -->
-        <div class="mt-8 break-inside-avoid">
+        <!-- --- SECTION 2: CONFERENCE (Fits in 1 Page) --- -->
+        <div id="section-conf">
+            <div class="mb-6 flex items-center justify-center bg-charcoal text-white py-2 rounded-sm border-b-4 border-gold break-inside-avoid">
+                 <h2 class="font-bold text-xl uppercase tracking-widest">Conference Schedule (Apr 4 - 5)</h2>
+            </div>
+            <!-- Container for Days 8-9 -->
+            <div id="conf-container" class="columns-1 md:columns-2 print-cols-2 gap-8 space-y-6">
+                 <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- --- SECTION 3: POST-CONFERENCE (Fits in 1 Page) --- -->
+        <div id="section-post-conf">
+            <div class="mb-4 flex items-center gap-2">
+                 <div class="h-4 w-1 bg-maroon rounded-full"></div>
+                 <h2 class="font-bold text-lg text-maroon uppercase tracking-tight">Post-Conference Schedule</h2>
+            </div>
+            <!-- Container for Days 10-11 -->
+            <div id="post-conf-container" class="columns-1 md:columns-2 print-cols-2 gap-8 space-y-6">
+                 <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- --- SECTION 4: DISTINGUISHED SPEAKERS (Fits in 1 Page) --- -->
+        <div class="mt-4">
             <h2 class="font-bold text-lg text-maroon uppercase border-b border-gray-200 pb-2 mb-5 tracking-tight">Distinguished Speakers</h2>
             <div id="conf-speakers-grid" class="grid grid-cols-2 gap-x-6 gap-y-4">
                 <!-- Injected via JS -->
             </div>
         </div>
 
-        <div class="mt-8 break-inside-avoid">
+        <div class="page-break"></div>
+
+        <!-- --- SECTION 5: OTHER SPEAKERS (Fits in 1 Page) --- -->
+        <div class="mt-4">
             <h2 class="font-bold text-sm text-gray-500 uppercase border-b border-gray-200 pb-2 mb-4 tracking-tight">Speakers & Performers</h2>
             <div id="other-speakers-grid" class="grid grid-cols-6 gap-3 text-center">
                 <!-- Injected via JS -->
@@ -136,8 +173,64 @@
             }
         });
 
+        function generateDayHTML(day, data, timeFormatter) {
+            const isConference = day.phase === 'Conference';
+            const headerClass = isConference ? 'bg-charcoal text-white print:bg-gray-800 print:text-white' : 'bg-gray-100 text-charcoal print:bg-gray-100';
+            const accentBorder = isConference ? 'border-gold' : 'border-gray-300';
+
+            // Preprocess times
+            day.events.forEach(e => {
+                e.formattedStart = timeFormatter.format(new Date(e.start));
+                e.formattedEnd = timeFormatter.format(new Date(e.end));
+            });
+
+            let rows = day.events.map(e => {
+                const hasSpeakers = e.speakerIds && e.speakerIds.length > 0;
+                const speakers = (e.speakerIds || []).map(id => data.speakers[id]?.name).filter(Boolean).join(', ');
+                
+                if (hasSpeakers) {
+                    return `
+                        <tr class="border-b border-gray-100 break-inside-avoid">
+                            <td class="py-1.5 pr-2 w-[4.5rem] text-[11px] font-bold text-gray-900 align-top whitespace-nowrap tracking-tight text-right border-r border-gray-100 mr-2">${e.formattedStart}</td>
+                            <td class="py-1.5 pl-3 align-top">
+                                <div class="font-bold text-[11px] text-charcoal leading-snug">${e.title}</div>
+                                ${e.subhead ? `<div class="text-[10px] text-gray-500 italic mt-0.5">${e.subhead}</div>` : ''}
+                                ${speakers ? `<div class="text-[10px] font-semibold text-maroon mt-0.5">${speakers}</div>` : ''}
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    return `
+                        <tr class="border-b border-gray-50 break-inside-avoid">
+                            <td class="py-0.5 pr-2 w-[4.5rem] text-[8px] font-medium text-gray-400 align-middle whitespace-nowrap text-right border-r border-gray-50 mr-2">${e.formattedStart}</td>
+                            <td class="py-0.5 pl-3 align-middle">
+                                <div class="font-medium text-[8px] text-gray-500 leading-tight uppercase tracking-wide">${e.title}</div>
+                            </td>
+                        </tr>
+                    `;
+                }
+            }).join('');
+
+            return `
+                <div class="break-inside-avoid mb-6 inline-block w-full align-top bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm print:shadow-none print:border-gray-300">
+                    <div class="${headerClass} px-3 py-1.5 flex justify-between items-baseline border-b-2 ${accentBorder}">
+                        <div class="font-bold text-xs uppercase tracking-wider">${day.dayName}, <span class="opacity-80">${day.displayDate}</span></div>
+                        <div class="italic text-[10px] opacity-90">${day.theme}</div>
+                    </div>
+                    <table class="w-full text-left border-collapse">
+                        <tbody class="bg-white">
+                            ${rows}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
         document.addEventListener('DOMContentLoaded', async () => {
-            const scheduleContainer = document.getElementById('schedule-container');
+            // Containers
+            const preConfContainer = document.getElementById('pre-conf-container');
+            const confContainer = document.getElementById('conf-container');
+            const postConfContainer = document.getElementById('post-conf-container');
             const confSpeakersGrid = document.getElementById('conf-speakers-grid');
             const otherSpeakersGrid = document.getElementById('other-speakers-grid');
 
@@ -159,66 +252,21 @@
                     timeZone: 'Asia/Kolkata' 
                 });
 
-                scheduleContainer.innerHTML = ''; // Clear loading
+                // Clear
+                preConfContainer.innerHTML = '';
+                confContainer.innerHTML = '';
+                postConfContainer.innerHTML = '';
                 
+                // Distribute Days
                 data.schedule.days.forEach(day => {
-                    // Preprocess times
-                    day.events.forEach(e => {
-                        e.formattedStart = timeFormatter.format(new Date(e.start));
-                        e.formattedEnd = timeFormatter.format(new Date(e.end));
-                    });
-
-                    const isConference = day.phase === 'Conference';
-                    // Clean look: dark header for conference, light gray for others
-                    const headerClass = isConference ? 'bg-charcoal text-white print:bg-gray-800 print:text-white' : 'bg-gray-100 text-charcoal print:bg-gray-100';
-                    const accentBorder = isConference ? 'border-gold' : 'border-gray-300';
-                    
-                    let rows = day.events.map(e => {
-                        const hasSpeakers = e.speakerIds && e.speakerIds.length > 0;
-                        const speakers = (e.speakerIds || []).map(id => data.speakers[id]?.name).filter(Boolean).join(', ');
-                        
-                        // Condition: Events without speakers get HALF size (approx) and tight spacing.
-                        // Standard size: text-[11px] (approx 14px visually). Reduced: text-[8px]
-                        
-                        if (hasSpeakers) {
-                            // Standard Event
-                            return `
-                                <tr class="border-b border-gray-100 break-inside-avoid">
-                                    <td class="py-1.5 pr-2 w-[4.5rem] text-[11px] font-bold text-gray-900 align-top whitespace-nowrap tracking-tight text-right border-r border-gray-100 mr-2">${e.formattedStart}</td>
-                                    <td class="py-1.5 pl-3 align-top">
-                                        <div class="font-bold text-[11px] text-charcoal leading-snug">${e.title}</div>
-                                        ${e.subhead ? `<div class="text-[10px] text-gray-500 italic mt-0.5">${e.subhead}</div>` : ''}
-                                        ${speakers ? `<div class="text-[10px] font-semibold text-maroon mt-0.5">${speakers}</div>` : ''}
-                                    </td>
-                                </tr>
-                            `;
-                        } else {
-                            // Routine/Non-speaker Event (Reduced Size)
-                            return `
-                                <tr class="border-b border-gray-50 break-inside-avoid">
-                                    <td class="py-0.5 pr-2 w-[4.5rem] text-[8px] font-medium text-gray-400 align-middle whitespace-nowrap text-right border-r border-gray-50 mr-2">${e.formattedStart}</td>
-                                    <td class="py-0.5 pl-3 align-middle">
-                                        <div class="font-medium text-[8px] text-gray-500 leading-tight uppercase tracking-wide">${e.title}</div>
-                                    </td>
-                                </tr>
-                            `;
-                        }
-                    }).join('');
-
-                    const dayBlock = `
-                        <div class="break-inside-avoid mb-6 inline-block w-full align-top bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm print:shadow-none print:border-gray-300">
-                            <div class="${headerClass} px-3 py-1.5 flex justify-between items-baseline border-b-2 ${accentBorder}">
-                                <div class="font-bold text-xs uppercase tracking-wider">${day.dayName}, <span class="opacity-80">${day.displayDate}</span></div>
-                                <div class="italic text-[10px] opacity-90">${day.theme}</div>
-                            </div>
-                            <table class="w-full text-left border-collapse">
-                                <tbody class="bg-white">
-                                    ${rows}
-                                </tbody>
-                            </table>
-                        </div>
-                    `;
-                    scheduleContainer.insertAdjacentHTML('beforeend', dayBlock);
+                    const html = generateDayHTML(day, data, timeFormatter);
+                    if (day.phase === 'Pre-Conference') {
+                        preConfContainer.insertAdjacentHTML('beforeend', html);
+                    } else if (day.phase === 'Conference') {
+                        confContainer.insertAdjacentHTML('beforeend', html);
+                    } else if (day.phase === 'Post-Conference') {
+                        postConfContainer.insertAdjacentHTML('beforeend', html);
+                    }
                 });
 
                 // 3. Render Speakers (Colored)
@@ -259,10 +307,8 @@
 
             } catch (err) {
                 console.error(err);
-                scheduleContainer.innerHTML = `<div class="p-6 border border-red-100 bg-red-50 text-red-800 text-center rounded-lg col-span-full text-sm">
-                    <strong>Error loading data.</strong><br/>
-                    Please ensure you are running this on a local server (not file:///) or the hosted domain.
-                </div>`;
+                const errHTML = `<div class="p-4 bg-red-50 text-red-700 text-xs text-center border border-red-200">Error loading data. Use a local server.</div>`;
+                preConfContainer.innerHTML = errHTML;
             }
         });
     </script>
