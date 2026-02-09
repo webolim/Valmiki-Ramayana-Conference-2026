@@ -390,7 +390,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_d1",
-                "label": "Watch Recording"
+                "label": "Watch Pattabhishekha Prarambha",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -413,12 +414,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Subhankriya",
-                "label": "Watch Subhankriya",
+                "label": "Watch Kausalya Mangalashasana",
                 "speakerId": "subhankriya"
               },
               {
                 "url": "https://youtu.be/Daksha",
-                "label": "Watch Daksha",
+                "label": "Watch Kausalya Mangalashasana",
                 "speakerId": "daksha"
               }
             ]
@@ -460,12 +461,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Shrinidhi",
-                "label": "Watch Srinidhi",
+                "label": "Watch Pitruvakya Paripalana",
                 "speakerId": "srinidhi"
               },
               {
                 "url": "https://youtu.be/Niharika",
-                "label": "Watch Niharika",
+                "label": "Watch Pitruvakya Paripalana",
                 "speakerId": "niharika"
               }
             ]
@@ -489,7 +490,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Krishna",
-                "label": "Watch Recording"
+                "label": "Watch Guha Sakhya",
+                "speakerId": "krishna"
               }
             ]
           },
@@ -606,7 +608,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_d3",
-                "label": "Watch Recording"
+                "label": "Watch Dasharatha Bhakti",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -629,12 +632,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/giri",
-                "label": "Watch Giridharan",
+                "label": "Watch Bharatha Bhakti",
                 "speakerId": "giridharan"
               },
               {
                 "url": "https://youtu.be/amruttha",
-                "label": "Watch Amruttha",
+                "label": "Watch Bharatha Bhakti",
                 "speakerId": "amruttha"
               }
             ]
@@ -675,12 +678,12 @@
             "speakerIds": ["ananya_a", "ananya_g"],
             "videoLinks": [{
                 "url": "https://youtu.be/ananya_a",
-                "label": "Watch Ananya A",
+                "label": "Watch Chitrakuta",
                 "speakerId": "ananya_a"
               },
               {
                 "url": "https://youtu.be/ananya_g",
-                "label": "Watch Ananya G",
+                "label": "Watch Chitrakuta",
                 "speakerId": "ananya_g"
               }
             ]
@@ -704,12 +707,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/akshaya",
-                "label": "Watch Akshaya",
+                "label": "Watch Paduka Pattabhishekha",
                 "speakerId": "akshaya"
               },
               {
                 "url": "https://youtu.be/kamakshi",
-                "label": "Watch Kamakshi",
+                "label": "Watch Paduka Pattabhishekha",
                 "speakerId": "kamakshi"
               }
             ]
@@ -835,7 +838,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_d4",
-                "label": "Watch Recording"
+                "label": "Watch Agastya Ashrama",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -858,12 +862,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/madhavan",
-                "label": "Watch Madhavan",
+                "label": "Watch Panchavati",
                 "speakerId": "madhavan_shri"
               },
               {
                 "url": "https://youtu.be/raghavan",
-                "label": "Watch Raghavan",
+                "label": "Watch Panchavati",
                 "speakerId": "raghavan"
               }
             ]
@@ -905,12 +909,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rishe",
-                "label": "Watch Rishe",
+                "label": "Watch Sita Apaharana",
                 "speakerId": "rishe"
               },
               {
                 "url": "https://youtu.be/dharanidharan",
-                "label": "Watch Dharanidharan",
+                "label": "Watch Sita Apaharana",
                 "speakerId": "dharanidharan"
               }
             ]
@@ -934,7 +938,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/kalpana",
-                "label": "Watch Recording"
+                "label": "Watch Jatayu & Sabari Moksha",
+                "speakerId": "kalpana"
               }
             ]
           },
@@ -962,8 +967,21 @@
             "end": "2026-03-31T20:30:00+05:30",
             "title": "Nikunjotsava Bharatanatyam",
             "eventImages": [
-              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsvam_00001.webp",
-              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsvam_00002.webp"
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00001.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00002.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00003.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00004.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00005.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00006.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00007.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00008.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00009.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00010.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00011.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00012.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00013.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00014.webp",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00015.webp"
             ],
             "carouselCaption": "Photos from last year",
             "venue": "Ramayana Shala",
@@ -971,7 +989,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/bharathanatyam",
-                "label": "Watch Recording"
+                "label": "Watch Nikunjotsava Bharatanatyam",
+                "speakerId": "meghana"
               }
             ]
           },
@@ -1045,7 +1064,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_d5",
-                "label": "Watch Recording"
+                "label": "Watch Sugriva Sakhya",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -1068,12 +1088,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/sanjay",
-                "label": "Watch Sanjay",
+                "label": "Watch Vali Moksha",
                 "speakerId": "sanjay"
               },
               {
                 "url": "https://youtu.be/mythili",
-                "label": "Watch Mythili",
+                "label": "Watch Vali Moksha",
                 "speakerId": "mythili"
               }
             ]
@@ -1115,12 +1135,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/prachi",
-                "label": "Watch Prachi",
+                "label": "Watch Sugriva Pattabhishekha",
                 "speakerId": "prachi"
               },
               {
                 "url": "https://youtu.be/vishakha",
-                "label": "Watch Vishakha",
+                "label": "Watch Sugriva Pattabhishekha",
                 "speakerId": "vishakha"
               }
             ]
@@ -1144,7 +1164,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/gayatri",
-                "label": "Watch Recording"
+                "label": "Watch Sita Anveshana",
+                "speakerId": "gayatri"
               }
             ]
           },
@@ -1258,7 +1279,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_d6",
-                "label": "Watch Recording"
+                "label": "Watch Hanumath Prabhava",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -1281,12 +1303,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/megha",
-                "label": "Watch Megha",
+                "label": "Watch Trijata Swapna",
                 "speakerId": "megha"
               },
               {
                 "url": "https://youtu.be/pushpa",
-                "label": "Watch Pushpa",
+                "label": "Watch Trijata Swapna",
                 "speakerId": "pushpa"
               }
             ]
@@ -1328,12 +1350,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/dvaidehi",
-                "label": "Watch Vaidehi",
+                "label": "Watch Anguliya Pradhana",
                 "speakerId": "vaidehi_sridhar"
               },
               {
                 "url": "https://youtu.be/ranganayaki",
-                "label": "Watch Ranganayaki",
+                "label": "Watch Anguliya Pradhana",
                 "speakerId": "ranganayaki"
               }
             ]
@@ -1357,7 +1379,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/dhrushya",
-                "label": "Watch Recording"
+                "label": "Watch Choodamani Pradhana",
+                "speakerId": "dhrushya"
               }
             ]
           },
@@ -1385,11 +1408,10 @@
             "end": "2026-04-02T20:30:00+05:30",
             "title": "Sundarakanda Utsava (Gaja Vahanam)",
             "eventImages": [
-              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/SundaraKandam_00001.webp",
-              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/SundaraKandam_00002.webp",
-              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/SundaraKandam_00003.webp",
-              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/SundaraKandam_00004.webp",
-              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/SundaraKandam_00005.webp"
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/Image_placeholder.jpeg",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/KalyanaRamar.gif",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/Image_placeholder.jpeg",
+              "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/KalyanaRamar.gif"
             ],
             "carouselCaption": "Photos from last year",
             "venue": "Ramayana Shala",
@@ -1471,7 +1493,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_d7",
-                "label": "Watch Recording"
+                "label": "Watch Vibheeshana Sharanagati",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -1494,12 +1517,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/soumya",
-                "label": "Watch Soumya",
+                "label": "Watch Abhaya Pradhana",
                 "speakerId": "soumya"
               },
               {
                 "url": "https://youtu.be/ramanan",
-                "label": "Watch Ramanan",
+                "label": "Watch Abhaya Pradhana",
                 "speakerId": "ramanan"
               }
             ]
@@ -1541,12 +1564,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/sai",
-                "label": "Watch Sai",
+                "label": "Watch Sethu Bandhana",
                 "speakerId": "sai"
               },
               {
                 "url": "https://youtu.be/balasimhan",
-                "label": "Watch Balasimhan",
+                "label": "Watch Sethu Bandhana",
                 "speakerId": "balasimhan"
               }
             ]
@@ -1570,12 +1593,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/damudan",
-                "label": "Watch Amudan",
+                "label": "Watch Ravana Prathama Yuddha",
                 "speakerId": "amudan"
               },
               {
                 "url": "https://youtu.be/srinivasan",
-                "label": "Watch Srinivasan",
+                "label": "Watch Ravana Prathama Yuddha",
                 "speakerId": "srinivasan"
               }
             ]
@@ -1687,7 +1710,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Rangan_c1",
-                "label": "Watch Recording"
+                "label": "Watch WEBOLIM's Critical Edition of Valmiki Ramayana",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -1711,7 +1735,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Wakankar",
-                "label": "Watch Recording"
+                "label": "Watch Bori's Critical Edition of Valmiki Ramayana",
+                "speakerId": "wakankar"
               }
             ]
           },
@@ -1726,7 +1751,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Gawde",
-                "label": "Watch Recording"
+                "label": "Watch Different Editions of Valmiki Ramayana",
+                "speakerId": "gawde"
               }
             ]
           },
@@ -1768,7 +1794,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/krishnakrupa",
-                "label": "Watch Recording"
+                "label": "Watch Sri Krishnasuri's Commentary",
+                "speakerId": "krishnakrupa"
               }
             ]
           },
@@ -1783,7 +1810,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Senesh",
-                "label": "Watch Recording"
+                "label": "Watch Sri Govindaraja's Commentary",
+                "speakerId": "senesh"
               }
             ]
           },
@@ -1798,7 +1826,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/ashruth",
-                "label": "Watch Recording"
+                "label": "Watch Sri Ramavarma's Commentary",
+                "speakerId": "ashruth"
               }
             ]
           },
@@ -1822,7 +1851,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/vishal",
-                "label": "Watch Recording"
+                "label": "Watch Sri Shivashaya's Commentary",
+                "speakerId": "vishal"
               }
             ]
           },
@@ -1921,7 +1951,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_c2",
-                "label": "Watch Recording"
+                "label": "Watch WEBOLIM's Critical Edition of Valmiki Ramayana",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -1946,7 +1977,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/nilesh",
-                "label": "Watch Recording"
+                "label": "Watch Western Recension of Valmiki Ramayana",
+                "speakerId": "nilesh"
               }
             ]
           },
@@ -1961,7 +1993,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/Srikanth",
-                "label": "Watch Recording"
+                "label": "Watch Goudiya Recension of Valmiki Ramayana",
+                "speakerId": "srikanth"
               }
             ]
           },
@@ -2003,7 +2036,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/santanaraman",
-                "label": "Watch Recording"
+                "label": "Watch Sri Trayambakaraya's Commentary",
+                "speakerId": "santanaraman"
               }
             ]
           },
@@ -2018,7 +2052,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/madhavan",
-                "label": "Watch Recording"
+                "label": "Watch Sri Maheshwara Tirtha’s Commentary",
+                "speakerId": "madhavan"
               }
             ]
           },
@@ -2033,7 +2068,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/gauranga",
-                "label": "Watch Recording"
+                "label": "Watch On Sri Satyadharma Tirtha's commentary and the Rupa Raghunatha Vani edition of Sri Valmiki Ramayana",
+                "speakerId": "gauranga"
               }
             ]
           },
@@ -2048,7 +2084,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/speaker",
-                "label": "Watch Recording"
+                "label": "Watch Commentary by Shri Udaali Varadaraja",
+                "speakerId": "ma_venkatakrishnan"
               }
             ]
           },
@@ -2096,9 +2133,6 @@
               "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/AnnualDay_00008.webp",
               "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/AnnualDay_00009.webp",
               "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/AnnualDay_00010.webp"
-
-
-
             ],
             "carouselCaption": "Photos from last year",
             "venue": "Ramayana Shala",
@@ -2180,7 +2214,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/rangan_d10",
-                "label": "Watch Recording"
+                "label": "Watch Kumbhakarna Vadha",
+                "speakerId": "dr_rangan"
               }
             ]
           },
@@ -2203,12 +2238,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/nandakumar",
-                "label": "Watch Nandakumar",
+                "label": "Watch Ravana Vadha",
                 "speakerId": "nandakumar"
               },
               {
                 "url": "https://youtu.be/nandalal",
-                "label": "Watch Nandalal",
+                "label": "Watch Ravana Vadha",
                 "speakerId": "nandalal"
               }
             ]
@@ -2250,12 +2285,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/vayidehi",
-                "label": "Watch Vayidehi",
+                "label": "Watch Agni Pareeksha",
                 "speakerId": "vayidehi"
               },
               {
                 "url": "https://youtu.be/sethuraman",
-                "label": "Watch Sethuraman",
+                "label": "Watch Agni Pareeksha",
                 "speakerId": "sethuraman"
               }
             ]
@@ -2279,7 +2314,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/shyamji",
-                "label": "Watch Recording"
+                "label": "Watch Bharadwaja Ashrama",
+                "speakerId": "shyamji"
               }
             ]
           },
@@ -2318,7 +2354,6 @@
               "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Pattabhishekha_00009.webp",
               "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Pattabhishekha_00010.webp",
               "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Pattabhishekha_00011.webp"
-
             ],
             "carouselCaption": "Photos from last year",
             "venue": "Ramayana Shala",
@@ -2382,7 +2417,8 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/pattabhishekam",
-                "label": "Watch Recording"
+                "label": "Watch Pattabhishekam & Valedictory",
+                "speakerId": "dr_rangan"
               }
             ]
           },
