@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <title>Program Schedule - Sri Ramayana Satram 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               gold: '#bfa15f',
-              charcoal: '#222222',
+              charcoal: '#1a1a1a',
+              maroon: '#800000',
             },
             fontFamily: {
-              serif: ['"Crimson Text"', 'serif'],
+              // Override both to Inter to ensure Sans Serif throughout as requested
+              serif: ['"Inter"', 'sans-serif'],
               sans: ['"Inter"', 'sans-serif'],
             },
             screens: {
@@ -32,84 +36,90 @@
             .page-break { page-break-before: always; }
             .break-inside-avoid { break-inside: avoid; }
             a { text-decoration: none; color: inherit; }
-            /* Force background colors in print */
-            .bg-gray-100 { background-color: #f3f4f6 !important; }
         }
-        body { background-color: white; font-size: 10pt; line-height: 1.3; color: #222; }
-        .max-w-a4 { max-width: 210mm; margin: 0 auto; background: white; }
+        /* Web View - Simulate Paper */
+        body { background-color: white; font-size: 10pt; line-height: 1.3; color: #1a1a1a; font-family: 'Inter', sans-serif; }
+        .max-w-a4 { max-width: 210mm; margin: 0 auto; background: white; padding-top: 20px; padding-bottom: 20px; }
+        
+        /* Subtle scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #eee; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ddd; }
     </style>
 </head>
-<body class="bg-gray-100 print:bg-white text-charcoal">
+<body class="bg-white text-charcoal antialiased">
 
-    <!-- Print Controls (Hamburger) -->
-    <div class="no-print fixed top-4 right-4 z-50">
-        <button id="menu-btn" class="bg-charcoal text-gold p-3 rounded-full shadow-lg hover:bg-black transition-transform hover:scale-105 active:scale-95 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    <!-- Print Controls (Hamburger) - Subtle/Transparent by default -->
+    <div class="no-print fixed top-6 right-6 z-50 group">
+        <button id="menu-btn" class="bg-gray-100/50 hover:bg-black hover:text-white text-gray-400 p-2 rounded-full transition-all duration-300 backdrop-blur-sm border border-transparent hover:border-black shadow-sm flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
         </button>
-        <div id="menu-dropdown" class="hidden absolute right-0 top-14 bg-white border border-gray-200 shadow-xl rounded-lg overflow-hidden w-48 flex-col animate-fade-in origin-top-right">
+        <div id="menu-dropdown" class="hidden absolute right-0 top-12 bg-white border border-gray-200 shadow-xl rounded-lg overflow-hidden w-48 flex-col animate-fade-in origin-top-right z-50">
             <a href="index.html" class="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 border-b border-gray-100">Back to App</a>
-            <button onclick="window.print()" class="block w-full text-left px-4 py-3 text-sm font-bold text-gold hover:bg-gold/10 flex items-center gap-2">
+            <button onclick="window.print()" class="block w-full text-left px-4 py-3 text-sm font-bold text-maroon hover:bg-maroon/5 flex items-center gap-2">
                 <span>Print Schedule</span>
             </button>
         </div>
     </div>
 
-    <div class="max-w-a4 p-6 md:p-10 print:p-0 min-h-screen shadow-lg print:shadow-none">
+    <div class="max-w-a4 px-6 md:px-0">
         
         <!-- Header -->
-        <header class="text-center mb-6 border-b-2 border-gold pb-4 break-inside-avoid">
-            <div class="flex items-center justify-center gap-4 mb-2">
-                <img id="print-hero-img" class="h-20 object-contain" />
+        <header class="text-center mb-8 border-b-2 border-gray-200 pb-6 break-inside-avoid">
+            <div class="flex items-center justify-center gap-4 mb-3">
+                <img id="print-hero-img" class="h-24 object-contain" />
             </div>
-            <h1 class="font-serif font-bold text-2xl text-charcoal uppercase tracking-tight mb-1">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
-            <p class="font-sans text-xs text-gray-600 font-medium uppercase tracking-widest mb-3">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
+            <h1 class="font-bold text-2xl md:text-3xl text-maroon uppercase tracking-tight mb-2">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
+            <p class="text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-[0.2em] mb-4">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
             
             <!-- Dates Table -->
-            <div class="flex border border-gray-300 rounded overflow-hidden text-center max-w-xl mx-auto text-xs">
-                <div class="flex-1 border-r border-gray-300">
-                    <div class="bg-gray-100 py-1 font-bold text-gray-600 text-[9px] uppercase">Pre-Conference</div>
-                    <div class="py-1 font-bold">Mar 28 – Apr 3</div>
+            <div class="flex border border-gray-200 rounded-lg overflow-hidden text-center max-w-lg mx-auto text-xs shadow-sm">
+                <div class="flex-1 border-r border-gray-200 bg-gray-50/50">
+                    <div class="bg-gray-100 py-1.5 font-bold text-gray-500 text-[9px] uppercase tracking-wide">Pre-Conference</div>
+                    <div class="py-1.5 font-bold text-charcoal">Mar 28 – Apr 3</div>
                 </div>
-                <div class="flex-1 border-r border-gray-300 bg-gold/10 print:bg-gray-50">
-                    <div class="bg-gold print:bg-gray-200 print:text-black text-white py-1 font-bold text-[9px] uppercase">Conference</div>
-                    <div class="py-1 font-bold text-charcoal">Apr 4 – 5</div>
+                <div class="flex-1 border-r border-gray-200 bg-gold/10 print:bg-gray-50">
+                    <div class="bg-gold/90 print:bg-gray-200 print:text-black text-white py-1.5 font-bold text-[9px] uppercase tracking-wide">Conference</div>
+                    <div class="py-1.5 font-bold text-charcoal">Apr 4 – 5</div>
                 </div>
-                <div class="flex-1">
-                    <div class="bg-gray-100 py-1 font-bold text-gray-600 text-[9px] uppercase">Post-Conference</div>
-                    <div class="py-1 font-bold">Apr 6 – 7</div>
+                <div class="flex-1 bg-gray-50/50">
+                    <div class="bg-gray-100 py-1.5 font-bold text-gray-500 text-[9px] uppercase tracking-wide">Post-Conference</div>
+                    <div class="py-1.5 font-bold text-charcoal">Apr 6 – 7</div>
                 </div>
             </div>
         </header>
 
         <!-- Schedule (2 Columns) -->
-        <div id="schedule-container" class="columns-1 md:columns-2 gap-6 space-y-6">
-            <div class="text-center py-4 text-gray-400 text-sm break-inside-avoid">Loading schedule data...</div>
+        <div id="schedule-container" class="columns-1 md:columns-2 gap-8 space-y-8">
+            <div class="text-center py-10 text-gray-400 text-sm break-inside-avoid">Loading schedule data...</div>
         </div>
 
-        <div class="page-break"></div>
+        <!-- Section Break -->
+        <div class="w-full h-px bg-gray-200 my-8 break-inside-avoid"></div>
 
         <!-- Speakers -->
         <div class="mt-8 break-inside-avoid">
-            <h2 class="font-sans font-bold text-lg text-charcoal uppercase border-b-2 border-gold pb-1 mb-4">Distinguished Speakers</h2>
-            <div id="conf-speakers-grid" class="grid grid-cols-2 gap-4">
+            <h2 class="font-bold text-lg text-maroon uppercase border-b border-gray-200 pb-2 mb-5 tracking-tight">Distinguished Speakers</h2>
+            <div id="conf-speakers-grid" class="grid grid-cols-2 gap-x-6 gap-y-4">
                 <!-- Injected via JS -->
             </div>
         </div>
 
-        <div class="mt-6 break-inside-avoid">
-            <h2 class="font-sans font-bold text-sm text-gray-600 uppercase border-b border-gray-300 pb-1 mb-3">Speakers & Performers</h2>
-            <div id="other-speakers-grid" class="grid grid-cols-6 gap-2 text-center">
+        <div class="mt-8 break-inside-avoid">
+            <h2 class="font-bold text-sm text-gray-500 uppercase border-b border-gray-200 pb-2 mb-4 tracking-tight">Speakers & Performers</h2>
+            <div id="other-speakers-grid" class="grid grid-cols-6 gap-3 text-center">
                 <!-- Injected via JS -->
             </div>
         </div>
         
-        <footer class="mt-8 pt-4 border-t border-gray-200 text-center text-[9px] text-gray-400 font-sans break-inside-avoid">
-            <p>WEBOLIM Trust &copy; 2026 | www.webolim.org | Srimad Valmiki Ashrama</p>
+        <footer class="mt-12 pt-6 border-t border-gray-200 text-center text-[10px] text-gray-400 font-medium break-inside-avoid uppercase tracking-wider">
+            <p>WEBOLIM Trust &copy; 2026 &nbsp;&bull;&nbsp; www.webolim.org &nbsp;&bull;&nbsp; Srimad Valmiki Ashrama</p>
         </footer>
     </div>
 
     <script>
-        // Hamburger Toggle
+        // Hamburger Toggle logic
         const menuBtn = document.getElementById('menu-btn');
         const menuDropdown = document.getElementById('menu-dropdown');
         
@@ -141,8 +151,7 @@
                     document.getElementById('print-hero-img').src = data.assets.heroImage;
                 }
 
-                // 2. Process Dates & Render Schedule
-                // FIX: Force Asia/Kolkata timezone to match the event location
+                // 2. Process Dates & Render Schedule with IST Timezone
                 const timeFormatter = new Intl.DateTimeFormat('en-US', { 
                     hour: 'numeric', 
                     minute: 'numeric', 
@@ -160,35 +169,36 @@
                     });
 
                     const isConference = day.phase === 'Conference';
-                    const headerClass = isConference ? 'bg-charcoal text-white print:bg-gray-800 print:text-white' : 'bg-gray-100 text-charcoal print:bg-gray-200';
+                    // Clean look: dark header for conference, light gray for others
+                    const headerClass = isConference ? 'bg-charcoal text-white print:bg-gray-800 print:text-white' : 'bg-gray-100 text-charcoal print:bg-gray-100';
+                    const accentBorder = isConference ? 'border-gold' : 'border-gray-300';
                     
-                    // Filter out rows to generate HTML
                     let rows = day.events.map(e => {
                         const hasSpeakers = e.speakerIds && e.speakerIds.length > 0;
                         const speakers = (e.speakerIds || []).map(id => data.speakers[id]?.name).filter(Boolean).join(', ');
                         
-                        // "Reduce font sizes of events that don't have speakers to half"
-                        // Normal text-sm is ~14px. Half is 7px (too small). 
-                        // Let's go with text-[10px] for speakers (standard print size) and text-[8px] or [9px] for others + reduced padding.
+                        // Condition: Events without speakers get HALF size (approx) and tight spacing.
+                        // Standard size: text-[11px] (approx 14px visually). Reduced: text-[8px]
                         
                         if (hasSpeakers) {
+                            // Standard Event
                             return `
                                 <tr class="border-b border-gray-100 break-inside-avoid">
-                                    <td class="py-1.5 pr-2 w-20 text-[11px] font-bold text-gray-700 align-top whitespace-nowrap">${e.formattedStart}</td>
-                                    <td class="py-1.5 pr-1 align-top">
+                                    <td class="py-1.5 pr-2 w-[4.5rem] text-[11px] font-bold text-gray-900 align-top whitespace-nowrap tracking-tight text-right border-r border-gray-100 mr-2">${e.formattedStart}</td>
+                                    <td class="py-1.5 pl-3 align-top">
                                         <div class="font-bold text-[11px] text-charcoal leading-snug">${e.title}</div>
-                                        ${e.subhead ? `<div class="text-[10px] text-gray-500 italic">${e.subhead}</div>` : ''}
-                                        ${speakers ? `<div class="text-[10px] font-semibold text-gray-600 mt-0.5">${speakers}</div>` : ''}
+                                        ${e.subhead ? `<div class="text-[10px] text-gray-500 italic mt-0.5">${e.subhead}</div>` : ''}
+                                        ${speakers ? `<div class="text-[10px] font-semibold text-maroon mt-0.5">${speakers}</div>` : ''}
                                     </td>
                                 </tr>
                             `;
                         } else {
-                            // Non-speaker event (Meals, Sandhyavandanam, Parayanam etc) - Compact
+                            // Routine/Non-speaker Event (Reduced Size)
                             return `
-                                <tr class="border-b border-dotted border-gray-200 break-inside-avoid">
-                                    <td class="py-0.5 pr-2 w-16 text-[9px] font-medium text-gray-400 align-middle whitespace-nowrap">${e.formattedStart}</td>
-                                    <td class="py-0.5 pr-1 align-middle">
-                                        <div class="font-medium text-[9px] text-gray-500 leading-tight">${e.title}</div>
+                                <tr class="border-b border-gray-50 break-inside-avoid">
+                                    <td class="py-0.5 pr-2 w-[4.5rem] text-[8px] font-medium text-gray-400 align-middle whitespace-nowrap text-right border-r border-gray-50 mr-2">${e.formattedStart}</td>
+                                    <td class="py-0.5 pl-3 align-middle">
+                                        <div class="font-medium text-[8px] text-gray-500 leading-tight uppercase tracking-wide">${e.title}</div>
                                     </td>
                                 </tr>
                             `;
@@ -196,10 +206,10 @@
                     }).join('');
 
                     const dayBlock = `
-                        <div class="break-inside-avoid mb-6 inline-block w-full align-top bg-white rounded-sm overflow-hidden border border-gray-100">
-                            <div class="${headerClass} px-3 py-1.5 flex justify-between items-baseline border-b-2 border-gold">
-                                <div class="font-sans font-bold text-xs uppercase tracking-wider">${day.dayName}, ${day.displayDate}</div>
-                                <div class="font-serif italic text-xs opacity-90">${day.theme}</div>
+                        <div class="break-inside-avoid mb-6 inline-block w-full align-top bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm print:shadow-none print:border-gray-300">
+                            <div class="${headerClass} px-3 py-1.5 flex justify-between items-baseline border-b-2 ${accentBorder}">
+                                <div class="font-bold text-xs uppercase tracking-wider">${day.dayName}, <span class="opacity-80">${day.displayDate}</span></div>
+                                <div class="italic text-[10px] opacity-90">${day.theme}</div>
                             </div>
                             <table class="w-full text-left border-collapse">
                                 <tbody class="bg-white">
@@ -211,7 +221,7 @@
                     scheduleContainer.insertAdjacentHTML('beforeend', dayBlock);
                 });
 
-                // 3. Render Speakers
+                // 3. Render Speakers (Colored)
                 const allSpeakerIds = Object.keys(data.speakers).filter(id => id !== 'placeholder');
                 const confSpeakers = [];
                 const otherSpeakers = [];
@@ -222,26 +232,26 @@
                     else otherSpeakers.push(s);
                 });
 
-                // Conf Speakers (Rich Grid)
+                // Conf Speakers
                 confSpeakers.forEach(s => {
                     const card = `
-                        <div class="flex gap-3 break-inside-avoid border border-gray-100 p-2 rounded bg-white shadow-sm print:shadow-none print:border-gray-200">
-                            <img src="${s.photo}" class="w-16 h-16 object-cover rounded border border-gray-200 bg-gray-50 grayscale print:grayscale-0">
+                        <div class="flex gap-3 break-inside-avoid p-1">
+                            <img src="${s.photo}" class="w-14 h-14 object-cover rounded bg-gray-50 border border-gray-100 flex-shrink-0">
                             <div>
-                                <h3 class="font-bold text-charcoal text-xs mb-0.5">${s.name}</h3>
-                                <p class="font-serif text-[10px] text-gray-600 leading-tight text-justify line-clamp-4">${s.bio}</p>
+                                <h3 class="font-bold text-charcoal text-[11px] mb-0.5 leading-tight">${s.name}</h3>
+                                <p class="text-[9px] text-gray-600 leading-snug text-justify line-clamp-3 opacity-90">${s.bio}</p>
                             </div>
                         </div>
                     `;
                     confSpeakersGrid.insertAdjacentHTML('beforeend', card);
                 });
 
-                // Other Speakers (Mini Grid)
+                // Other Speakers
                 otherSpeakers.forEach(s => {
                     const card = `
                         <div class="flex flex-col items-center break-inside-avoid">
-                            <img src="${s.photo}" class="w-8 h-8 rounded-full object-cover border border-gray-200 mb-1 bg-gray-50">
-                            <div class="font-bold text-[8px] text-charcoal leading-tight">${s.name}</div>
+                            <img src="${s.photo}" class="w-8 h-8 rounded-full object-cover border border-gray-100 mb-1 bg-gray-50">
+                            <div class="font-bold text-[8px] text-gray-700 leading-tight">${s.name}</div>
                         </div>
                     `;
                     otherSpeakersGrid.insertAdjacentHTML('beforeend', card);
@@ -249,10 +259,9 @@
 
             } catch (err) {
                 console.error(err);
-                scheduleContainer.innerHTML = `<div class="p-4 border border-red-200 bg-red-50 text-red-700 text-center rounded col-span-full">
+                scheduleContainer.innerHTML = `<div class="p-6 border border-red-100 bg-red-50 text-red-800 text-center rounded-lg col-span-full text-sm">
                     <strong>Error loading data.</strong><br/>
-                    If you are opening this file locally, browsers block "fetch" requests.<br/>
-                    Please use a local server (e.g. VS Code Live Server) or view on the hosted website.
+                    Please ensure you are running this on a local server (not file:///) or the hosted domain.
                 </div>`;
             }
         });
