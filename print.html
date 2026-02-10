@@ -303,6 +303,7 @@
                         
                         const eventsHtml = uniqueEvents.map(e => {
                             const speakerIds = e.speakerIds || [];
+                            const speakerNames = speakerIds.map(id => speakers[id]?.name).filter(Boolean).join(' & ');
                             return `
                                 <div class="mb-1.5 pb-0.5 border-b border-gray-200 last:border-0">
                                     <div class="flex items-baseline gap-1 mb-0.5 opacity-90">
@@ -311,7 +312,7 @@
                                     </div>
                                     <div class="text-[10px] font-bold text-dark leading-snug mb-0.5">${e.title}</div>
                                     ${e.subhead ? `<div class="text-[9px] text-gray-500 italic leading-snug mb-0.5">${e.subhead}</div>` : ''}
-                                    ${speakerIds.length ? `<div class="text-[9px] text-gray-600 font-semibold truncate mt-0.5">by ${speakers[speakerIds[0]]?.name}</div>` : ''}
+                                    ${speakerNames ? `<div class="text-[9px] text-gray-600 font-semibold truncate mt-0.5">by ${speakerNames}</div>` : ''}
                                 </div>
                             `;
                         }).join('');
