@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>Program Schedule - Sri Ramayana Satram 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -31,11 +33,11 @@
         body { font-family: 'Inter', sans-serif; color: #1a1a1a; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         
         @media print {
-            @page { margin: 6mm 8mm; size: A4; }
+            @page { margin: 5mm 8mm; size: A4; }
             .no-print { display: none !important; }
             .page-break { page-break-before: always; }
             .avoid-break { break-inside: avoid; }
-            body { font-size: 9pt; }
+            body { font-size: 8.5pt; }
         }
 
         /* Utilities */
@@ -43,46 +45,26 @@
         .bg-gold { background-color: #bfa15f; }
         .border-gold { border-color: #bfa15f; }
         
-        /* Grid Layouts */
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 Columns for Pre-Conf */
-            gap: 0.75rem;
-            align-items: start;
-        }
-        
-        .conf-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 Columns for Conf */
-            gap: 1rem;
-        }
-
-        /* Routine Table Compact */
-        .routine-table td { padding: 2px 8px; border-bottom: 1px solid #eee; }
+        /* Tables */
+        .routine-table th { font-weight: 600; color: #888; text-transform: uppercase; font-size: 7px; letter-spacing: 0.05em; padding-bottom: 4px; border-bottom: 1px solid #ddd; }
+        .routine-table td { padding: 3px 4px; border-bottom: 1px solid #eee; vertical-align: top; }
         .routine-table tr:last-child td { border-bottom: none; }
     </style>
 </head>
 <body class="bg-white">
 
-    <!-- Print Controls -->
-    <div class="no-print fixed top-4 right-4 z-50">
-        <button onclick="window.print()" class="bg-dark text-white hover:bg-gold px-4 py-2 rounded shadow-lg text-sm font-bold transition-colors flex items-center gap-2">
-            <span>Print / Save PDF</span>
-        </button>
-        <a href="index.html" class="mt-2 block text-center text-xs text-gray-500 hover:text-dark underline">Back to App</a>
-    </div>
-
     <div class="max-w-[210mm] mx-auto p-4 md:p-0">
         
         <!-- HEADER -->
-        <header class="text-center mb-6 border-b-2 border-dark pb-4">
+        <header class="text-center mb-6 border-b-2 border-dark pb-3">
+            <img id="print-hero-img" class="h-32 mx-auto object-contain mb-2" alt="Kalyana Ramar" />
             <h1 class="font-extrabold text-2xl uppercase tracking-tighter text-dark leading-none">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
             <div class="flex items-center justify-center gap-2 mt-1 text-sm font-bold text-gray-500 uppercase tracking-widest">
                 <span>Mar 28 – Apr 07</span>
                 <span class="text-gold">•</span>
-                <span>Bengaluru</span>
+                <span>Srimad Valmiki Ashrama, Bengaluru</span>
             </div>
-            <p class="text-[10px] mt-2 text-gray-400 font-medium uppercase tracking-wide">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
+            <p class="text-[10px] mt-1.5 text-gray-400 font-medium uppercase tracking-wide">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
         </header>
 
         <!-- PRE-CONFERENCE SECTION -->
@@ -91,20 +73,26 @@
                 <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Pre-Conference <span class="text-gold text-sm font-medium ml-2">Mar 28 – Apr 03</span></h2>
             </div>
             
-            <div class="flex gap-6 mb-4">
-                <!-- Routine Side (Takes 25% width) -->
-                <div class="w-1/4 bg-gray-50 rounded p-3 border border-gray-100 self-start">
+            <div class="flex gap-4 mb-4">
+                <!-- Routine Side (Wider to accommodate columns) -->
+                <div class="w-[30%] bg-gray-50 rounded p-2.5 border border-gray-100 self-start">
                     <h3 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2 border-b border-gray-200 pb-1">Daily Routine</h3>
-                    <table class="w-full text-[9px] routine-table">
-                        <tbody id="pre-routine-body">
-                            <!-- Injected JS -->
-                        </tbody>
+                    <table class="w-full text-[8px] routine-table table-fixed">
+                        <thead>
+                            <tr>
+                                <th class="w-8 text-left">From</th>
+                                <th class="w-8 text-left">To</th>
+                                <th class="w-auto text-left">Event</th>
+                                <th class="w-12 text-right">Venue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pre-routine-body"></tbody>
                     </table>
                 </div>
 
-                <!-- Unique Events Grid (Takes 75% width) -->
-                <div class="w-3/4">
-                    <div id="pre-conf-grid" class="grid grid-cols-3 gap-x-4 gap-y-4">
+                <!-- Unique Events Grid -->
+                <div class="w-[70%]">
+                    <div id="pre-conf-grid" class="grid grid-cols-4 gap-x-3 gap-y-3">
                         <!-- Injected JS -->
                     </div>
                 </div>
@@ -113,22 +101,30 @@
 
         <!-- CONFERENCE SECTION -->
         <section id="conf-section" class="mb-8 avoid-break">
-             <div class="flex items-baseline justify-between border-b-2 border-gold mb-3 pb-1 bg-dark text-white px-2 rounded-t-sm mt-6">
+             <div class="flex items-baseline justify-between border-b-2 border-gold mb-3 pb-1 bg-dark text-white px-2 rounded-t-sm mt-4">
                 <h2 class="text-lg font-bold uppercase tracking-tight">Conference <span class="text-gold text-sm font-medium ml-2">Apr 04 – 05</span></h2>
             </div>
 
-            <div class="flex gap-6">
+            <div class="flex gap-4">
                 <!-- Routine Side -->
-                <div class="w-1/4 bg-gray-50 rounded p-3 border border-gray-100 self-start">
+                <div class="w-[30%] bg-gray-50 rounded p-2.5 border border-gray-100 self-start">
                     <h3 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2 border-b border-gray-200 pb-1">Daily Routine</h3>
-                    <table class="w-full text-[9px] routine-table">
+                    <table class="w-full text-[8px] routine-table table-fixed">
+                        <thead>
+                            <tr>
+                                <th class="w-8 text-left">From</th>
+                                <th class="w-8 text-left">To</th>
+                                <th class="w-auto text-left">Event</th>
+                                <th class="w-12 text-right">Venue</th>
+                            </tr>
+                        </thead>
                         <tbody id="conf-routine-body"></tbody>
                     </table>
                 </div>
 
                 <!-- Days -->
-                <div class="w-3/4">
-                    <div id="conf-grid" class="grid grid-cols-2 gap-x-6 gap-y-4">
+                <div class="w-[70%]">
+                    <div id="conf-grid" class="grid grid-cols-2 gap-x-4 gap-y-3">
                         <!-- Injected JS -->
                     </div>
                 </div>
@@ -136,23 +132,31 @@
         </section>
 
         <!-- POST-CONFERENCE SECTION -->
-        <section id="post-conf-section" class="mb-6 avoid-break">
-            <div class="flex items-baseline justify-between border-b border-gray-200 mb-3 pb-1 mt-6">
+        <section id="post-conf-section" class="mb-4 avoid-break">
+            <div class="flex items-baseline justify-between border-b border-gray-200 mb-3 pb-1 mt-4">
                 <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Post-Conference <span class="text-gold text-sm font-medium ml-2">Apr 06 – 07</span></h2>
             </div>
 
-            <div class="flex gap-6">
+            <div class="flex gap-4">
                 <!-- Routine Side -->
-                <div class="w-1/4 bg-gray-50 rounded p-3 border border-gray-100 self-start">
+                <div class="w-[30%] bg-gray-50 rounded p-2.5 border border-gray-100 self-start">
                     <h3 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-2 border-b border-gray-200 pb-1">Daily Routine</h3>
-                    <table class="w-full text-[9px] routine-table">
+                    <table class="w-full text-[8px] routine-table table-fixed">
+                        <thead>
+                            <tr>
+                                <th class="w-8 text-left">From</th>
+                                <th class="w-8 text-left">To</th>
+                                <th class="w-auto text-left">Event</th>
+                                <th class="w-12 text-right">Venue</th>
+                            </tr>
+                        </thead>
                         <tbody id="post-routine-body"></tbody>
                     </table>
                 </div>
 
                 <!-- Days -->
-                <div class="w-3/4">
-                    <div id="post-conf-grid" class="grid grid-cols-2 gap-x-6 gap-y-4">
+                <div class="w-[70%]">
+                    <div id="post-conf-grid" class="grid grid-cols-2 gap-x-4 gap-y-3">
                          <!-- Injected JS -->
                     </div>
                 </div>
@@ -168,7 +172,7 @@
                 <div class="flex-1 h-px bg-gray-100"></div>
             </div>
 
-            <div id="main-speakers-list" class="grid grid-cols-2 gap-x-8 gap-y-6">
+            <div id="main-speakers-list" class="grid grid-cols-2 gap-x-6 gap-y-6">
                 <!-- JS Injected -->
             </div>
 
@@ -182,11 +186,27 @@
             </div>
         </section>
 
-        <footer class="mt-8 pt-8 border-t border-gray-100 text-center">
-            <div class="inline-flex items-center gap-2 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
-                <span>WEBOLIM Trust</span>
-                <span>•</span>
-                <span>www.webolim.org</span>
+        <!-- FOOTER -->
+        <footer class="mt-8 pt-6 border-t border-gray-100 text-center break-inside-avoid">
+            <img id="print-footer-logo" class="h-14 mx-auto mb-3 object-contain" />
+            
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[10px] font-bold text-gray-600 mb-3 uppercase tracking-wide">
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="phone" class="w-3 h-3 text-gold"></i>
+                    <span>+91 93696 37283</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="mail" class="w-3 h-3 text-gold"></i>
+                    <span>webolimclasses@gmail.com</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <i data-lucide="globe" class="w-3 h-3 text-gold"></i>
+                    <span>www.webolim.org</span>
+                </div>
+            </div>
+            
+            <div class="text-[9px] text-gray-400 font-medium uppercase tracking-widest">
+                &copy; 2026 WEBOLIM Trust
             </div>
         </footer>
 
@@ -206,6 +226,10 @@
                 const data = await response.json();
                 const speakers = data.speakers;
                 
+                // Set images
+                if(document.getElementById('print-hero-img')) document.getElementById('print-hero-img').src = data.assets.heroImage;
+                if(document.getElementById('print-footer-logo')) document.getElementById('print-footer-logo').src = data.assets.logo;
+
                 const timeFormatter = new Intl.DateTimeFormat('en-US', { 
                     hour: 'numeric', minute: 'numeric', hour12: true, timeZone: 'Asia/Kolkata' 
                 });
@@ -214,57 +238,58 @@
                     return timeFormatter.format(new Date(iso)).toLowerCase().replace(' ', '');
                 }
 
-                function processPhase(phaseName, routineContainerId, gridContainerId) {
+                function getVenueShort(v) {
+                    if(!v || v === 'Venue') return '-';
+                    if(v === 'Ramayana Shala') return 'Shala';
+                    if(v === 'Kalyana Rama Sannidhi') return 'Sannidhi';
+                    if(v === 'Premika Madhura Bhavanam') return 'Bhavanam';
+                    return v;
+                }
+
+                function processPhase(phaseName, routineContainerId, gridContainerId, routineSourceDayIndex = 0) {
                     const phaseDays = data.schedule.days.filter(d => d.phase === phaseName);
                     if(phaseDays.length === 0) return;
 
-                    // 1. Build Routine (Assume Day 1 of phase has the representative times)
-                    // We only pick routine events from the first day to build the table
-                    // Ideally we should check if they exist in subsequent days, but for simple print logic 
-                    // this assumption usually holds for Satrams.
-                    const firstDay = phaseDays[0];
-                    const routineEvents = firstDay.events.filter(e => ROUTINE_EVENTS.includes(e.title));
+                    // Build Routine
+                    const routineDay = phaseDays[routineSourceDayIndex] || phaseDays[0];
+                    const routineEvents = routineDay.events.filter(e => ROUTINE_EVENTS.includes(e.title));
                     
                     const routineHtml = routineEvents.map(e => `
                         <tr>
-                            <td class="font-bold text-gray-400 whitespace-nowrap">${fmtTime(e.start)}</td>
-                            <td class="font-semibold text-dark">${e.title}</td>
+                            <td class="whitespace-nowrap font-medium text-gray-500">${fmtTime(e.start)}</td>
+                            <td class="whitespace-nowrap font-medium text-gray-500">${fmtTime(e.end)}</td>
+                            <td class="font-bold text-dark leading-tight">${e.title}</td>
+                            <td class="text-right text-[7px] text-gray-400 uppercase tracking-tight">${getVenueShort(e.venue)}</td>
                         </tr>
                     `).join('');
                     document.getElementById(routineContainerId).innerHTML = routineHtml;
 
-                    // 2. Build Days (Unique Events Only)
+                    // Build Days (Unique Events Only)
                     const gridContainer = document.getElementById(gridContainerId);
                     
                     phaseDays.forEach(day => {
-                        // Filter out routine events
                         const uniqueEvents = day.events.filter(e => !ROUTINE_EVENTS.includes(e.title));
                         
-                        // If no unique events, maybe display a placeholder or just header?
-                        // Usually there are unique events. 
-
                         const eventsHtml = uniqueEvents.map(e => {
                             const speakerIds = e.speakerIds || [];
-                            const speakerNames = speakerIds.map(id => speakers[id]?.name.split(' ')[0]).join(', '); // Just first names for compactness? No, let's try full name small.
-                            
                             return `
                                 <div class="mb-2.5 pb-2 border-b border-gray-100 last:border-0">
-                                    <div class="flex items-baseline gap-2 mb-0.5">
-                                        <span class="text-[10px] font-bold text-gray-400 whitespace-nowrap">${fmtTime(e.start)}</span>
-                                        <span class="text-[10px] font-bold text-gray-400 whitespace-nowrap">- ${fmtTime(e.end)}</span>
+                                    <div class="flex items-baseline gap-1 mb-0.5 opacity-80">
+                                        <span class="text-[9px] font-bold text-gold whitespace-nowrap">${fmtTime(e.start)}</span>
+                                        <span class="text-[9px] font-medium text-gray-400 whitespace-nowrap">- ${fmtTime(e.end)}</span>
                                     </div>
-                                    <div class="text-[11px] font-bold text-dark leading-tight">${e.title}</div>
-                                    ${e.subhead ? `<div class="text-[9px] text-gray-500 italic leading-tight">${e.subhead}</div>` : ''}
-                                    ${speakerIds.length ? `<div class="text-[9px] text-gold font-semibold mt-0.5">${speakers[speakerIds[0]]?.name}</div>` : ''}
+                                    <div class="text-[10px] font-bold text-dark leading-tight mb-0.5">${e.title}</div>
+                                    ${e.subhead ? `<div class="text-[8px] text-gray-500 italic leading-tight mb-0.5">${e.subhead}</div>` : ''}
+                                    ${speakerIds.length ? `<div class="text-[8px] text-gray-600 font-semibold truncate">by ${speakers[speakerIds[0]]?.name}</div>` : ''}
                                 </div>
                             `;
                         }).join('');
 
                         const dayHtml = `
-                            <div class="avoid-break bg-white">
+                            <div class="avoid-break bg-white mb-2">
                                 <div class="border-b border-dark mb-2 pb-1">
-                                    <div class="text-[10px] font-bold text-gold uppercase tracking-wider">${day.displayDate}</div>
-                                    <div class="text-xs font-bold text-dark leading-none">${day.theme}</div>
+                                    <div class="text-[9px] font-bold text-gold uppercase tracking-wider">${day.displayDate}</div>
+                                    <div class="text-[11px] font-bold text-dark italic leading-none">${day.theme}</div>
                                 </div>
                                 <div>${eventsHtml}</div>
                             </div>
@@ -273,10 +298,14 @@
                     });
                 }
 
-                // Process Phases
-                processPhase('Pre-Conference', 'pre-routine-body', 'pre-conf-grid');
-                processPhase('Conference', 'conf-routine-body', 'conf-grid');
-                processPhase('Post-Conference', 'post-routine-body', 'post-conf-grid');
+                // Pre-Conference: Use Day 2 (index 1) as routine source because Day 1 is inauguration
+                processPhase('Pre-Conference', 'pre-routine-body', 'pre-conf-grid', 1);
+                
+                // Conference: Use Day 1 (index 0)
+                processPhase('Conference', 'conf-routine-body', 'conf-grid', 0);
+                
+                // Post-Conference: Use Day 1 (index 0)
+                processPhase('Post-Conference', 'post-routine-body', 'post-conf-grid', 0);
 
                 // Process Speakers
                 const mainSpeakersContainer = document.getElementById('main-speakers-list');
@@ -286,26 +315,27 @@
                     if (s.name === 'TBA') return;
 
                     if (s.bio && s.bio.length > 50) {
-                        // Main Speaker
                         mainSpeakersContainer.insertAdjacentHTML('beforeend', `
-                            <div class="flex gap-4 avoid-break">
-                                <img src="${s.photo}" class="w-16 h-16 object-cover rounded grayscale brightness-110 contrast-125 bg-gray-100 shrink-0">
+                            <div class="flex gap-3 avoid-break">
+                                <img src="${s.photo}" class="w-14 h-14 object-cover rounded bg-gray-100 shrink-0 border border-gray-100">
                                 <div>
-                                    <h3 class="font-bold text-sm text-dark mb-1">${s.name}</h3>
-                                    <p class="text-[10px] leading-relaxed text-gray-600 text-justify">${s.bio}</p>
+                                    <h3 class="font-bold text-xs text-dark mb-0.5 leading-tight">${s.name}</h3>
+                                    <p class="text-[9px] leading-relaxed text-gray-600 text-justify">${s.bio}</p>
                                 </div>
                             </div>
                         `);
                     } else {
-                        // Other Speaker
                         otherSpeakersContainer.insertAdjacentHTML('beforeend', `
                             <div class="text-center avoid-break">
-                                <img src="${s.photo}" class="w-10 h-10 mx-auto object-cover rounded-full grayscale bg-gray-100 mb-1">
+                                <img src="${s.photo}" class="w-10 h-10 mx-auto object-cover rounded-full bg-gray-100 mb-1 border border-gray-100">
                                 <div class="text-[8px] font-bold text-dark leading-tight">${s.name}</div>
                             </div>
                         `);
                     }
                 });
+
+                // Init Lucide Icons
+                lucide.createIcons();
 
             } catch (e) {
                 console.error(e);
