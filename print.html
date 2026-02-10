@@ -45,11 +45,14 @@
         body { font-family: 'Inter', sans-serif; color: #000; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         
         @media print {
-            @page { margin: 8mm 8mm; size: A4; }
+            @page { margin: 5mm 8mm; size: A4; }
             .no-print { display: none !important; }
-            .page-break { page-break-before: always; }
+            .page-break { page-break-after: always; }
+            .page-break-before { page-break-before: always; }
             .avoid-break { break-inside: avoid; }
             body { font-size: 9pt; }
+            /* Ensure height-based centering works in print */
+            .print-h-screen { height: 280mm; } 
         }
 
         /* Utilities */
@@ -58,8 +61,8 @@
         .border-gold { border-color: #856404; }
         
         /* Tables */
-        .routine-table th { font-weight: 800; color: #333; text-transform: uppercase; font-size: 8px; letter-spacing: 0.05em; padding-bottom: 6px; border-bottom: 1px solid #999; }
-        .routine-table td { padding: 6px 4px; border-bottom: 1px solid #ccc; vertical-align: top; color: #222; }
+        .routine-table th { font-weight: 800; color: #333; text-transform: uppercase; font-size: 8px; letter-spacing: 0.05em; padding-bottom: 4px; border-bottom: 1px solid #999; }
+        .routine-table td { padding: 4px 4px; border-bottom: 1px solid #ccc; vertical-align: top; color: #222; }
         .routine-table tr:last-child td { border-bottom: none; }
     </style>
 </head>
@@ -77,35 +80,39 @@
         </div>
     </div>
 
-    <div class="max-w-[210mm] mx-auto relative z-10 px-10 pt-6 pb-16">
+    <div class="max-w-[210mm] mx-auto relative z-10 px-8">
         
-        <!-- HEADER -->
-        <header class="text-center mb-8 border-b-2 border-dark pb-6">
-            <img id="print-hero-img" class="h-64 mx-auto object-contain mb-5" alt="Kalyana Rama Sannidhi" />
-            <h1 class="font-extrabold text-3xl uppercase tracking-tighter text-dark leading-none">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
-            <div class="flex items-center justify-center gap-3 mt-3 text-sm font-bold text-gray-700 uppercase tracking-widest">
-                <span>Mar 28 – Apr 07</span>
-                <span class="text-gold">•</span>
-                <span>Srimad Valmiki Ashrama, Bengaluru</span>
-            </div>
-            <p class="text-xs mt-4 text-white font-bold uppercase tracking-widest bg-gold inline-block px-4 py-1.5 rounded-md shadow-sm">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
-        </header>
+        <!-- PAGE 1: HEADER (Centered) -->
+        <div class="print-h-screen flex flex-col justify-center items-center text-center page-break h-[95vh]">
+            <header class="w-full">
+                <img id="print-hero-img" class="h-80 mx-auto object-contain mb-8" alt="Kalyana Rama Sannidhi" />
+                <h1 class="font-extrabold text-4xl uppercase tracking-tighter text-dark leading-none mb-4">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
+                <div class="flex items-center justify-center gap-4 mt-6 text-lg font-bold text-gray-700 uppercase tracking-widest">
+                    <span>Mar 28 – Apr 07</span>
+                    <span class="text-gold">•</span>
+                    <span>Srimad Valmiki Ashrama, Bengaluru</span>
+                </div>
+                <div class="mt-8">
+                     <p class="text-sm text-white font-bold uppercase tracking-widest bg-gold inline-block px-6 py-2 rounded-md shadow-sm">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
+                </div>
+            </header>
+        </div>
 
-        <!-- PRE-CONFERENCE SECTION (Page 1 End) -->
-        <section id="pre-conf-section" class="mb-10">
+        <!-- PAGE 2: PRE-CONFERENCE -->
+        <section id="pre-conf-section" class="page-break pt-4">
             <div class="flex items-baseline justify-between border-b border-gray-300 mb-4 pb-2">
                 <h2 class="text-xl font-bold text-dark uppercase tracking-tight">Pre-Conference <span class="text-gold text-base font-medium ml-3">Mar 28 – Apr 03</span></h2>
             </div>
             
-            <div class="flex gap-6 mb-4">
+            <div class="flex gap-4 mb-4">
                 <!-- Routine Side -->
-                <div class="w-[28%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
-                    <h3 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-3 border-b border-gray-300 pb-1">Daily Routine</h3>
-                    <table class="w-full text-[9px] routine-table table-fixed">
+                <div class="w-[25%] bg-gray-50 rounded-lg p-2 border border-gray-200 self-start">
+                    <h3 class="text-[9px] font-bold text-gold uppercase tracking-widest mb-2 border-b border-gray-300 pb-1">Daily Routine</h3>
+                    <table class="w-full text-[8px] routine-table table-fixed">
                         <thead>
                             <tr>
-                                <th class="w-10 text-left">From</th>
-                                <th class="w-10 text-left">To</th>
+                                <th class="w-8 text-left">From</th>
+                                <th class="w-8 text-left">To</th>
                                 <th class="w-auto text-left">Event</th>
                             </tr>
                         </thead>
@@ -113,29 +120,27 @@
                     </table>
                 </div>
 
-                <!-- Unique Events Grid -->
-                <div class="w-[72%]">
-                    <div id="pre-conf-grid" class="grid grid-cols-4 gap-x-4 gap-y-6">
+                <!-- Unique Events Grid (Compact for Print) -->
+                <div class="w-[75%]">
+                    <!-- Adjusted grid gap to y-3 to fit on one page -->
+                    <div id="pre-conf-grid" class="grid grid-cols-4 gap-x-3 gap-y-3">
                         <!-- Injected JS -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PAGE BREAK 1 -->
-        <div class="page-break"></div>
-
-        <!-- CONFERENCE SECTION -->
-        <section id="conf-section" class="mb-10">
+        <!-- PAGE 3: CONFERENCE -->
+        <section id="conf-section" class="page-break pt-8">
              <!-- Gold Band Header -->
-             <div class="flex items-center justify-between mb-6 bg-gold text-white px-4 py-2 rounded shadow-sm mt-6">
-                <h2 class="text-xl font-bold uppercase tracking-tight">Conference</h2>
-                <span class="text-base font-bold">Apr 04 – 05</span>
+             <div class="flex items-center justify-between mb-8 bg-gold text-white px-4 py-3 rounded shadow-sm">
+                <h2 class="text-2xl font-bold uppercase tracking-tight">Conference</h2>
+                <span class="text-lg font-bold">Apr 04 – 05</span>
             </div>
 
             <div class="flex gap-6">
                 <!-- Routine Side -->
-                <div class="w-[28%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
+                <div class="w-[28%] bg-gray-50 rounded-lg p-4 border border-gray-200 self-start">
                     <h3 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-3 border-b border-gray-300 pb-1">Daily Routine</h3>
                     <table class="w-full text-[9px] routine-table table-fixed">
                         <thead>
@@ -151,22 +156,22 @@
 
                 <!-- Days -->
                 <div class="w-[72%]">
-                    <div id="conf-grid" class="grid grid-cols-2 gap-x-6 gap-y-6">
+                    <div id="conf-grid" class="grid grid-cols-2 gap-x-8 gap-y-8">
                         <!-- Injected JS -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- POST-CONFERENCE SECTION (Page 2 End) -->
-        <section id="post-conf-section" class="mb-6">
-            <div class="flex items-baseline justify-between border-b border-gray-300 mb-4 pb-2 mt-8">
-                <h2 class="text-xl font-bold text-dark uppercase tracking-tight">Post-Conference <span class="text-gold text-base font-medium ml-3">Apr 06 – 07</span></h2>
+        <!-- PAGE 4: POST-CONFERENCE -->
+        <section id="post-conf-section" class="page-break pt-8">
+            <div class="flex items-baseline justify-between border-b border-gray-300 mb-6 pb-2">
+                <h2 class="text-2xl font-bold text-dark uppercase tracking-tight">Post-Conference <span class="text-gold text-lg font-medium ml-3">Apr 06 – 07</span></h2>
             </div>
 
             <div class="flex gap-6">
                 <!-- Routine Side -->
-                <div class="w-[28%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
+                <div class="w-[28%] bg-gray-50 rounded-lg p-4 border border-gray-200 self-start">
                     <h3 class="text-[10px] font-bold text-gold uppercase tracking-widest mb-3 border-b border-gray-300 pb-1">Daily Routine</h3>
                     <table class="w-full text-[9px] routine-table table-fixed">
                         <thead>
@@ -182,58 +187,57 @@
 
                 <!-- Days -->
                 <div class="w-[72%]">
-                    <div id="post-conf-grid" class="grid grid-cols-2 gap-x-6 gap-y-6">
+                    <div id="post-conf-grid" class="grid grid-cols-2 gap-x-8 gap-y-8">
                          <!-- Injected JS -->
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- PAGE BREAK 2 -->
-        <div class="page-break"></div>
-
-        <!-- SPEAKERS SECTION (Page 3 Start) -->
-        <section class="mt-12">
-            <div class="flex items-center gap-4 border-b border-gray-300 pb-3 mb-8">
-                <h2 class="text-2xl font-bold text-dark uppercase tracking-tight">Distinguished Speakers</h2>
+        <!-- PAGE 5: DISTINGUISHED SPEAKERS -->
+        <section id="speakers-page" class="page-break pt-4">
+            <div class="flex items-center gap-4 border-b border-gray-300 pb-3 mb-6">
+                <h2 class="text-xl font-bold text-dark uppercase tracking-tight">Distinguished Speakers</h2>
             </div>
 
-            <div id="main-speakers-list" class="grid grid-cols-2 gap-x-8 gap-y-8">
-                <!-- JS Injected -->
-            </div>
-
-            <!-- PAGE BREAK 3 (End of Page 3) -->
-            <div class="page-break"></div>
-
-            <!-- Other Speakers (Page 4 Start) -->
-            <div class="flex items-center gap-4 border-b border-gray-300 pb-3 mb-8 mt-12">
-                <h2 class="text-sm font-bold text-gray-700 uppercase tracking-widest">Other Speakers & Artists</h2>
-            </div>
-
-            <div id="other-speakers-grid" class="grid grid-cols-8 gap-4">
+            <!-- Compact grid to fit all speakers on one page -->
+            <div id="main-speakers-list" class="grid grid-cols-2 gap-x-6 gap-y-5">
                 <!-- JS Injected -->
             </div>
         </section>
 
-        <!-- FOOTER (Page 4 End) -->
-        <footer class="mt-12 pt-8 pb-8 border-t border-gray-200 flex flex-row items-center justify-center gap-10 break-inside-avoid">
-            <img id="print-footer-logo" class="h-10 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
-            
-            <div class="flex flex-row items-center gap-8 text-[10px] font-bold text-gray-800 uppercase tracking-wide">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="phone" class="w-4 h-4 text-gold"></i>
-                    <span>+91 93696 37283</span>
+        <!-- PAGE 6: OTHER SPEAKERS & FOOTER -->
+        <section id="footer-page" class="pt-8 h-[95vh] flex flex-col">
+            <div class="flex-grow">
+                <div class="flex items-center gap-4 border-b border-gray-300 pb-3 mb-8">
+                    <h2 class="text-sm font-bold text-gray-700 uppercase tracking-widest">Other Speakers & Artists</h2>
                 </div>
-                <div class="flex items-center gap-2">
-                    <i data-lucide="mail" class="w-4 h-4 text-gold"></i>
-                    <span>webolimclasses@gmail.com</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
-                    <span>www.webolim.org</span>
+
+                <div id="other-speakers-grid" class="grid grid-cols-8 gap-4 mb-12">
+                    <!-- JS Injected -->
                 </div>
             </div>
-        </footer>
+
+            <!-- FOOTER -->
+            <footer class="pt-8 pb-8 border-t border-gray-200 flex flex-row items-center justify-center gap-10 break-inside-avoid mt-auto">
+                <img id="print-footer-logo" class="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
+                
+                <div class="flex flex-row items-center gap-8 text-[11px] font-bold text-gray-800 uppercase tracking-wide">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4 text-gold"></i>
+                        <span>+91 93696 37283</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="mail" class="w-4 h-4 text-gold"></i>
+                        <span>webolimclasses@gmail.com</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
+                        <span>www.webolim.org</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
 
     </div>
 
@@ -299,23 +303,23 @@
                         const eventsHtml = uniqueEvents.map(e => {
                             const speakerIds = e.speakerIds || [];
                             return `
-                                <div class="mb-3 pb-2 border-b border-gray-200 last:border-0">
-                                    <div class="flex items-baseline gap-1 mb-1 opacity-90">
+                                <div class="mb-2 pb-1 border-b border-gray-200 last:border-0">
+                                    <div class="flex items-baseline gap-1 mb-0.5 opacity-90">
                                         <span class="text-[9px] font-bold text-gold whitespace-nowrap">${fmtTime(e.start)}</span>
                                         <span class="text-[9px] font-medium text-gray-600 whitespace-nowrap">- ${fmtTime(e.end)}</span>
                                     </div>
-                                    <div class="text-[11px] font-bold text-dark leading-snug mb-0.5">${e.title}</div>
-                                    ${e.subhead ? `<div class="text-[9px] text-gray-700 italic leading-snug mb-1">${e.subhead}</div>` : ''}
+                                    <div class="text-[10px] font-bold text-dark leading-snug mb-0.5">${e.title}</div>
+                                    ${e.subhead ? `<div class="text-[9px] text-gray-700 italic leading-snug mb-0.5">${e.subhead}</div>` : ''}
                                     ${speakerIds.length ? `<div class="text-[9px] text-gray-800 font-semibold truncate mt-0.5">by ${speakers[speakerIds[0]]?.name}</div>` : ''}
                                 </div>
                             `;
                         }).join('');
 
                         const dayHtml = `
-                            <div class="avoid-break bg-white mb-2">
-                                <div class="border-b border-dark mb-3 pb-1">
+                            <div class="avoid-break bg-white mb-1">
+                                <div class="border-b border-dark mb-2 pb-1">
                                     <div class="text-[10px] font-bold text-gold uppercase tracking-wider">${day.dayName.substring(0,3)}, ${day.displayDate}</div>
-                                    <div class="text-[12px] font-bold text-dark italic leading-snug">${day.theme}</div>
+                                    <div class="text-[11px] font-bold text-dark italic leading-snug">${day.theme}</div>
                                 </div>
                                 <div>${eventsHtml}</div>
                             </div>
@@ -345,19 +349,19 @@
 
                     if (s.bio && s.bio.length > 50) {
                         mainSpeakersContainer.insertAdjacentHTML('beforeend', `
-                            <div class="flex gap-4 avoid-break items-start">
-                                <img src="${s.photo}" class="w-16 h-16 object-cover rounded bg-gray-100 shrink-0 border border-gray-200 mt-1">
+                            <div class="flex gap-3 avoid-break items-start">
+                                <img src="${s.photo}" class="w-14 h-14 object-cover rounded bg-gray-100 shrink-0 border border-gray-200 mt-1">
                                 <div>
-                                    <h3 class="font-bold text-sm text-dark mb-1 leading-tight">${s.name}</h3>
-                                    <p class="text-[10px] leading-relaxed text-gray-800 text-justify">${s.bio}</p>
+                                    <h3 class="font-bold text-xs text-dark mb-0.5 leading-tight">${s.name}</h3>
+                                    <p class="text-[9px] leading-tight text-gray-800 text-justify line-clamp-4">${s.bio}</p>
                                 </div>
                             </div>
                         `);
                     } else {
                         otherSpeakersContainer.insertAdjacentHTML('beforeend', `
                             <div class="text-center avoid-break">
-                                <img src="${s.photo}" class="w-12 h-12 mx-auto object-cover rounded-full bg-gray-100 mb-2 border border-gray-200">
-                                <div class="text-[9px] font-bold text-dark leading-tight">${s.name}</div>
+                                <img src="${s.photo}" class="w-10 h-10 mx-auto object-cover rounded-full bg-gray-100 mb-1 border border-gray-200">
+                                <div class="text-[8px] font-bold text-dark leading-tight">${s.name}</div>
                             </div>
                         `);
                     }
