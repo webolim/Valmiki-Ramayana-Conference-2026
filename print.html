@@ -58,23 +58,23 @@
         .border-gold { border-color: #856404; }
         
         /* Tables */
-        /* Tighter padding vertically, wider horizontally to separate content */
         .routine-table th { 
             font-weight: 800; 
             color: #666; 
             text-transform: uppercase; 
             font-size: 6px; 
             letter-spacing: 0.05em; 
-            padding: 2px 4px 2px 0; 
+            padding: 2px 6px 2px 2px; 
             border-bottom: 1px solid #999; 
             text-align: left;
         }
         .routine-table td { 
-            padding: 1px 4px 1px 0; 
+            padding: 2px 6px 2px 2px; 
             border-bottom: 1px solid #eee; 
             vertical-align: top; 
             color: #555; 
             font-size: 6px; 
+            line-height: 1.1; 
         }
         .routine-table tr:last-child td { border-bottom: none; }
     </style>
@@ -96,7 +96,7 @@
     <div class="max-w-[210mm] mx-auto relative z-10 px-2">
         
         <!-- PAGE 1: HEADER (Centered in Print) -->
-        <div class="print:h-[275mm] print:flex print:flex-col print:justify-center flex flex-col justify-start items-center text-center page-break mb-8 print:mb-0 pt-6">
+        <div class="print:h-[270mm] print:flex print:flex-col print:justify-center flex flex-col justify-start items-center text-center page-break mb-8 print:mb-0 pt-6">
             <header class="w-full">
                 <img id="print-hero-img" class="h-80 mx-auto object-contain mb-4" alt="Kalyana Rama Sannidhi" />
                 <h1 class="font-extrabold text-4xl uppercase tracking-tighter text-dark leading-none mb-4">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
@@ -119,7 +119,7 @@
             
             <div class="flex gap-4">
                 <!-- Routine Side -->
-                <div class="w-[26%] bg-gray-50 rounded-lg p-2 border border-gray-200 self-start">
+                <div class="w-[26%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
                     <h3 class="text-[8px] font-bold text-gold uppercase tracking-widest mb-1 border-b border-gray-300 pb-1">Daily Routine</h3>
                     <table class="w-full routine-table table-fixed">
                         <thead>
@@ -154,7 +154,7 @@
 
                 <div class="flex gap-4">
                     <!-- Routine Side -->
-                    <div class="w-[26%] bg-gray-50 rounded-lg p-2 border border-gray-200 self-start">
+                    <div class="w-[26%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
                         <h3 class="text-[8px] font-bold text-gold uppercase tracking-widest mb-1 border-b border-gray-300 pb-1">Daily Routine</h3>
                         <table class="w-full routine-table table-fixed">
                             <thead>
@@ -185,7 +185,7 @@
 
                 <div class="flex gap-4">
                     <!-- Routine Side -->
-                    <div class="w-[26%] bg-gray-50 rounded-lg p-2 border border-gray-200 self-start">
+                    <div class="w-[26%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
                         <h3 class="text-[8px] font-bold text-gold uppercase tracking-widest mb-1 border-b border-gray-300 pb-1">Daily Routine</h3>
                         <table class="w-full routine-table table-fixed">
                             <thead>
@@ -210,32 +210,34 @@
         </div>
 
         <!-- PAGE 4: SPEAKERS & FOOTER -->
-        <div class="h-auto flex flex-col min-h-[90vh]">
-            <!-- Distinguished Speakers -->
-            <section id="speakers-page" class="mb-4">
-                <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-3">
-                    <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Distinguished Speakers</h2>
-                </div>
+        <div class="print:h-[275mm] print:flex print:flex-col h-auto flex flex-col min-h-[90vh] justify-between">
+            <div>
+                <!-- Distinguished Speakers -->
+                <section id="speakers-page" class="mb-6">
+                    <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-4">
+                        <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Distinguished Speakers</h2>
+                    </div>
 
-                <!-- Changed to columns-2 for better balance -->
-                <div id="main-speakers-list" class="columns-2 gap-6 space-y-4">
-                    <!-- JS Injected -->
-                </div>
-            </section>
+                    <!-- Changed to columns-2 for better balance -->
+                    <div id="main-speakers-list" class="columns-2 gap-8 space-y-6">
+                        <!-- JS Injected -->
+                    </div>
+                </section>
 
-            <!-- Other Speakers -->
-            <section id="other-speakers-section" class="flex-grow">
-                <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-3 mt-2">
-                    <h2 class="text-sm font-bold text-gray-600 uppercase tracking-widest">Other Speakers & Artists</h2>
-                </div>
+                <!-- Other Speakers -->
+                <section id="other-speakers-section">
+                    <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-4 mt-6">
+                        <h2 class="text-sm font-bold text-gray-600 uppercase tracking-widest">Other Speakers & Artists</h2>
+                    </div>
 
-                <div id="other-speakers-grid" class="grid grid-cols-8 gap-2 mb-2">
-                    <!-- JS Injected -->
-                </div>
-            </section>
+                    <div id="other-speakers-grid" class="grid grid-cols-6 gap-4 mb-4">
+                        <!-- JS Injected -->
+                    </div>
+                </section>
+            </div>
 
             <!-- FOOTER -->
-            <footer class="pt-2 pb-2 border-t border-gray-200 flex flex-row items-center justify-center gap-8 break-inside-avoid mt-auto">
+            <footer class="pt-4 pb-2 border-t border-gray-200 flex flex-row items-center justify-center gap-8 break-inside-avoid mt-auto">
                 <img id="print-footer-logo" class="h-8 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
                 
                 <div class="flex flex-row items-center gap-6 text-[9px] font-bold text-gray-600 uppercase tracking-wide">
@@ -375,10 +377,11 @@
                             </div>
                         `);
                     } else {
+                        // Increased size of other speakers
                         otherSpeakersContainer.insertAdjacentHTML('beforeend', `
-                            <div class="text-center avoid-break">
-                                <img src="${s.photo}" class="w-9 h-9 mx-auto object-cover rounded-full bg-gray-100 mb-1 border border-gray-200">
-                                <div class="text-[7px] font-bold text-dark leading-tight">${s.name}</div>
+                            <div class="text-center avoid-break flex flex-col items-center">
+                                <img src="${s.photo}" class="w-12 h-12 mx-auto object-cover rounded-full bg-gray-100 mb-2 border border-gray-200 shadow-sm">
+                                <div class="text-[8px] font-bold text-dark leading-tight">${s.name}</div>
                             </div>
                         `);
                     }
