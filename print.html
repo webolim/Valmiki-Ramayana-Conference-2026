@@ -45,13 +45,11 @@
         body { font-family: 'Inter', sans-serif; color: #000; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         
         @media print {
-            @page { margin: 15mm; size: A4; }
+            @page { margin: 10mm; size: A4; }
             .no-print { display: none !important; }
             .page-break { page-break-after: always; }
-            .page-break-before { page-break-before: always; }
-            .avoid-break { break-inside: avoid; }
+            .page-break-inside-avoid { break-inside: avoid; }
             body { font-size: 9pt; }
-            .print-h-screen { height: 285mm; } 
         }
 
         /* Utilities */
@@ -60,8 +58,24 @@
         .border-gold { border-color: #856404; }
         
         /* Tables */
-        .routine-table th { font-weight: 800; color: #666; text-transform: uppercase; font-size: 7px; letter-spacing: 0.05em; padding-bottom: 3px; border-bottom: 1px solid #999; }
-        .routine-table td { padding: 3px 2px; border-bottom: 1px solid #ccc; vertical-align: top; color: #555; font-size: 7px; }
+        /* Tighter padding vertically, wider horizontally to separate content */
+        .routine-table th { 
+            font-weight: 800; 
+            color: #666; 
+            text-transform: uppercase; 
+            font-size: 6px; 
+            letter-spacing: 0.05em; 
+            padding: 2px 4px 2px 0; 
+            border-bottom: 1px solid #999; 
+            text-align: left;
+        }
+        .routine-table td { 
+            padding: 1px 4px 1px 0; 
+            border-bottom: 1px solid #eee; 
+            vertical-align: top; 
+            color: #555; 
+            font-size: 6px; 
+        }
         .routine-table tr:last-child td { border-bottom: none; }
     </style>
 </head>
@@ -79,10 +93,10 @@
         </div>
     </div>
 
-    <div class="max-w-[210mm] mx-auto relative z-10 px-4">
+    <div class="max-w-[210mm] mx-auto relative z-10 px-2">
         
-        <!-- PAGE 1: HEADER (Centered in Print, Top in HTML) -->
-        <div class="print:h-[285mm] print:flex print:flex-col print:justify-center flex flex-col justify-start items-center text-center page-break mb-8 print:mb-0 pt-6">
+        <!-- PAGE 1: HEADER (Centered in Print) -->
+        <div class="print:h-[275mm] print:flex print:flex-col print:justify-center flex flex-col justify-start items-center text-center page-break mb-8 print:mb-0 pt-6">
             <header class="w-full">
                 <img id="print-hero-img" class="h-80 mx-auto object-contain mb-4" alt="Kalyana Rama Sannidhi" />
                 <h1 class="font-extrabold text-4xl uppercase tracking-tighter text-dark leading-none mb-4">Sri Ramayana Satram <span class="text-gold">&</span> Conference 2026</h1>
@@ -98,21 +112,21 @@
         </div>
 
         <!-- PAGE 2: PRE-CONFERENCE -->
-        <section id="pre-conf-section" class="page-break pt-2 print:h-[285mm] h-auto mb-16 print:mb-0">
-            <div class="flex items-baseline justify-between border-b border-gray-300 mb-3 pb-1">
+        <section id="pre-conf-section" class="page-break h-auto mb-8 print:mb-0">
+            <div class="flex items-baseline justify-between border-b border-gray-300 mb-2 pb-1">
                 <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Pre-Conference <span class="text-gold text-sm font-medium ml-3">Mar 28 – Apr 03</span></h2>
             </div>
             
-            <div class="flex gap-4 h-full">
+            <div class="flex gap-4">
                 <!-- Routine Side -->
-                <div class="w-[26%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
-                    <h3 class="text-[9px] font-bold text-gold uppercase tracking-widest mb-2 border-b border-gray-300 pb-1">Daily Routine</h3>
-                    <table class="w-full text-[7px] routine-table table-fixed">
+                <div class="w-[26%] bg-gray-50 rounded-lg p-2 border border-gray-200 self-start">
+                    <h3 class="text-[8px] font-bold text-gold uppercase tracking-widest mb-1 border-b border-gray-300 pb-1">Daily Routine</h3>
+                    <table class="w-full routine-table table-fixed">
                         <thead>
                             <tr>
-                                <th class="w-12 text-left">From</th>
-                                <th class="w-12 text-left">To</th>
-                                <th class="w-auto text-left">Event</th>
+                                <th class="w-10">From</th>
+                                <th class="w-10">To</th>
+                                <th class="w-auto">Event</th>
                             </tr>
                         </thead>
                         <tbody id="pre-routine-body"></tbody>
@@ -128,26 +142,26 @@
             </div>
         </section>
 
-        <!-- PAGE 3: CONFERENCE & POST-CONFERENCE -->
-        <div class="page-break pt-2 print:h-[285mm] h-auto flex flex-col gap-8 mb-16 print:mb-0">
+        <!-- PAGE 3: CONFERENCE & POST-CONFERENCE (Combined) -->
+        <div class="page-break h-auto flex flex-col gap-6 mb-8 print:mb-0">
             
             <!-- CONFERENCE -->
-            <section id="conf-section" class="flex-1">
-                 <div class="flex items-center justify-between mb-4 bg-gold text-white px-3 py-1.5 rounded shadow-sm">
+            <section id="conf-section" class="page-break-inside-avoid">
+                 <div class="flex items-center justify-between mb-3 bg-gold text-white px-3 py-1 rounded shadow-sm">
                     <h2 class="text-lg font-bold uppercase tracking-tight">Conference</h2>
                     <span class="text-sm font-bold">Apr 04 – 05</span>
                 </div>
 
-                <div class="flex gap-5">
+                <div class="flex gap-4">
                     <!-- Routine Side -->
-                    <div class="w-[26%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
-                        <h3 class="text-[9px] font-bold text-gold uppercase tracking-widest mb-2 border-b border-gray-300 pb-1">Daily Routine</h3>
-                        <table class="w-full text-[7px] routine-table table-fixed">
+                    <div class="w-[26%] bg-gray-50 rounded-lg p-2 border border-gray-200 self-start">
+                        <h3 class="text-[8px] font-bold text-gold uppercase tracking-widest mb-1 border-b border-gray-300 pb-1">Daily Routine</h3>
+                        <table class="w-full routine-table table-fixed">
                             <thead>
                                 <tr>
-                                    <th class="w-12 text-left">From</th>
-                                    <th class="w-12 text-left">To</th>
-                                    <th class="w-auto text-left">Event</th>
+                                    <th class="w-10">From</th>
+                                    <th class="w-10">To</th>
+                                    <th class="w-auto">Event</th>
                                 </tr>
                             </thead>
                             <tbody id="conf-routine-body"></tbody>
@@ -156,7 +170,7 @@
 
                     <!-- Days -->
                     <div class="w-[74%]">
-                        <div id="conf-grid" class="grid grid-cols-2 gap-x-8 gap-y-4">
+                        <div id="conf-grid" class="grid grid-cols-2 gap-x-6 gap-y-3">
                             <!-- Injected JS -->
                         </div>
                     </div>
@@ -164,21 +178,21 @@
             </section>
 
             <!-- POST-CONFERENCE -->
-            <section id="post-conf-section" class="flex-1">
-                <div class="flex items-baseline justify-between border-b border-gray-300 mb-4 pb-1">
+            <section id="post-conf-section" class="page-break-inside-avoid">
+                <div class="flex items-baseline justify-between border-b border-gray-300 mb-3 pb-1">
                     <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Post-Conference <span class="text-gold text-sm font-medium ml-2">Apr 06 – 07</span></h2>
                 </div>
 
-                <div class="flex gap-5">
+                <div class="flex gap-4">
                     <!-- Routine Side -->
-                    <div class="w-[26%] bg-gray-50 rounded-lg p-3 border border-gray-200 self-start">
-                        <h3 class="text-[9px] font-bold text-gold uppercase tracking-widest mb-2 border-b border-gray-300 pb-1">Daily Routine</h3>
-                        <table class="w-full text-[7px] routine-table table-fixed">
+                    <div class="w-[26%] bg-gray-50 rounded-lg p-2 border border-gray-200 self-start">
+                        <h3 class="text-[8px] font-bold text-gold uppercase tracking-widest mb-1 border-b border-gray-300 pb-1">Daily Routine</h3>
+                        <table class="w-full routine-table table-fixed">
                             <thead>
                                 <tr>
-                                    <th class="w-12 text-left">From</th>
-                                    <th class="w-12 text-left">To</th>
-                                    <th class="w-auto text-left">Event</th>
+                                    <th class="w-10">From</th>
+                                    <th class="w-10">To</th>
+                                    <th class="w-auto">Event</th>
                                 </tr>
                             </thead>
                             <tbody id="post-routine-body"></tbody>
@@ -187,7 +201,7 @@
 
                     <!-- Days -->
                     <div class="w-[74%]">
-                        <div id="post-conf-grid" class="grid grid-cols-2 gap-x-8 gap-y-4">
+                        <div id="post-conf-grid" class="grid grid-cols-2 gap-x-6 gap-y-3">
                              <!-- Injected JS -->
                         </div>
                     </div>
@@ -196,10 +210,10 @@
         </div>
 
         <!-- PAGE 4: SPEAKERS & FOOTER -->
-        <div class="pt-2 print:h-[285mm] h-auto flex flex-col">
+        <div class="h-auto flex flex-col min-h-[90vh]">
             <!-- Distinguished Speakers -->
-            <section id="speakers-page" class="mb-6">
-                <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-4">
+            <section id="speakers-page" class="mb-4">
+                <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-3">
                     <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Distinguished Speakers</h2>
                 </div>
 
@@ -211,20 +225,20 @@
 
             <!-- Other Speakers -->
             <section id="other-speakers-section" class="flex-grow">
-                <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-4 mt-2">
+                <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-3 mt-2">
                     <h2 class="text-sm font-bold text-gray-600 uppercase tracking-widest">Other Speakers & Artists</h2>
                 </div>
 
-                <div id="other-speakers-grid" class="grid grid-cols-8 gap-3 mb-2">
+                <div id="other-speakers-grid" class="grid grid-cols-8 gap-2 mb-2">
                     <!-- JS Injected -->
                 </div>
             </section>
 
             <!-- FOOTER -->
-            <footer class="pt-6 pb-6 border-t border-gray-200 flex flex-row items-center justify-center gap-8 break-inside-avoid mt-auto">
-                <img id="print-footer-logo" class="h-10 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
+            <footer class="pt-2 pb-2 border-t border-gray-200 flex flex-row items-center justify-center gap-8 break-inside-avoid mt-auto">
+                <img id="print-footer-logo" class="h-8 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
                 
-                <div class="flex flex-row items-center gap-6 text-[10px] font-bold text-gray-600 uppercase tracking-wide">
+                <div class="flex flex-row items-center gap-6 text-[9px] font-bold text-gray-600 uppercase tracking-wide">
                     <div class="flex items-center gap-2">
                         <i data-lucide="phone" class="w-3 h-3 text-gold"></i>
                         <span>+91 93696 37283</span>
@@ -306,7 +320,7 @@
                             const speakerIds = e.speakerIds || [];
                             const speakerNames = speakerIds.map(id => speakers[id]?.name).filter(Boolean).join(' &<br/>');
                             return `
-                                <div class="mb-1.5 pb-0.5 border-b border-gray-200 last:border-0">
+                                <div class="mb-1 pb-0.5 border-b border-gray-200 last:border-0">
                                     <div class="flex items-baseline gap-1 mb-0.5 opacity-90">
                                         <span class="text-[9px] font-bold text-gold whitespace-nowrap">${fmtTime(e.start)}</span>
                                         <span class="text-[9px] font-medium text-gray-500 whitespace-nowrap">- ${fmtTime(e.end)}</span>
