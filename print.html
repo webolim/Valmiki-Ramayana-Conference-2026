@@ -213,31 +213,32 @@
         <div class="print:h-[275mm] print:flex print:flex-col h-auto flex flex-col min-h-[90vh] justify-between">
             <div>
                 <!-- Distinguished Speakers -->
-                <section id="speakers-page" class="mb-6">
-                    <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-4">
+                <section id="speakers-page" class="mb-4">
+                    <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-3">
                         <h2 class="text-lg font-bold text-dark uppercase tracking-tight">Distinguished Speakers</h2>
                     </div>
 
-                    <!-- Changed to columns-2 for better balance -->
-                    <div id="main-speakers-list" class="columns-2 gap-8 space-y-6">
+                    <!-- Compacted spacing -->
+                    <div id="main-speakers-list" class="columns-2 gap-6 space-y-3">
                         <!-- JS Injected -->
                     </div>
                 </section>
 
                 <!-- Other Speakers -->
                 <section id="other-speakers-section">
-                    <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-4 mt-6">
+                    <div class="flex items-center gap-4 border-b border-gray-300 pb-1 mb-3 mt-4">
                         <h2 class="text-sm font-bold text-gray-600 uppercase tracking-widest">Other Speakers & Artists</h2>
                     </div>
 
-                    <div id="other-speakers-grid" class="grid grid-cols-6 gap-4 mb-4">
+                    <!-- Grid col 7, smaller gap -->
+                    <div id="other-speakers-grid" class="grid grid-cols-7 gap-x-2 gap-y-3 mb-2">
                         <!-- JS Injected -->
                     </div>
                 </section>
             </div>
 
             <!-- FOOTER -->
-            <footer class="pt-4 pb-2 border-t border-gray-200 flex flex-row items-center justify-center gap-8 break-inside-avoid mt-auto">
+            <footer class="pt-2 pb-1 border-t border-gray-200 flex flex-row items-center justify-center gap-8 break-inside-avoid mt-auto">
                 <img id="print-footer-logo" class="h-8 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
                 
                 <div class="flex flex-row items-center gap-6 text-[9px] font-bold text-gray-600 uppercase tracking-wide">
@@ -377,10 +378,10 @@
                             </div>
                         `);
                     } else {
-                        // Increased size of other speakers
+                        // Increased size of other speakers (Slightly smaller than previous request to fit in 7 cols)
                         otherSpeakersContainer.insertAdjacentHTML('beforeend', `
                             <div class="text-center avoid-break flex flex-col items-center">
-                                <img src="${s.photo}" class="w-12 h-12 mx-auto object-cover rounded-full bg-gray-100 mb-2 border border-gray-200 shadow-sm">
+                                <img src="${s.photo}" class="w-10 h-10 mx-auto object-cover rounded-full bg-gray-100 mb-1 border border-gray-200 shadow-sm">
                                 <div class="text-[8px] font-bold text-dark leading-tight">${s.name}</div>
                             </div>
                         `);
