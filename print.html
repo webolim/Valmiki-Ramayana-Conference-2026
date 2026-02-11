@@ -109,8 +109,13 @@
             </div>
         </header>
 
+        <!-- MARCH 28 SPECIAL SECTION -->
+        <div id="march-28-section" class="mb-8 break-inside-avoid">
+            <!-- Injected JS -->
+        </div>
+
         <!-- DAILY ROUTINE (Vertical List) -->
-        <section class="mb-8 mt-12 break-inside-avoid">
+        <section class="mb-8 break-inside-avoid">
             <div class="flex items-center justify-between mb-4 pl-4">
                 <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Daily Routine</h3>
                 <!-- Legend -->
@@ -230,6 +235,11 @@
                     <!-- Injected JS -->
                 </div>
             </div>
+
+             <!-- APRIL 7 SPECIAL SECTION -->
+            <div id="april-7-section" class="break-before-auto mt-8">
+                <!-- Injected JS -->
+            </div>
         </div>
 
         <!-- SPECIAL EVENTS / UTSAVA -->
@@ -242,7 +252,8 @@
                     <span class="text-sm font-bold text-gold uppercase tracking-widest font-display pb-1">Evenings at 7:30</span>
                 </div>
                 
-                <div id="utsava-grid" class="flex flex-col">
+                <!-- 2 Column Grid for Images -->
+                <div id="utsava-grid" class="grid grid-cols-2 gap-8">
                     <!-- Injected JS -->
                 </div>
             </div>
@@ -314,6 +325,7 @@
         ];
 
         // Custom Image Map for Utsavam Events (Title Keywords : Image URL)
+        // You can add your custom URL mappings here
         const UTSAVA_CUSTOM_IMAGES = {
             "inauguration": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/lamp4.gif",
             "theppam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/marigold2.gif", 
@@ -352,7 +364,57 @@
                 ['dr_rangan', 'srikanth', 'santanaraman', 'ashruth'].forEach(id => conferenceSpeakerIds.add(id));
                 conferenceSpeakerIds.forEach(id => otherSpeakerIds.delete(id));
 
-                // --- SCHEDULE RENDERING ---
+                // --- HELPER TO RENDER A SPECIFIC DAY ---
+                function renderDayEvents(dayNumber, containerId) {
+                    const day = data.schedule.days.find(d => d.dayNumber === dayNumber);
+                    const container = document.getElementById(containerId);
+                    if (!day || !container) return;
+
+                    const eventsHtml = day.events.map(e => {
+                        const speakerNames = (e.speakerIds || [])
+                            .map(id => speakers[id] ? speakers[id].name : '')
+                            .filter(Boolean)
+                            .join(' & ');
+
+                        return `
+                            <div class="flex gap-4 border-b border-gray-100 last:border-0 py-2 items-center">
+                                <div class="w-[85px] shrink-0 text-right text-[10px] font-bold text-gold whitespace-nowrap font-display">
+                                    ${fmtTime(e.start)} - ${fmtTime(e.end)}
+                                </div>
+                                <div class="grow text-[11px] leading-tight">
+                                    <span class="font-bold text-maroon font-display text-base">${e.title}</span>
+                                    ${e.subhead ? `<span class="text-gray-500 font-medium normal-case ml-1 font-sans">${e.subhead}</span>` : ''}
+                                </div>
+                                <div class="w-[22%] shrink-0 text-[11px] text-right font-medium text-black leading-tight font-sans">
+                                    ${speakerNames}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    container.innerHTML = `
+                        <div class="flex items-center justify-between mb-3 border-b-2 border-gold pb-1">
+                            <h3 class="font-bold text-xl text-maroon font-display">${day.theme}</h3>
+                            <span class="text-xs font-bold text-gray-500 uppercase font-display">${day.displayDate}</span>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-lg p-3 shadow-sm">
+                            <div class="flex justify-between items-baseline border-b border-gray-200 pb-1 mb-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="font-bold text-sm text-dark uppercase font-display">${day.displayDate}</span>
+                                    <span class="text-[9px] font-bold text-white bg-gold px-1.5 rounded-sm uppercase tracking-widest font-display">${day.dayName.substring(0,3)}</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-gray-400 italic font-serif">${day.theme}</span>
+                            </div>
+                            <div>${eventsHtml}</div>
+                        </div>
+                    `;
+                }
+
+                // Render March 28 (Day 1) and April 7 (Day 11)
+                renderDayEvents(1, 'march-28-section');
+                renderDayEvents(11, 'april-7-section');
+
+                // --- SCHEDULE RENDERING (Excluding Day 1 and 11) ---
                 function processPhase(phaseName, containerId) {
                     const phaseDays = data.schedule.days.filter(d => 
                         d.phase === phaseName && d.dayNumber !== 1 && d.dayNumber !== 11
@@ -421,16 +483,29 @@
                 processPhase('Post-Conference', 'post-conf-grid');
 
                 // --- UTSAVA RENDERING ---
+                // Manually add Inauguration if needed, though Day 1 is now separate, let's keep it in the loop logic but exclude from utsavaEvents if it's already shown in Day 1? 
+                // The prompt says "After the post conference, add a similar section of events for April 7th". 
+                // But Utsava usually highlights special evening events.
+                // Logic: Extract evening events from ALL days (except maybe 1 and 11 if they are fully covered).
+                // Let's stick to the previous filter logic: Extract events ~19:30.
+                
+                // Day 1 Inauguration was manually pushed in previous code.
+                // Day 1 events are now shown in #march-28-section. 
+                // Do we still want them in Utsava section? "make the utsava images 2 column...".
+                // Usually redundant if shown above. But "Utsava" section highlights the visual/celebratory aspect.
+                // Let's keep the existing logic which populates `utsavaEvents` array.
+                
                 const day1 = data.schedule.days.find(d => d.dayNumber === 1);
                 if (day1) {
                     const inauguration = day1.events.find(e => e.title.includes("Inauguration"));
+                    // Only add if not duplicate (though array is empty initially)
                     if(inauguration) utsavaEvents.unshift({...inauguration, dayDate: "Mar 28"});
                 }
 
-                const day11 = data.schedule.days.find(d => d.dayNumber === 11);
-                
                 const utsavaContainer = document.getElementById('utsava-grid');
+                
                 utsavaEvents.forEach(e => {
+                    // Skip April 7 in Utsava if it's redundant, but let's check. 
                     if (e.dayDate.includes("Apr 07") || e.dayDate.includes("April 07")) return;
 
                     let mediaContent = '';
@@ -446,23 +521,30 @@
                     }
 
                     if (customImage) {
-                        mediaContent = `<img src="${customImage}" class="h-40 w-auto object-cover rounded-lg border border-gray-200">`;
+                        mediaContent = `<img src="${customImage}" class="w-full h-full object-cover">`;
                     }
                     // Prioritize Event Images
                     else if (e.eventImages && e.eventImages.length > 0) {
-                         mediaContent = `<img src="${e.eventImages[0]}" class="h-40 w-auto object-cover rounded-lg border border-gray-200">`;
+                         mediaContent = `<img src="${e.eventImages[0]}" class="w-full h-full object-cover">`;
                     } 
                     else if (e.speakerIds && e.speakerIds.includes('meghana')) {
-                        mediaContent = `<img src="${speakers['meghana'].photo}" class="h-40 w-auto object-cover rounded-lg border border-gray-200">`;
+                        mediaContent = `<img src="${speakers['meghana'].photo}" class="w-full h-full object-cover">`;
                     }
-                    // If no image is available, collapse the space (do not render icon)
+                    else {
+                        // "New this year" placeholder for missing images
+                        mediaContent = `<div class="w-full h-full flex items-center justify-center bg-gray-100"><span class="text-gray-400 font-bold uppercase tracking-widest text-sm">New this year</span></div>`;
+                    }
                     
                     utsavaContainer.insertAdjacentHTML('beforeend', `
-                        <div class="flex items-center justify-between border-b border-gray-100 py-3 last:border-0 break-inside-avoid">
-                            <div class="w-24 text-xs font-bold text-gray-500 font-display uppercase tracking-widest">${e.dayDate}</div>
-                            <div class="flex-1 px-4 font-bold text-maroon text-lg font-display leading-tight">${e.title}</div>
-                            <div class="shrink-0">
+                        <div class="flex flex-col gap-2 break-inside-avoid">
+                            <div class="w-full h-48 rounded-xl overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center shadow-sm relative">
                                 ${mediaContent}
+                                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-2">
+                                     <span class="text-white text-[10px] font-bold uppercase tracking-wider">${e.dayDate}</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col px-1">
+                                <span class="font-bold text-maroon text-lg font-display leading-tight">${e.title}</span>
                             </div>
                         </div>
                     `);
