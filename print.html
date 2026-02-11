@@ -16,9 +16,9 @@
           extend: {
             colors: {
               gold: '#856404', 
-              dark: '#000000',
+              dark: '#1f2937', // Dark Gray
               light: '#f5f5f5',
-              maroon: '#800000',
+              violet: '#5b21b6', // Deep Violet replacing Maroon
               conf: '#B8860B', // Dark Goldenrod for Conference specific items
             },
             fontFamily: {
@@ -34,7 +34,7 @@
       }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; color: #000; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        body { font-family: 'Inter', sans-serif; color: #1f2937; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         
         @media print {
             @page { margin: 8mm; size: auto; }
@@ -53,7 +53,7 @@
             text-transform: uppercase;
             text-anchor: middle;
         }
-        .arch-1 { font-size: 38px; fill: #800000; }
+        .arch-1 { font-size: 38px; fill: #5b21b6; } /* Violet */
         .arch-2 { font-size: 26px; fill: #856404; letter-spacing: 4px; font-weight: 600; }
     </style>
 </head>
@@ -114,13 +114,13 @@
             
             <!-- DAILY ROUTINE (Vertical List) -->
             <section class="w-2/3 flex flex-col">
-                <div class="flex items-center justify-between mb-4 border-b-2 border-maroon pb-1">
-                    <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Daily Routine</h3>
+                <div class="flex items-center justify-between mb-4 border-b-2 border-violet pb-1">
+                    <h3 class="font-display font-bold text-xl text-violet uppercase tracking-wide">Daily Routine</h3>
                     <!-- Legend -->
                     <div class="flex gap-4 text-[10px] font-bold uppercase tracking-wide">
                         <div class="flex items-center gap-1.5">
-                            <span class="w-3 h-3 rounded-full bg-maroon"></span>
-                            <span class="text-maroon">Pre & Post Conference</span>
+                            <span class="w-3 h-3 rounded-full bg-violet"></span>
+                            <span class="text-violet">Pre & Post Conference</span>
                         </div>
                         <div class="flex items-center gap-1.5">
                             <span class="w-3 h-3 rounded-full bg-conf"></span>
@@ -145,7 +145,7 @@
                             <div class="flex gap-2 items-baseline text-xs border-b border-dashed border-gray-200 pb-1">
                                 <span class="font-bold text-gray-500 w-12 shrink-0">06:30</span>
                                 <div class="flex flex-col">
-                                    <span class="font-medium text-maroon">Parayanam</span>
+                                    <span class="font-medium text-violet">Parayanam</span>
                                     <span class="font-medium text-conf">Meditation</span>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                             </div>
                             <div class="flex gap-2 items-baseline text-xs border-b border-dashed border-gray-200 pb-1">
                                 <span class="font-bold text-gray-500 w-12 shrink-0">08:30</span>
-                                <span class="font-medium text-maroon">Pravachana</span>
+                                <span class="font-medium text-violet">Pravachana</span>
                             </div>
                              <div class="flex gap-2 items-baseline text-xs border-b border-dashed border-gray-200 pb-1">
                                 <span class="font-bold text-gray-500 w-12 shrink-0">09:00</span>
@@ -177,7 +177,7 @@
                             <div class="flex gap-2 items-baseline text-xs border-b border-dashed border-gray-200 pb-1">
                                 <span class="font-bold text-gray-500 w-12 shrink-0">13:00</span>
                                 <div class="flex flex-col">
-                                    <span class="font-medium text-maroon">Parayanam</span>
+                                    <span class="font-medium text-violet">Parayanam</span>
                                     <span class="font-medium text-conf">Conference Sessions</span>
                                 </div>
                             </div>
@@ -209,8 +209,8 @@
             
             <!-- Pre-Conference -->
             <div>
-                <div class="flex items-center justify-between mb-3 border-b-2 border-maroon pb-1 break-after-avoid">
-                    <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Pre-Conference</h3>
+                <div class="flex items-center justify-between mb-3 border-b-2 border-violet pb-1 break-after-avoid">
+                    <h3 class="font-display font-bold text-xl text-violet uppercase tracking-wide">Pre-Conference</h3>
                     <span class="text-xs font-bold text-gray-500 uppercase font-display">Mar 29 – Apr 03</span>
                 </div>
                 <div id="pre-conf-grid" class="space-y-3">
@@ -222,7 +222,7 @@
             <div class="break-before-auto bg-gradient-to-b from-gold/10 to-transparent p-4 -mx-4 rounded-xl border-t-4 border-gold">
                 <div class="flex items-center justify-between mb-3 pb-1 break-after-avoid">
                     <div class="flex items-center gap-3">
-                        <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Conference</h3>
+                        <h3 class="font-display font-bold text-xl text-violet uppercase tracking-wide">Conference</h3>
                     </div>
                     <span class="text-xs font-bold text-gray-500 uppercase font-display">Apr 04 – 05</span>
                 </div>
@@ -233,8 +233,8 @@
 
             <!-- Post-Conference & Valedictory Row -->
             <div class="break-before-auto">
-                <div class="flex items-center justify-between mb-3 border-b-2 border-maroon pb-1 break-after-avoid">
-                    <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Post-Conference</h3>
+                <div class="flex items-center justify-between mb-3 border-b-2 border-violet pb-1 break-after-avoid">
+                    <h3 class="font-display font-bold text-xl text-violet uppercase tracking-wide">Post-Conference</h3>
                     <span class="text-xs font-bold text-gray-500 uppercase font-display">Apr 06 – Apr 07</span>
                 </div>
                 <div class="flex flex-row gap-6 items-stretch">
@@ -251,12 +251,12 @@
             </div>
         </div>
 
-        <!-- SPECIAL EVENTS / UTSAVA (Moved Here) -->
+        <!-- SPECIAL EVENTS / UTSAVA -->
         <section class="mt-4 mb-6 break-inside-avoid">
             <div class="bg-gradient-to-br from-gold/5 to-white border border-gold/20 py-6 px-6 rounded-2xl">
                 <div class="flex items-end justify-between mb-6">
                     <div class="flex items-center gap-3">
-                        <h3 class="font-display font-bold text-2xl text-maroon uppercase tracking-wide">Utsavams and Special Events</h3>
+                        <h3 class="font-display font-bold text-2xl text-violet uppercase tracking-wide">Utsavams and Special Events</h3>
                     </div>
                     <span class="text-sm font-bold text-gold uppercase tracking-widest font-display pb-1">Evenings at 7:30</span>
                 </div>
@@ -271,8 +271,8 @@
         <!-- CONFERENCE SPEAKERS SECTION (Split into Bio & Grid) -->
         <section class="mb-4 break-inside-avoid">
             <div class="py-4">
-                <div class="flex items-center justify-between mb-6 border-b-2 border-maroon pb-1">
-                    <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Conference Speakers</h3>
+                <div class="flex items-center justify-between mb-6 border-b-2 border-violet pb-1">
+                    <h3 class="font-display font-bold text-xl text-violet uppercase tracking-wide">Conference Speakers</h3>
                 </div>
                 
                 <!-- Speakers With Bio -->
@@ -290,8 +290,8 @@
         <!-- PRE/POST SPEAKERS SECTION (Grid, No Bio) -->
         <section class="mb-4 break-inside-avoid">
             <div class="py-4">
-                <div class="flex items-center justify-between mb-4 border-b-2 border-maroon pb-1">
-                    <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Pre & Post Conference Speakers</h3>
+                <div class="flex items-center justify-between mb-4 border-b-2 border-violet pb-1">
+                    <h3 class="font-display font-bold text-xl text-violet uppercase tracking-wide">Pre & Post Conference Speakers</h3>
                 </div>
                 
                 <div id="other-speakers-grid" class="flex flex-col gap-4">
@@ -401,7 +401,7 @@
                                     ${fmtTime(e.start)}
                                 </div>
                                 <div class="grow leading-tight pl-2">
-                                    <span class="font-bold text-maroon font-display text-xs block">${e.title}</span>
+                                    <span class="font-bold text-violet font-display text-xs block">${e.title}</span>
                                     ${e.subhead ? `<span class="text-gray-500 font-medium text-[9px] block">${e.subhead}</span>` : ''}
                                     ${speakerNames ? `<span class="text-black font-medium block mt-0.5 leading-tight">${speakerNames}</span>` : ''}
                                 </div>
@@ -416,8 +416,8 @@
 
                     if (dayNumber === 1) {
                         headerHtml = `
-                            <div class="flex items-center justify-between mb-4 border-b-2 border-maroon pb-1">
-                                <h3 class="font-bold text-xl text-maroon font-display uppercase tracking-wide">${day.theme}</h3>
+                            <div class="flex items-center justify-between mb-4 border-b-2 border-violet pb-1">
+                                <h3 class="font-bold text-xl text-violet font-display uppercase tracking-wide">${day.theme}</h3>
                             </div>`;
                     } else if (dayNumber === 11) {
                         // For Day 11, we suppress the outer header and inject "Valedictory" as the theme text
@@ -505,7 +505,7 @@
                                         ${timeDisplay}
                                     </div>
                                     <div class="grow text-[11px] leading-relaxed">
-                                        <span class="font-bold text-maroon font-display text-base block leading-tight">${e.title}</span>
+                                        <span class="font-bold text-violet font-display text-base block leading-tight">${e.title}</span>
                                         ${e.subhead ? `<div class="text-gray-500 font-medium normal-case font-sans mt-0.5">${e.subhead}</div>` : ''}
                                     </div>
                                     <div class="shrink-0 text-[11px] text-right font-medium text-black leading-tight font-sans pt-1 ${speakerClass}">
@@ -594,7 +594,7 @@
                                 ${mediaContent}
                             </div>
                             <div class="flex flex-col px-1">
-                                <span class="font-bold text-maroon text-lg font-display leading-tight">${e.title}</span>
+                                <span class="font-bold text-violet text-lg font-display leading-tight">${e.title}</span>
                                 <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider mt-1">${e.dayDate}</span>
                             </div>
                         </div>
@@ -608,7 +608,7 @@
                            <div class="w-full aspect-[16/9] rounded-xl overflow-hidden border border-gold/40 bg-gold/5 flex flex-col items-center justify-center shadow-sm relative p-2 gap-2">
                                ${textOnlyEvents.map(e => `
                                    <div class="text-center">
-                                       <div class="font-bold text-maroon text-xs font-display leading-tight">${e.title.replace('Sundarakanda Utsava (Gaja Vahanam)', 'Gaja Vahanam')}</div>
+                                       <div class="font-bold text-violet text-xs font-display leading-tight">${e.title.replace('Sundarakanda Utsava (Gaja Vahanam)', 'Gaja Vahanam')}</div>
                                        <div class="text-[9px] font-bold text-gray-500 uppercase tracking-wider">${e.dayDate}</div>
                                    </div>
                                `).join('<div class="w-16 h-px bg-gold/30"></div>')}
@@ -617,7 +617,7 @@
                                </div>
                            </div>
                            <div class="flex flex-col px-1">
-                                <span class="font-bold text-maroon text-lg font-display leading-tight">New This Year</span>
+                                <span class="font-bold text-violet text-lg font-display leading-tight">New This Year</span>
                            </div>
                        </div>
                     `);
@@ -632,15 +632,18 @@
                     .filter(Boolean);
 
                 const speakersWithBio = allConfSpeakers.filter(s => s.bio && s.bio.length > 5);
+                // Sort speakers by bio length (descending) so similar heights stay together in the grid flow
+                speakersWithBio.sort((a, b) => b.bio.length - a.bio.length);
+
                 const speakersNoBio = allConfSpeakers.filter(s => !s.bio || s.bio.length <= 5);
                 speakersNoBio.sort((a,b) => (a.name.includes('Rangan') ? -1 : b.name.includes('Rangan') ? 1 : 0));
 
                 speakersWithBio.forEach(s => {
                     confBioContainer.insertAdjacentHTML('beforeend', `
-                        <div class="flex flex-col p-3 rounded-xl border border-gray-200 bg-white shadow-sm break-inside-avoid h-full">
-                            <div class="flex items-center gap-3 mb-2 border-b border-gray-100 pb-2">
-                                <img src="${s.photo}" class="w-14 h-14 rounded-lg object-cover bg-gray-100 shrink-0 border border-gold/20 shadow-sm">
-                                <div class="text-xs font-bold text-maroon leading-tight font-display">${s.name}</div>
+                        <div class="flex flex-col p-3 rounded-xl bg-white/50 break-inside-avoid h-full">
+                            <div class="flex items-center gap-3 mb-2 pb-2 border-b border-gray-100">
+                                <img src="${s.photo}" class="w-14 h-14 rounded-lg object-cover bg-gray-100 shrink-0 shadow-sm">
+                                <div class="text-xs font-bold text-violet leading-tight font-display">${s.name}</div>
                             </div>
                             <div class="text-[9px] text-dark leading-relaxed font-sans font-normal text-gray-600 text-justify">${s.bio}</div>
                         </div>
