@@ -114,7 +114,7 @@
             
             <!-- DAILY ROUTINE (Vertical List) -->
             <section class="w-2/3 flex flex-col">
-                <div class="flex items-center justify-between mb-4 pl-4">
+                <div class="flex items-center justify-between mb-4 border-b-2 border-maroon pb-1">
                     <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Daily Routine</h3>
                     <!-- Legend -->
                     <div class="flex gap-4 text-[10px] font-bold uppercase tracking-wide">
@@ -209,7 +209,7 @@
             
             <!-- Pre-Conference -->
             <div>
-                <div class="flex items-center justify-between mb-3 border-b-2 border-gold pb-1 break-after-avoid">
+                <div class="flex items-center justify-between mb-3 border-b-2 border-maroon pb-1 break-after-avoid">
                     <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Pre-Conference</h3>
                     <span class="text-xs font-bold text-gray-500 uppercase font-display">Mar 29 – Apr 03</span>
                 </div>
@@ -233,7 +233,7 @@
 
             <!-- Post-Conference & Valedictory Row -->
             <div class="break-before-auto">
-                <div class="flex items-center justify-between mb-3 border-b-2 border-gold pb-1 break-after-avoid">
+                <div class="flex items-center justify-between mb-3 border-b-2 border-maroon pb-1 break-after-avoid">
                     <h3 class="font-display font-bold text-xl text-maroon uppercase tracking-wide">Post-Conference</h3>
                     <span class="text-xs font-bold text-gray-500 uppercase font-display">Apr 06 – Apr 07</span>
                 </div>
@@ -340,12 +340,11 @@
             "sita kalyana": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/SitaKalyanam_00001.webp",
             "nikunjotsava": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/Nikunjotsava_00001.webp",
             "hanumantha vahanam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/HanumanthaVahanam_00001.webp",
-            "sundarakanda utsava": "", // Add URL here
-            "gaja vahanam": "", // Add URL here
+            "sundarakanda utsava": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/Image_placeholder.jpeg",
+            "gaja vahanam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/Image_placeholder.jpeg",
             "vibheeshana sharanagati": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/VibhishanaSharanaagati_00001.webp",
-            "theppam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/marigold2.gif",
-            "annual day": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/AnnualDay_00001.webp",
-            "pattabhishekha utsava": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/ValmikiAshramaFamily_00001.webp"
+            "theppam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/Image_placeholder.jpeg",
+            "annual day": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/2025/AnnualDay_00001.webp"
         };
         
         async function init() {
@@ -419,7 +418,7 @@
 
                     if (dayNumber === 1) {
                         headerHtml = `
-                            <div class="flex items-center justify-between mb-4 pl-1">
+                            <div class="flex items-center justify-between mb-4 border-b-2 border-maroon pb-1">
                                 <h3 class="font-bold text-xl text-maroon font-display uppercase tracking-wide">${day.theme}</h3>
                             </div>`;
                     } else if (dayNumber === 11) {
@@ -541,14 +540,12 @@
                     }
                 }
 
-                // Remove manually added Pattabhishekha (as per latest request)
-                // Filter duplicates if Inauguration was already pushed by loop (it shouldn't be as Day 1 is filtered)
-                
                 const utsavaContainer = document.getElementById('utsava-grid');
                 
                 utsavaEvents.forEach(e => {
                     // Skip April 07 events from Utsava grid
                     if (e.dayDate.includes("Apr 07") || e.dayDate.includes("April 07")) return;
+                    if (e.title.includes("Pattabhishekha")) return; // Explicitly remove Pattabhishekha
 
                     let mediaContent = '';
                     const titleLower = e.title.toLowerCase();
