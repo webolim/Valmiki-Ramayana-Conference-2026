@@ -252,13 +252,24 @@
         </div>
 
         <!-- SPECIAL EVENTS / UTSAVA -->
-        <section class="mb-6 break-inside-avoid page-break-before">
+        <section class="mb-6 break-inside-avoid">
             <div class="bg-gradient-to-br from-gold/5 to-white border border-gold/20 py-6 px-6 rounded-2xl">
                 <div class="flex items-end justify-between mb-6">
                     <div class="flex items-center gap-3">
                         <h3 class="font-display font-bold text-2xl text-maroon uppercase tracking-wide">Utsavams and Special Events</h3>
                     </div>
                     <span class="text-sm font-bold text-gold uppercase tracking-widest font-display pb-1">Evenings at 7:30</span>
+                </div>
+
+                <!-- New This Year Section -->
+                <div id="new-utsava-section" class="mb-8 hidden">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        <h4 class="font-bold text-gold text-sm font-display uppercase tracking-widest">New This Year</h4>
+                    </div>
+                    <div id="new-utsava-grid" class="flex flex-wrap gap-4">
+                        <!-- Injected JS -->
+                    </div>
                 </div>
                 
                 <!-- 2 Column Grid for Images -->
@@ -302,7 +313,7 @@
 
         <!-- FOOTER -->
         <footer class="pt-4 border-t border-gray-200 flex items-center justify-between mt-auto text-gray-600 break-inside-avoid">
-            <img id="print-footer-logo" class="h-12 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
+            <img id="print-footer-logo" class="h-24 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
             <div class="flex flex-nowrap items-center gap-6 text-[10px] font-bold uppercase tracking-wide font-display">
                 <div class="flex items-center gap-1">
                     <i data-lucide="phone" class="w-3 h-3 text-gold"></i>
@@ -340,9 +351,7 @@
             "sita kalyana": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/print/SitaKalyanam_Print.jpg",
             "nikunjotsava": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/print/AnnualDay_print.jpg",
             "hanumantha vahanam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/print/HanumathVahanam_print.jpg",
-            "sundarakanda utsava": "",
             "vibheeshana sharanagati": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/print/VibheeshanaSharanagati_print.jpg",
-            "theppam": "",
             "pushpaka vimana vahanam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/print/PushpakaVimanam_print.jpg",
             "annual day": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/print/AnnualDay_print.jpg"
         };
@@ -546,6 +555,8 @@
                     }
                 }
 
+                const newEventsContainer = document.getElementById('new-utsava-grid');
+                const newEventsSection = document.getElementById('new-utsava-section');
                 const utsavaContainer = document.getElementById('utsava-grid');
                 
                 utsavaEvents.forEach(e => {
@@ -553,8 +564,20 @@
                     if (e.dayDate.includes("Apr 07") || e.dayDate.includes("April 07")) return;
                     if (e.title.includes("Pattabhishekha")) return; // Explicitly remove Pattabhishekha
 
-                    let mediaContent = '';
                     const titleLower = e.title.toLowerCase();
+                    // Check for Theppam or Gaja Vahanam (Sundarakanda Utsava) - Render as text only card
+                    if (titleLower.includes('theppam') || titleLower.includes('gaja vahanam') || titleLower.includes('sundarakanda utsava')) {
+                        newEventsSection.classList.remove('hidden');
+                        newEventsContainer.insertAdjacentHTML('beforeend', `
+                             <div class="bg-gold/10 border border-gold/30 rounded-lg p-4 flex-1 min-w-[200px] flex items-center justify-between shadow-sm">
+                                <span class="font-bold text-maroon text-lg font-display">${e.title}</span>
+                                <span class="text-xs font-bold uppercase tracking-wider bg-white px-3 py-1.5 rounded text-gold border border-gold/20 shadow-sm">${e.dayDate}</span>
+                            </div>
+                        `);
+                        return;
+                    }
+
+                    let mediaContent = '';
 
                     // Prioritize Custom Mapped Images
                     let customImage = null;
