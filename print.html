@@ -74,9 +74,9 @@
     <div class="max-w-[210mm] mx-auto relative z-10 px-4 py-4">
         
         <!-- HEADER -->
-        <header class="relative mb-8 pt-[10px] h-[320px]">
+        <header class="relative mb-8 pt-[10px] h-[500px]">
             <div class="absolute top-0 left-0 w-full h-full z-0 overflow-visible">
-                <svg viewBox="0 0 600 320" class="w-full h-full overflow-visible">
+                <svg viewBox="0 0 600 500" class="w-full h-full overflow-visible">
                     <!-- Adjusted for more circular arcs -->
                     <path id="curve1" d="M 50 280 A 250 250 0 0 1 550 280" class="arching-text-path" />
                     <path id="curve2" d="M 90 290 A 210 210 0 0 1 510 290" class="arching-text-path" />
@@ -95,7 +95,7 @@
             </div>
             
             <div class="absolute top-[140px] w-full z-10 flex flex-col items-center">
-                <img id="print-hero-img" class="h-36 object-contain drop-shadow-xl" alt="Kalyana Rama" />
+                <img id="print-hero-img" class="h-72 object-contain drop-shadow-xl" alt="Kalyana Rama" />
                 
                 <h3 class="text-sm font-bold text-dark uppercase tracking-tight bg-gray-100 px-6 py-1 rounded-full border border-gray-200 mt-4 font-display">
                     Srimad Valmiki Ramayana Conference # 3
@@ -240,10 +240,10 @@
                          <div class="w-1.5 h-8 bg-maroon rounded-full"></div>
                         <h3 class="font-display font-bold text-2xl text-maroon uppercase tracking-wide">Utsavams and Special Events</h3>
                     </div>
-                    <span class="text-sm font-bold text-gold uppercase tracking-widest font-display pb-1">Everyday Evening at 7:30 PM</span>
+                    <span class="text-sm font-bold text-gold uppercase tracking-widest font-display pb-1">Evenings at 7:30</span>
                 </div>
                 
-                <div id="utsava-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div id="utsava-grid" class="flex flex-col">
                     <!-- Injected JS -->
                 </div>
             </div>
@@ -257,12 +257,12 @@
                 </div>
                 
                 <!-- Speakers With Bio -->
-                <div id="conference-speakers-bio-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div id="conference-speakers-bio-grid" class="flex flex-col gap-6 mb-8">
                     <!-- Injected JS -->
                 </div>
 
                 <!-- Speakers Without Bio (Compact Grid) -->
-                <div id="conference-speakers-compact-grid" class="grid grid-cols-3 md:grid-cols-5 gap-6">
+                <div id="conference-speakers-compact-grid" class="grid grid-cols-4 gap-4">
                     <!-- Injected JS -->
                 </div>
             </div>
@@ -313,6 +313,13 @@
             "Pooja", "Lunch", "Dinner", "Dolotsava", 
             "Madyanikam", "Meditation", "Tea Break", "Prasada"
         ];
+
+        // Custom Image Map for Utsavam Events (Title Keywords : Image URL)
+        const UTSAVA_CUSTOM_IMAGES = {
+            "inauguration": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/lamp4.gif",
+            "theppam": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/marigold2.gif", 
+            "gaja": "https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/marigold2.gif"
+        };
         
         async function init() {
             try {
@@ -379,14 +386,13 @@
                                 .filter(Boolean)
                                 .join(' & ');
 
-                            // Added gap-12 for more space between timing and title
                             return `
                                 <div class="flex gap-12 border-b border-gray-100 last:border-0 py-2 items-center">
                                     <div class="w-[85px] shrink-0 text-right text-[10px] font-bold text-gold whitespace-nowrap font-display">
                                         ${fmtTime(e.start)} - ${fmtTime(e.end)}
                                     </div>
                                     <div class="grow text-[11px] leading-tight">
-                                        <span class="font-bold text-maroon uppercase tracking-wide font-display">${e.title}</span>
+                                        <span class="font-bold text-maroon font-display text-base">${e.title}</span>
                                         ${e.subhead ? `<span class="text-gray-500 font-medium normal-case ml-1 font-sans">${e.subhead}</span>` : ''}
                                     </div>
                                     <div class="w-[30%] shrink-0 text-[10px] text-right font-normal text-gray-700 leading-tight font-sans">
@@ -418,32 +424,38 @@
                 // --- UTSAVA RENDERING ---
                 const day1 = data.schedule.days.find(d => d.dayNumber === 1);
                 if (day1) {
-                    const abhishekha = day1.events.find(e => e.title.includes("Abhishekha"));
                     const inauguration = day1.events.find(e => e.title.includes("Inauguration"));
-                    if(abhishekha) utsavaEvents.unshift({...abhishekha, dayDate: "Mar 28"});
-                    if(inauguration) utsavaEvents.unshift({...inauguration, dayDate: "Mar 28"}); // Prioritize Inauguration
+                    if(inauguration) utsavaEvents.unshift({...inauguration, dayDate: "Mar 28"});
                 }
 
                 const day11 = data.schedule.days.find(d => d.dayNumber === 11);
-                // Exclude April 7 events from Utsava as requested (Pattabhishekha is on Day 11)
                 
                 const utsavaContainer = document.getElementById('utsava-grid');
                 utsavaEvents.forEach(e => {
-                    // Check if event is on April 7 (Day 11 is Apr 07)
                     if (e.dayDate.includes("Apr 07") || e.dayDate.includes("April 07")) return;
 
                     let mediaContent = '';
                     const titleLower = e.title.toLowerCase();
 
-                    // Prioritize Event Images if available
-                    if (e.eventImages && e.eventImages.length > 0) {
-                         mediaContent = `<img src="${e.eventImages[0]}" class="w-full h-32 object-cover rounded-t-lg mb-2">`;
-                    } 
-                    // Check for Meghana (Dance)
-                    else if (e.speakerIds && e.speakerIds.includes('meghana')) {
-                        mediaContent = `<img src="${speakers['meghana'].photo}" class="w-full h-32 object-cover rounded-t-lg mb-2">`;
+                    // Prioritize Custom Mapped Images
+                    let customImage = null;
+                    for (const [key, url] of Object.entries(UTSAVA_CUSTOM_IMAGES)) {
+                        if (titleLower.includes(key)) {
+                            customImage = url;
+                            break;
+                        }
                     }
-                    // Handle Missing Images with Icons/Typography
+
+                    if (customImage) {
+                        mediaContent = `<img src="${customImage}" class="w-16 h-16 object-cover rounded-lg border border-gray-200">`;
+                    }
+                    // Prioritize Event Images
+                    else if (e.eventImages && e.eventImages.length > 0) {
+                         mediaContent = `<img src="${e.eventImages[0]}" class="w-16 h-16 object-cover rounded-lg border border-gray-200">`;
+                    } 
+                    else if (e.speakerIds && e.speakerIds.includes('meghana')) {
+                        mediaContent = `<img src="${speakers['meghana'].photo}" class="w-16 h-16 object-cover rounded-lg border border-gray-200">`;
+                    }
                     else {
                         let icon = 'calendar-star';
                         let color = 'text-gold';
@@ -454,22 +466,18 @@
                         else if (titleLower.includes('gaja')) { icon = 'footprints'; color='text-gray-600'; }
 
                         mediaContent = `
-                            <div class="w-full h-32 bg-gray-50 rounded-t-lg flex flex-col items-center justify-center border-b border-gray-100">
-                                <i data-lucide="${icon}" class="w-10 h-10 ${color} mb-2 opacity-80"></i>
-                                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Special Event</span>
+                            <div class="w-16 h-16 bg-gray-50 rounded-lg flex items-center justify-center border border-gray-100">
+                                <i data-lucide="${icon}" class="w-8 h-8 ${color} opacity-80"></i>
                             </div>
                         `;
                     }
                     
                     utsavaContainer.insertAdjacentHTML('beforeend', `
-                        <div class="bg-white border border-gray-200 rounded-lg shadow-sm flex flex-col justify-between h-full break-inside-avoid overflow-hidden">
-                            ${mediaContent}
-                            <div class="p-3">
-                                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1 font-display">${e.dayDate}</div>
-                                <div class="font-bold text-maroon text-sm leading-tight mb-2 font-display">${e.title}</div>
-                                <div class="text-xs text-gold font-bold flex items-center gap-1 border-t border-gray-100 pt-2">
-                                    <i data-lucide="clock" class="w-3 h-3"></i> ${fmtTime(e.start)}
-                                </div>
+                        <div class="flex items-center justify-between border-b border-gray-100 py-3 last:border-0 break-inside-avoid">
+                            <div class="w-24 text-xs font-bold text-gray-500 font-display uppercase tracking-widest">${e.dayDate}</div>
+                            <div class="flex-1 px-4 font-bold text-maroon text-lg font-display leading-tight">${e.title}</div>
+                            <div class="shrink-0">
+                                ${mediaContent}
                             </div>
                         </div>
                     `);
@@ -488,13 +496,12 @@
                 speakersNoBio.sort((a,b) => (a.name.includes('Rangan') ? -1 : b.name.includes('Rangan') ? 1 : 0));
 
                 speakersWithBio.forEach(s => {
-                    // Changed font-serif to font-sans and removed text-justify for cleaner Inter Regular look as requested
                     confBioContainer.insertAdjacentHTML('beforeend', `
-                        <div class="flex gap-5 items-start p-2 break-inside-avoid">
-                            <img src="${s.photo}" class="w-24 h-24 rounded-lg object-cover bg-gray-100 shrink-0 border border-gold/20 shadow-sm">
+                        <div class="flex gap-5 items-start p-3 rounded-xl border border-transparent break-inside-avoid">
+                            <img src="${s.photo}" class="w-28 h-28 rounded-xl object-cover bg-gray-100 shrink-0 border border-gold/20 shadow-sm">
                             <div>
-                                <div class="text-sm font-bold text-maroon leading-tight mb-1 font-display">${s.name}</div>
-                                <div class="text-[11px] text-dark leading-snug font-sans font-normal text-gray-700">${s.bio}</div>
+                                <div class="text-lg font-bold text-maroon leading-tight mb-2 font-display">${s.name}</div>
+                                <div class="text-sm text-dark leading-relaxed font-sans font-normal text-gray-700">${s.bio}</div>
                             </div>
                         </div>
                     `);
@@ -502,9 +509,9 @@
 
                 speakersNoBio.forEach(s => {
                     confCompactContainer.insertAdjacentHTML('beforeend', `
-                        <div class="flex flex-col items-center p-2 rounded-lg break-inside-avoid text-center">
-                            <img src="${s.photo}" class="w-16 h-16 rounded-full object-cover mb-2 bg-gray-100 border border-gray-200 shadow-sm">
-                            <div class="text-[10px] font-bold text-dark leading-tight line-clamp-2 font-display">${s.name}</div>
+                        <div class="flex flex-col items-center p-3 rounded-lg break-inside-avoid text-center">
+                            <img src="${s.photo}" class="w-20 h-20 rounded-full object-cover mb-3 bg-gray-100 border border-gray-200 shadow-sm">
+                            <div class="text-xs font-bold text-dark leading-tight line-clamp-2 font-display">${s.name}</div>
                         </div>
                     `);
                 });
