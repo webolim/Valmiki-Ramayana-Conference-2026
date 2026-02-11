@@ -9,7 +9,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://webolim.org/" />
-    <meta property="og:title" content="WEBOLIM Sri Ramayana Satram 2026" />
+    <meta property="og:title" content="WEBOLIM Srimad Valmiki Ramayana Satram & Conference 2026" />
     <meta property="og:description" content="Join us for the Sri Ramayana Satram & Valmiki Ramayana Conference 2026. A spiritual journey through Recensions, Readings, and Commentaries of Valmiki Ramayana." />
     <meta property="og:image" content="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/social2.jpg" />
 
@@ -521,7 +521,8 @@
 
                 const noiseUrl = "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')";
                 const sectionStyle = `background-image: ${noiseUrl}, ${bgGradient}; background-color: ${SCHEDULE_BG_COLOR};`;
-                const iconSrc = isConference ? ASSETS.timelineConference : ASSETS.timelineSatram;
+                
+                // No icon src needed anymore
 
                 const eventsHtml = day.events.map((event, index) => {
                     // Map video links to include their original index to preserve ID generation logic
@@ -548,17 +549,34 @@
                     const carouselCaption = event.carouselCaption || "Photos from last year";
                     const imagesJson = JSON.stringify(images).replace(/"/g, '&quot;');
 
-                    return `
-                        <div id="event-${event.id}" class="${roundedClass} group relative p-6 md:p-8 flex flex-col md:flex-row gap-1 md:gap-8 bg-white/95 backdrop-blur-xl hover:bg-white transition-colors duration-300">
-                            <div id="event-live-${event.id}" class="hidden absolute top-4 right-4 md:static md:hidden flex items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse z-10"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</div>
-
-                            <!-- Time Column -->
+                    // TIME DISPLAY LOGIC
+                    let timeHtml = '';
+                    if (event.title.toLowerCase().includes('conclusion')) {
+                         timeHtml = `<div class="w-0 h-0 md:w-32 md:h-auto shrink-0"></div>`;
+                    } else if (event.title.toLowerCase().includes('udaali varadaraja')) {
+                         timeHtml = `
+                            <div class="w-full md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-end justify-center md:justify-start gap-2 md:gap-0.5">
+                                <span class="text-sm md:text-xl font-medium md:font-bold text-maroon md:text-maroon/80 leading-tight">${event.startTime}</span>
+                                <div id="event-live-desktop-${event.id}" class="hidden mt-2 items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</div>
+                            </div>
+                        `;
+                    } else {
+                         timeHtml = `
                             <div class="w-full md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-end justify-center md:justify-start gap-2 md:gap-0.5">
                                 <span class="text-sm md:text-xl font-medium md:font-bold text-maroon md:text-maroon/80 leading-tight">${event.startTime}</span>
                                 <span class="md:hidden text-sm text-maroon">-</span>
                                 <span class="text-sm md:text-sm font-medium md:font-normal text-maroon md:text-gray-500 leading-tight">${event.endTime}</span>
                                 <div id="event-live-desktop-${event.id}" class="hidden mt-2 items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</div>
                             </div>
+                        `;
+                    }
+
+                    return `
+                        <div id="event-${event.id}" class="${roundedClass} group relative p-6 md:p-8 flex flex-col md:flex-row gap-1 md:gap-8 bg-white/95 backdrop-blur-xl hover:bg-white transition-colors duration-300">
+                            <div id="event-live-${event.id}" class="hidden absolute top-4 right-4 md:static md:hidden flex items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse z-10"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</div>
+
+                            <!-- Time Column -->
+                            ${timeHtml}
 
                             <!-- Content Column -->
                             <div class="flex-1 min-w-0 flex flex-col gap-2">
@@ -573,20 +591,28 @@
                                 
                                 <!-- Speakers (PRIORITIZED FIRST) -->
                                 ${eventSpeakers.length > 0 ? `
-                                    <div class="flex flex-col gap-6 mt-3 mb-2">
+                                    <div class="${eventSpeakers.length > 1 ? 'grid grid-cols-1 md:grid-cols-2' : 'flex flex-col'} gap-6 mt-3 mb-2">
                                         ${eventSpeakers.map(s => {
                                             const hasBio = event.isConference && s.bio;
                                             const alignClass = hasBio ? 'items-center md:items-start' : 'items-center md:items-center';
                                             
                                             // Find specific links for this speaker
                                             const speakerLinks = allLinks.filter(l => l.speakerId === s.id);
+
+                                            // Logic to hide Dr. Rangan's photo on Pre/Post Conference days
+                                            const isRangan = s.id === 'dr_rangan';
+                                            const isConferenceDay = day.phase === 'Conference';
+                                            const isConclusion = event.title.toLowerCase().includes('conclusion');
+                                            
+                                            // Show photo if NOT Rangan OR if it IS Conference Day, BUT hide if it IS Rangan AND it IS Conclusion
+                                            const showPhoto = (!isRangan || isConferenceDay) && !(isRangan && isConclusion);
                                             
                                             return `
                                             <div class="flex flex-col sm:flex-row ${alignClass} gap-4">
-                                                <img src="${s.photo}" alt="${s.name}" class="w-36 h-36 md:w-40 md:h-40 rounded-xl object-cover border border-gold/30 shadow-sm shrink-0 bg-gray-100">
+                                                ${showPhoto ? `<img src="${s.photo}" alt="${s.name}" class="w-36 h-36 md:w-40 md:h-40 rounded-xl object-cover border border-gold/30 shadow-sm shrink-0 bg-gray-100">` : ''}
                                                 <div class="flex flex-col w-full text-center sm:text-left">
                                                     <p class="font-bold text-maroon text-base md:text-lg leading-tight mb-1">${s.name}</p>
-                                                    ${hasBio ? `<p class="text-sm md:text-base text-gray-700 leading-relaxed text-left">${s.bio}</p>` : ''}
+                                                    ${hasBio ? `<p class="text-sm md:text-base text-gray-700 leading-relaxed text-justify hyphens-auto md:pr-12">${s.bio}</p>` : ''}
                                                     
                                                     <!-- INLINE SPEAKER BUTTONS -->
                                                     ${speakerLinks.length > 0 ? `
@@ -637,9 +663,8 @@
 
                 return `
                     <section id="day-section-${day.dayNumber}" class="py-12 md:py-20 relative transition-colors duration-500" style="${sectionStyle}">
-                        <div class="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
+                        <div class="container mx-auto px-4 md:px-8 max-w-7xl relative z-10">
                             <div class="text-center mb-8 md:mb-12">
-                                <img src="${iconSrc}" class="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 object-contain drop-shadow-md opacity-90" />
                                 <span class="inline-block px-4 py-1 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider mb-3 ${isConference ? 'bg-gold/20 text-maroon' : 'bg-green-800/10 text-deepGreen'} backdrop-blur-sm border border-black/5 shadow-sm">${day.phase}</span>
                                 <h2 class="font-serif text-3xl md:text-5xl text-maroon font-extrabold mb-2 drop-shadow-sm">${day.theme}</h2>
                                 <div class="flex items-center justify-center gap-3 text-gray-800 font-medium text-lg md:text-xl opacity-80">
@@ -875,16 +900,19 @@
                 if (!btn) return;
                 const isActive = day.dayNumber === currentDayId;
                 const isConference = day.phase === 'Conference';
+                const isDay11 = day.dayNumber === 11;
                 const [month, dateStr] = day.displayDate.split(' ');
                 
                 let classes = "flex-shrink-0 flex flex-col items-center justify-center py-2 transition-all duration-300 snap-center cursor-pointer relative ";
                 classes += isConference ? "rounded-lg " : "rounded-full ";
 
                 if (isActive) {
-                    if (isConference) classes += "min-w-[180px] md:min-w-[240px] scale-100 z-10 sheen-bg text-white shadow-xl ";
+                    if (isDay11) classes += "min-w-[220px] md:min-w-[280px] scale-100 z-10 bg-[#1b4d1b] border-2 border-gold text-white shadow-lg ";
+                    else if (isConference) classes += "min-w-[180px] md:min-w-[240px] scale-100 z-10 sheen-bg text-white shadow-xl ";
                     else classes += "min-w-[180px] md:min-w-[180px] scale-100 z-10 bg-[#1b4d1b] border-2 border-gold text-white shadow-lg ";
                 } else {
-                    if (isConference) classes += "min-w-[155px] md:min-w-[185px] scale-90 opacity-80 bg-cream text-maroon hover:shadow-md ";
+                    if (isDay11) classes += "min-w-[180px] md:min-w-[220px] scale-90 opacity-80 bg-white border-2 border-maroon text-gray-500 hover:bg-gray-50 hover:shadow-sm ";
+                    else if (isConference) classes += "min-w-[155px] md:min-w-[185px] scale-90 opacity-80 bg-cream text-maroon hover:shadow-md ";
                     else classes += "min-w-[145px] md:min-w-[155px] scale-90 opacity-80 bg-white border-2 border-maroon text-gray-500 hover:bg-gray-50 hover:shadow-sm ";
                 }
                 btn.className = classes;
