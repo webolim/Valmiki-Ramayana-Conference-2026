@@ -101,7 +101,7 @@
                     Srimad Valmiki Ramayana Conference # 3
                 </h3>
 
-                <div class="flex items-center justify-center gap-4 mt-2 text-[10px] font-bold text-gray-600 uppercase tracking-widest font-display">
+                <div class="flex items-center justify-center gap-4 mt-3 text-sm font-bold text-gray-700 uppercase tracking-widest font-display">
                     <span>Mar 28 – Apr 07, 2026</span>
                     <span class="text-gold">•</span>
                     <span>Srimad Valmiki Ashrama, Bengaluru</span>
@@ -120,11 +120,11 @@
                     <div class="flex gap-4 text-[10px] font-bold uppercase tracking-wide">
                         <div class="flex items-center gap-1.5">
                             <span class="w-3 h-3 rounded-full bg-maroon"></span>
-                            <span class="text-maroon">Pre/Post</span>
+                            <span class="text-maroon">Pre & Post Conference</span>
                         </div>
                         <div class="flex items-center gap-1.5">
                             <span class="w-3 h-3 rounded-full bg-conf"></span>
-                            <span class="text-conf">Conf</span>
+                            <span class="text-conf">Conference</span>
                         </div>
                     </div>
                 </div>
@@ -533,16 +533,22 @@
                 processPhase('Post-Conference', 'post-conf-grid');
 
                 // --- UTSAVA RENDERING ---
-                const day1 = data.schedule.days.find(d => d.dayNumber === 1);
-                if (day1) {
-                    const inauguration = day1.events.find(e => e.title.includes("Inauguration"));
-                    if(inauguration) utsavaEvents.unshift({...inauguration, dayDate: "Mar 28"});
+                // Manually removed Inauguration (Day 1) to balance even numbers (User Request)
+                // Manually adding Pattabhisheka (Day 11) to include finale event
+                
+                const day11 = data.schedule.days.find(d => d.dayNumber === 11);
+                if (day11) {
+                    const pattabhisheka = day11.events.find(e => e.title.includes("Abhishekha"));
+                    if(pattabhisheka) {
+                         utsavaEvents.push({...pattabhisheka, title: "Sri Rama Pattabhishekha", dayDate: "Apr 07"});
+                    }
                 }
 
                 const utsavaContainer = document.getElementById('utsava-grid');
                 
                 utsavaEvents.forEach(e => {
-                    if (e.dayDate.includes("Apr 07") || e.dayDate.includes("April 07")) return;
+                    // Removed the check for Apr 07 to allow the manual Day 11 addition to render
+                    // if (e.dayDate.includes("Apr 07") || e.dayDate.includes("April 07")) return;
 
                     let mediaContent = '';
                     const titleLower = e.title.toLowerCase();
@@ -601,7 +607,7 @@
                             <img src="${s.photo}" class="w-28 h-28 rounded-xl object-cover bg-gray-100 shrink-0 border border-gold/20 shadow-sm">
                             <div>
                                 <div class="text-lg font-bold text-maroon leading-tight mb-2 font-display">${s.name}</div>
-                                <div class="text-sm text-dark leading-relaxed font-sans font-normal text-gray-700">${s.bio}</div>
+                                <div class="text-sm text-dark leading-relaxed font-sans font-normal text-gray-700 text-justify">${s.bio}</div>
                             </div>
                         </div>
                     `);
