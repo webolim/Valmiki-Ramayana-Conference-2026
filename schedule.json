@@ -2416,12 +2416,12 @@
             ],
             "carouselCaption": "Photos from last year",
             "venue": "Ramayana Shala",
-            "speakerIds": ["dr_rangan"],
+            "speakerIds": [],
             "videoLinks": [
               {
                 "url": "https://youtu.be/pattabhishekam",
-                "label": "Watch Pattabhishekam",
-                "speakerId": "dr_rangan"
+                "label": "Watch Abhishekha",
+                "speakerId": ""
               }
             ]
           },
