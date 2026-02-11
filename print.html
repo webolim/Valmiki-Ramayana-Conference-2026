@@ -251,6 +251,23 @@
             </div>
         </div>
 
+        <!-- SPECIAL EVENTS / UTSAVA (Moved Here) -->
+        <section class="mt-4 mb-6 break-inside-avoid">
+            <div class="bg-gradient-to-br from-gold/5 to-white border border-gold/20 py-6 px-6 rounded-2xl">
+                <div class="flex items-end justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <h3 class="font-display font-bold text-2xl text-maroon uppercase tracking-wide">Utsavams and Special Events</h3>
+                    </div>
+                    <span class="text-sm font-bold text-gold uppercase tracking-widest font-display pb-1">Evenings at 7:30</span>
+                </div>
+
+                <!-- 3 Column Grid for Images + 1 Combined Text Card -->
+                <div id="utsava-grid" class="grid grid-cols-3 gap-4 mb-2">
+                    <!-- Injected JS -->
+                </div>
+            </div>
+        </section>
+
         <!-- CONFERENCE SPEAKERS SECTION (Split into Bio & Grid) -->
         <section class="mb-4 break-inside-avoid">
             <div class="py-4">
@@ -279,34 +296,6 @@
                 
                 <div id="other-speakers-grid" class="flex flex-col gap-4">
                     <!-- Injected JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SPECIAL EVENTS / UTSAVA (Moved After Speakers) -->
-        <section class="mb-6 break-inside-avoid">
-            <div class="bg-gradient-to-br from-gold/5 to-white border border-gold/20 py-6 px-6 rounded-2xl">
-                <div class="flex items-end justify-between mb-6">
-                    <div class="flex items-center gap-3">
-                        <h3 class="font-display font-bold text-2xl text-maroon uppercase tracking-wide">Utsavams and Special Events</h3>
-                    </div>
-                    <span class="text-sm font-bold text-gold uppercase tracking-widest font-display pb-1">Evenings at 7:30</span>
-                </div>
-
-                <!-- 2 Column Grid for Images (Reordered to be first) -->
-                <div id="utsava-grid" class="grid grid-cols-2 gap-8 mb-8">
-                    <!-- Injected JS -->
-                </div>
-
-                <!-- New This Year Section (Reordered to be last) -->
-                <div id="new-utsava-section" class="hidden">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
-                        <h4 class="font-bold text-gold text-sm font-display uppercase tracking-widest">New This Year</h4>
-                    </div>
-                    <div id="new-utsava-grid" class="flex flex-wrap gap-4">
-                        <!-- Injected JS -->
-                    </div>
                 </div>
             </div>
         </section>
@@ -555,9 +544,9 @@
                     }
                 }
 
-                const newEventsContainer = document.getElementById('new-utsava-grid');
-                const newEventsSection = document.getElementById('new-utsava-section');
                 const utsavaContainer = document.getElementById('utsava-grid');
+                const visualEvents = [];
+                const textOnlyEvents = [];
                 
                 utsavaEvents.forEach(e => {
                     // Skip April 07 events from Utsava grid
@@ -565,19 +554,17 @@
                     if (e.title.includes("Pattabhishekha")) return; // Explicitly remove Pattabhishekha
 
                     const titleLower = e.title.toLowerCase();
-                    // Check for Theppam or Gaja Vahanam (Sundarakanda Utsava) - Render as text only card
+                    // Identify text-only events
                     if (titleLower.includes('theppam') || titleLower.includes('gaja vahanam') || titleLower.includes('sundarakanda utsava')) {
-                        newEventsSection.classList.remove('hidden');
-                        newEventsContainer.insertAdjacentHTML('beforeend', `
-                             <div class="bg-gold/10 border border-gold/30 rounded-lg p-4 flex-1 min-w-[200px] flex items-center justify-between shadow-sm">
-                                <span class="font-bold text-maroon text-lg font-display">${e.title}</span>
-                                <span class="text-xs font-bold uppercase tracking-wider bg-white px-3 py-1.5 rounded text-gold border border-gold/20 shadow-sm">${e.dayDate}</span>
-                            </div>
-                        `);
-                        return;
+                        textOnlyEvents.push(e);
+                    } else {
+                        visualEvents.push(e);
                     }
+                });
 
-                    let mediaContent = '';
+                visualEvents.forEach(e => {
+                     const titleLower = e.title.toLowerCase();
+                     let mediaContent = '';
 
                     // Prioritize Custom Mapped Images
                     let customImage = null;
@@ -591,7 +578,6 @@
                     if (customImage) {
                         mediaContent = `<img src="${customImage}" class="w-full h-full object-cover">`;
                     }
-                    // Prioritize Event Images
                     else if (e.eventImages && e.eventImages.length > 0) {
                          mediaContent = `<img src="${e.eventImages[0]}" class="w-full h-full object-cover">`;
                     } 
@@ -604,7 +590,7 @@
                     
                     utsavaContainer.insertAdjacentHTML('beforeend', `
                         <div class="flex flex-col gap-2 break-inside-avoid">
-                            <div class="w-full aspect-[21/9] rounded-xl overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center shadow-sm relative">
+                            <div class="w-full aspect-[16/9] rounded-xl overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center shadow-sm relative">
                                 ${mediaContent}
                             </div>
                             <div class="flex flex-col px-1">
@@ -614,6 +600,29 @@
                         </div>
                     `);
                 });
+
+                // Render Combined Text Card (9th spot)
+                if (textOnlyEvents.length > 0) {
+                     utsavaContainer.insertAdjacentHTML('beforeend', `
+                        <div class="flex flex-col gap-2 break-inside-avoid">
+                           <div class="w-full aspect-[16/9] rounded-xl overflow-hidden border border-gold/40 bg-gold/5 flex flex-col items-center justify-center shadow-sm relative p-2 gap-2">
+                               ${textOnlyEvents.map(e => `
+                                   <div class="text-center">
+                                       <div class="font-bold text-maroon text-xs font-display leading-tight">${e.title.replace('Sundarakanda Utsava (Gaja Vahanam)', 'Gaja Vahanam')}</div>
+                                       <div class="text-[9px] font-bold text-gray-500 uppercase tracking-wider">${e.dayDate}</div>
+                                   </div>
+                               `).join('<div class="w-16 h-px bg-gold/30"></div>')}
+                               <div class="absolute top-1 right-1">
+                                   <span class="w-2 h-2 rounded-full bg-gold animate-pulse block"></span>
+                               </div>
+                           </div>
+                           <div class="flex flex-col px-1">
+                                <span class="font-bold text-maroon text-lg font-display leading-tight">Special Events</span>
+                                <span class="text-gray-500 text-[10px] font-bold uppercase tracking-wider mt-1">New This Year</span>
+                           </div>
+                       </div>
+                    `);
+                }
 
                 // --- CONFERENCE SPEAKERS RENDERING ---
                 const confBioContainer = document.getElementById('conference-speakers-bio-grid');
