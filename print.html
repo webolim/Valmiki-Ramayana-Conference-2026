@@ -501,6 +501,9 @@
                             } else if (e.title.toLowerCase().includes('conclusion')) {
                                 timeDisplay = '';
                             }
+                            
+                            // Added whitespace-nowrap specifically for Pre-Conference events to prevent wrapping
+                            const speakerClass = isPreConference ? 'whitespace-nowrap' : '';
 
                             return `
                                 <div class="flex ${gap} border-b border-gray-100 last:border-0 ${rowPadding} items-start">
@@ -511,7 +514,7 @@
                                         <span class="font-bold text-maroon font-display text-base block leading-tight">${e.title}</span>
                                         ${e.subhead ? `<div class="text-gray-500 font-medium normal-case font-sans mt-0.5">${e.subhead}</div>` : ''}
                                     </div>
-                                    <div class="shrink-0 text-[11px] text-right font-medium text-black leading-tight font-sans pt-1">
+                                    <div class="shrink-0 text-[11px] text-right font-medium text-black leading-tight font-sans pt-1 ${speakerClass}">
                                         ${speakerNames}
                                     </div>
                                 </div>
