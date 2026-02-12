@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&family=Roboto+Condensed:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -25,6 +25,7 @@
               sans: ['"Inter"', 'sans-serif'],
               display: ['"Montserrat"', 'sans-serif'],
               serif: ['"Merriweather"', 'serif'],
+              condensed: ['"Roboto Condensed"', 'sans-serif'],
             },
             screens: {
                 'print': {'raw': 'print'},
@@ -344,7 +345,7 @@
                                 <p>IFSC: <span class="font-bold">CIUB0000583</span></p>
                              </div>
                         </div>
-                        <p class="text-[8px] text-gray-500 italic mt-0.5">All donations to WEBOLIM Trust are eligible for tax exemption under Section 80G.</p>
+                        <p class="text-[8px] text-gray-500 italic mt-0.5 font-condensed">All donations to WEBOLIM Trust are eligible for tax exemption under Section 80G.</p>
                     </div>
                     
                     <a href="upi://pay?pa=qr919443887456-9830@unionbankofindia&pn=WEBOLIM%20TRUST&cu=INR" class="block w-20 h-20 bg-white p-1 rounded border border-gray-200 shrink-0 shadow-sm">
@@ -534,9 +535,10 @@
                             
                             // Added whitespace-nowrap specifically for Pre-Conference events to prevent wrapping
                             const speakerClass = isPreConference ? 'whitespace-nowrap' : '';
-                     
+                            
                             // Increase font size for Conference speakers (11px -> 13px)
                             const speakerFontClass = isConference ? 'text-[13px]' : 'text-[11px]';
+
                             return `
                                 <div class="flex ${gap} border-b border-gray-100 last:border-0 ${rowPadding} items-start">
                                     <div class="${timeWidth} shrink-0 text-right text-[10px] font-bold text-gold whitespace-nowrap font-display pt-1">
