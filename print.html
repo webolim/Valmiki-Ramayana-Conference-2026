@@ -301,21 +301,45 @@
         </section>
 
         <!-- FOOTER -->
-        <footer class="pt-8 border-t border-gray-200 flex flex-col items-center justify-center gap-8 mt-auto text-gray-600 break-inside-avoid pb-0">
-            <img id="print-footer-logo" class="h-[5.4rem] object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
-            <div class="flex flex-nowrap items-center gap-8 text-xs font-bold uppercase tracking-wide font-display">
-                <div class="flex items-center gap-1.5">
-                    <i data-lucide="phone" class="w-4 h-4 text-gold"></i>
-                    <span>+91 93696 37283</span>
+        <footer class="pt-4 border-t border-gray-200 mt-auto break-inside-avoid pb-0">
+            <div class="flex items-center justify-between">
+                
+                <!-- Left: Logo & Contact -->
+                <div class="flex items-center gap-6">
+                    <img id="print-footer-logo" class="h-16 object-contain cursor-pointer hover:opacity-80 transition-opacity" title="Click for Print Options" onclick="toggleMenu()" />
+                    
+                    <div class="flex flex-col gap-1.5 text-[10px] font-bold uppercase tracking-wide font-display text-gray-600">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-3 h-3 text-gold"></i>
+                            <span>+91 93696 37283</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-3 h-3 text-gold"></i>
+                            <span>webolimclasses@gmail.com</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="globe" class="w-3 h-3 text-gold"></i>
+                            <span>www.webolim.org</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center gap-1.5">
-                    <i data-lucide="mail" class="w-4 h-4 text-gold"></i>
-                    <span>webolimclasses@gmail.com</span>
+
+                <!-- Right: Donation -->
+                <div class="flex items-center gap-4 bg-gray-50/80 rounded-lg px-4 py-2 border border-gray-100">
+                    <div class="text-right flex flex-col justify-center">
+                        <h4 class="text-[10px] font-bold text-violet uppercase tracking-wider mb-0.5">Donations (80G Exempt)</h4>
+                        <div class="text-[9px] font-mono text-gray-700 leading-tight">
+                            <p>Union Bank of India</p>
+                            <p>Acct: <span class="font-bold text-black">520101257799830</span></p>
+                            <p>IFSC: <span class="font-bold text-black">UBIN0912883</span></p>
+                        </div>
+                    </div>
+                    
+                    <a href="upi://pay?pa=qr919443887456-9830@unionbankofindia&pn=WEBOLIM%20TRUST&cu=INR" class="block w-14 h-14 bg-white p-1 rounded border border-gray-200 shrink-0 shadow-sm">
+                        <img src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/QR.png" class="w-full h-full object-contain" alt="UPI QR">
+                    </a>
                 </div>
-                <div class="flex items-center gap-1.5">
-                    <i data-lucide="globe" class="w-4 h-4 text-gold"></i>
-                    <span>www.webolim.org</span>
-                </div>
+
             </div>
         </footer>
 
