@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #856404;
+  --color-dark: #1f2937;
+  --color-light: #f5f5f5;
+  --color-violet: #9a1750;
+  --color-conf: #B8860B;
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-serif: "Merriweather", serif;
+  --font-condensed: "Roboto Condensed", sans-serif;
+}
