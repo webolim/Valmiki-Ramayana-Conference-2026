@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "./print.html";
 
 @theme {
   --color-gold: #856404;
