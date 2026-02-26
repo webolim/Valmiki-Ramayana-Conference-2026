@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
-export default defineConfig({
-  base: '/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/Valmiki-Ramayana-Conference-2026/' : '/',
   build: {
     rollupOptions: {
       input: {
@@ -14,4 +14,4 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
-})
+}))
