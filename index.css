@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "./index.html";
 
 @theme {
   --color-maroon: #800000;
