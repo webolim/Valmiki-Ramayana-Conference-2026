@@ -9,9 +9,6 @@ export default defineConfig(({ mode }) => ({
         main: 'index.html',
         print: 'print.html',
       },
-      output: {
-        assetFileNames: '[name].[ext]',
-      },
     },
   },
   plugins: [
