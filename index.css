@@ -1,5 +1,4 @@
-@import "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css";
-@source "./index.html";
+@import "tailwindcss";
 
 @theme {
   --color-maroon: #800000;
