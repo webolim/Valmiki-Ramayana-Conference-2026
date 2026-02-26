@@ -218,12 +218,12 @@
         </button>
         
         <!-- Left Arrow -->
-        <button onclick="changeGalleryImage(-1)" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/90 hover:text-white bg-black/20 hover:bg-black/50 rounded-full p-4 pointer-events-auto transition-all hidden md:block backdrop-blur-sm z-[100]">
+        <button onclick="changeGalleryImage(-1)" class="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white/90 hover:text-white bg-black/20 hover:bg-black/50 rounded-full p-2 md:p-4 pointer-events-auto transition-all backdrop-blur-sm z-[100]">
             <i data-lucide="chevron-left" class="w-8 h-8 md:w-10 md:h-10"></i>
         </button>
 
         <!-- Right Arrow -->
-        <button onclick="changeGalleryImage(1)" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/90 hover:text-white bg-black/20 hover:bg-black/50 rounded-full p-4 pointer-events-auto transition-all hidden md:block backdrop-blur-sm z-[100]">
+        <button onclick="changeGalleryImage(1)" class="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-white/90 hover:text-white bg-black/20 hover:bg-black/50 rounded-full p-2 md:p-4 pointer-events-auto transition-all backdrop-blur-sm z-[100]">
             <i data-lucide="chevron-right" class="w-8 h-8 md:w-10 md:h-10"></i>
         </button>
 
@@ -732,6 +732,7 @@
             const modal = document.getElementById('image-modal');
             modal.classList.remove('hidden');
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            if(window.lucide) lucide.createIcons();
         }
 
         window.closeModal = function() {
