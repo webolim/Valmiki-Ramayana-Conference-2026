@@ -158,6 +158,47 @@
       #sticky-fab.expanded { max-width: 20rem; }
       #sticky-fab span { opacity: 0; padding-right: 0; transition: opacity 0.3s ease-in-out, padding 0.3s ease-in-out; }
       #sticky-fab.expanded span { opacity: 1; padding-right: 1.5rem; }
+
+      /* --- SOUTH INDIAN ART PATTERNS --- */
+
+      /* Thoranam (Mango Leaf) Divider */
+      .thoranam-divider {
+        height: 48px;
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        z-index: 50;
+        pointer-events: none;
+      }
+      
+      .thoranam-unit {
+        width: 24px;
+        height: 48px;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='120' viewBox='0 0 60 120' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Main String --%3E%3Cpath d='M0 2 H60' stroke='%23C2A278' stroke-width='2'/%3E%3C!-- Mango Leaf (Pointy) --%3E%3Cpath d='M30 15 C 10 15, 5 60, 30 100 C 55 60, 50 15, 30 15' fill='%232E8B57' stroke='%231a5c38' stroke-width='1'/%3E%3Cpath d='M30 15 C 30 60, 30 100' stroke='%2366CDAA' stroke-width='1' fill='none' opacity='0.5'/%3E%3C!-- Marigold Flower --%3E%3Cg%3E%3Ccircle cx='30' cy='15' r='15' fill='%23FF8C00' /%3E%3Ccircle cx='30' cy='15' r='15' fill='none' stroke='%23FFA500' stroke-width='4' stroke-dasharray='4,2' /%3E%3Ccircle cx='30' cy='15' r='10' fill='none' stroke='%23FFD700' stroke-width='3' stroke-dasharray='3,2' /%3E%3Ccircle cx='30' cy='15' r='5' fill='%238B4500' opacity='0.6' /%3E%3C/g%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        transform-origin: top center;
+        flex-shrink: 0;
+        animation: sway ease-in-out infinite alternate;
+      }
+
+      @keyframes sway {
+        0% { transform: rotate(-5deg); }
+        100% { transform: rotate(5deg); }
+      }
+
+      /* Explicit Desktop Overrides for Dev Environment */
+      @media (min-width: 768px) {
+        .desktop-row { flex-direction: row !important; }
+        .desktop-col { flex-direction: column !important; }
+        .desktop-text-left { text-align: left !important; }
+        .desktop-items-start { align-items: flex-start !important; }
+        .desktop-items-end { align-items: flex-end !important; }
+        .desktop-justify-start { justify-content: flex-start !important; }
+        .desktop-w-32 { width: 8rem !important; }
+        .desktop-gap-8 { gap: 2rem !important; }
+        .desktop-justify-between { justify-content: space-between !important; }
+      }
     </style>
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased">
@@ -238,7 +279,7 @@
     <main class="min-h-screen flex flex-col font-sans bg-cream relative">
         
         <!-- HERO SECTION -->
-        <div id="hero" class="hero-glitter-bg relative w-full overflow-hidden text-gold min-h-[500px] md:min-h-screen lg:min-h-[700px] flex flex-col lg:flex-row items-center justify-center pt-12 pb-10 md:pt-8 md:pb-20 lg:pt-24 lg:pb-32 px-4 lg:px-16 gap-4 lg:gap-6">
+        <div id="hero" class="hero-glitter-bg relative w-full overflow-hidden text-gold min-h-[500px] md:min-h-screen lg:min-h-[700px] flex flex-col lg:flex-row desktop-row items-center justify-center pt-12 pb-10 md:pt-8 md:pb-20 lg:pt-24 lg:pb-32 px-4 lg:px-16 gap-4 lg:gap-6">
             
             <!-- Hero Left -->
             <div class="relative z-10 w-full lg:w-1/2 flex justify-center items-center order-1 lg:order-1">
@@ -255,7 +296,7 @@
             </div>
 
              <!-- Hero Right: Content -->
-            <div class="relative z-10 w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left gap-3 md:gap-6 order-2 lg:order-2">
+            <div class="relative z-10 w-full lg:w-1/2 flex flex-col items-center lg:items-start desktop-items-start text-center lg:text-left desktop-text-left gap-3 md:gap-6 order-2 lg:order-2">
                 <div class="space-y-2 md:space-y-4 w-full">
                     <p class="font-serif font-bold text-cream text-xs md:text-sm tracking-[0.3em] uppercase drop-shadow-md mb-2 opacity-90">Webolim Presents</p>
                     <h1 class="font-serif font-extrabold text-4xl md:text-7xl lg:text-6xl xl:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-100 to-gold leading-none drop-shadow-sm pb-1">
@@ -264,10 +305,10 @@
                     <h2 class="font-serif font-bold text-2xl md:text-4xl lg:text-3xl text-cream/90 leading-snug drop-shadow-sm mt-1">
                         Sri Ramayana Satram <br> Srimad Valmiki Ramayana Conference - 3
                     </h2>
-                    <div id="hero-countdown" class="flex flex-col items-center lg:items-start w-full my-3"></div>
+                    <div id="hero-countdown" class="flex flex-col items-center lg:items-start desktop-items-start w-full my-3"></div>
                     <p class="font-sans text-cream text-base md:text-xl lg:text-2xl max-w-4xl lg:max-w-none font-medium leading-relaxed drop-shadow px-2 md:whitespace-nowrap lg:whitespace-normal opacity-95">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
                 </div>
-                <div class="flex flex-row gap-1 md:gap-2 mt-5 md:mt-8 w-full max-w-full lg:max-w-xl px-0 mb-2 justify-between lg:justify-start items-stretch">
+                <div class="flex flex-row gap-1 md:gap-2 mt-5 md:mt-8 w-full max-w-full lg:max-w-xl px-0 mb-2 justify-between lg:justify-start desktop-justify-start items-stretch">
                     <div onclick="setDay(1)" class="flex-1 border border-gold/20 p-2 md:p-3 rounded-[2rem] flex flex-col items-center justify-center shadow-sm hover:shadow-md hover:bg-white/5 cursor-pointer transition-all duration-300 group hover:-translate-y-1 scale-95 opacity-90">
                         <span class="text-gold/80 font-bold text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest mb-1 group-hover:text-gold transition-colors text-center">Pre-Conference</span>
                         <span class="text-cream text-xs sm:text-sm md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Mar 28 – Apr 3</span>
@@ -283,8 +324,8 @@
                         <span class="text-cream text-xs sm:text-sm md:text-xl font-serif font-bold tracking-tight whitespace-nowrap">Apr 6 – 7</span>
                     </div>
                 </div>
-                <div class="flex flex-col gap-5 w-full items-center lg:items-start z-20 px-4 lg:px-0 mt-3">
-                    <a id="hero-location-trigger" href="https://maps.app.goo.gl/x5cT4fMKbuzQKkBJ8" target="_blank" class="group relative flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-1 lg:gap-2 text-cream hover:text-gold transition-all text-center">
+                <div class="flex flex-col gap-5 w-full items-center lg:items-start desktop-items-start z-20 px-4 lg:px-0 mt-3">
+                    <a id="hero-location-trigger" href="https://maps.app.goo.gl/x5cT4fMKbuzQKkBJ8" target="_blank" class="group relative flex flex-col lg:flex-row desktop-row items-center justify-center lg:justify-start desktop-justify-start gap-1 lg:gap-2 text-cream hover:text-gold transition-all text-center">
                         <i data-lucide="map-pin" class="w-5 h-5 text-gold group-hover:animate-bounce mb-1 lg:mb-0"></i>
                         <span class="text-base md:text-lg font-medium tracking-wide border-b border-transparent group-hover:border-gold">Srimad Valmiki Ashrama, Ragihalli, Bengaluru</span>
                     </a>
@@ -297,12 +338,15 @@
 
         <!-- STICKY HEADER & STEPPER -->
         <div id="sticky-header" class="sticky top-0 z-40 bg-gold/95 backdrop-blur-md border-b border-gold/30 shadow-md transition-all duration-300">
+            <!-- Thoranam Decoration -->
+            <div class="thoranam-divider absolute top-full left-0 right-0 z-50 pointer-events-none"></div>
+            
             <div id="sticky-brand" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="overflow-hidden transition-all duration-500 ease-in-out bg-maroon border-b border-gold/20 max-h-0 opacity-0 cursor-pointer">
                 <div class="w-full px-4 py-4 flex items-center justify-between">
                     <div class="flex items-center gap-2 md:gap-4 overflow-hidden w-full md:w-auto">
-                        <img id="sticky-logo" src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/WEBOLIM_RGBLogo_20250521.gif" class="h-10 md:h-12 w-auto object-contain flex-shrink-0" />
+                        <img id="sticky-logo" src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/WEBOLIM_RGBLogo_20250521.gif" class="h-10 md:h-12 w-auto object-contain flex-shrink-0" style="height: 48px; width: auto;" />
                         <div class="flex flex-col md:flex-row md:items-baseline md:gap-2 overflow-hidden">
-                            <span class="font-serif font-extrabold text-gold text-base md:text-2xl leading-tight drop-shadow-sm whitespace-nowrap truncate">Sri Rama Navami Utsavam - 2026</span>
+                            <span class="font-serif font-extrabold text-gold text-base md:text-2xl leading-tight drop-shadow-sm">Sri Rama Navami<span class="hidden md:inline"> -</span><br class="md:hidden">Utsavam – 2026</span>
                         </div>
                     </div>
                     <button onclick="event.stopPropagation(); toggleMobileMenu(true)" class="text-gold p-2 hover:bg-white/10 rounded-full transition-colors flex-shrink-0 ml-2">
@@ -436,13 +480,13 @@
 
         <!-- FOOTER -->
         <footer id="contact" class="bg-charcoal text-cream py-16 scroll-mt-48 border-t-4 border-maroon">
-            <div class="container mx-auto px-6 md:px-8 flex flex-col lg:flex-row justify-between items-center gap-10">
+            <div class="container mx-auto px-6 md:px-8 flex flex-col lg:flex-row desktop-row justify-between desktop-justify-between items-center gap-10">
                 <div class="flex items-center justify-center">
                     <a href="print.html" target="_blank" title="View Printable Schedule">
-                        <img id="footer-logo" src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/WEBOLIM_RGBLogo_20250521.gif" class="h-48 md:h-48" />
+                        <img id="footer-logo" src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/WEBOLIM_RGBLogo_20250521.gif" class="h-32 md:h-32" style="height: 142px; width: auto;" />
                     </a>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 md:gap-12 text-base md:text-lg text-center md:text-left font-medium">
+                <div class="flex flex-col md:flex-row desktop-row gap-6 md:gap-12 text-base md:text-lg text-center md:text-left font-medium">
                     <a href="tel:+919369637283" class="flex items-center justify-center gap-3 hover:text-gold transition-colors text-cream"><i data-lucide="phone" class="w-5 h-5 text-gold"></i> <span>+91 93696 37283</span></a>
                     <a href="mailto:webolimclasses@gmail.com" class="flex items-center justify-center gap-3 hover:text-gold transition-colors text-cream"><i data-lucide="mail" class="w-5 h-5 text-gold"></i> <span>webolimclasses@gmail.com</span></a>
                     <a href="https://webolim.org" target="_blank" class="flex items-center justify-center gap-3 hover:text-gold transition-colors text-cream"><i data-lucide="globe" class="w-5 h-5 text-gold"></i> <span>webolim.org</span></a>
@@ -548,6 +592,27 @@
             });
         }
         
+        function initToran() {
+            const dividers = document.querySelectorAll('.thoranam-divider');
+            dividers.forEach(divider => {
+                divider.innerHTML = ''; // Clear existing
+                const width = window.innerWidth;
+                const unitWidth = 24;
+                const count = Math.ceil(width / unitWidth);
+                
+                for(let i=0; i<count; i++) {
+                    const el = document.createElement('div');
+                    el.className = 'thoranam-unit';
+                    // Randomize animation
+                    const duration = 2 + Math.random() * 2; // 2s to 4s
+                    const delay = Math.random() * -5; // negative delay to start mid-animation
+                    el.style.animationDuration = `${duration}s`;
+                    el.style.animationDelay = `${delay}s`;
+                    divider.appendChild(el);
+                }
+            });
+        }
+
         function renderAllDays() {
             const container = document.getElementById('schedule-container');
             if(!container) return;
@@ -592,17 +657,17 @@
                     // TIME DISPLAY LOGIC
                     let timeHtml = '';
                     if (event.title.toLowerCase().includes('conclusion')) {
-                         timeHtml = `<div class="w-0 h-0 md:w-32 md:h-auto shrink-0"></div>`;
+                         timeHtml = `<div class="w-0 h-0 md:w-32 desktop-w-32 md:h-auto shrink-0"></div>`;
                     } else if (event.title.toLowerCase().includes('udaali varadaraja')) {
                          timeHtml = `
-                            <div class="w-full md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-end justify-center md:justify-start gap-2 md:gap-0.5">
+                            <div class="w-full md:w-32 desktop-w-32 shrink-0 flex flex-row md:flex-col desktop-col items-center md:items-end desktop-items-end justify-center md:justify-start desktop-justify-start gap-2 md:gap-0.5">
                                 <span class="text-sm md:text-xl font-medium md:font-bold text-maroon md:text-maroon/80 leading-tight">${event.startTime}</span>
                                 <div id="event-live-desktop-${event.id}" class="hidden mt-2 items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</div>
                             </div>
                         `;
                     } else {
                          timeHtml = `
-                            <div class="w-full md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-end justify-center md:justify-start gap-2 md:gap-0.5">
+                            <div class="w-full md:w-32 desktop-w-32 shrink-0 flex flex-row md:flex-col desktop-col items-center md:items-end desktop-items-end justify-center md:justify-start desktop-justify-start gap-2 md:gap-0.5">
                                 <span class="text-sm md:text-xl font-medium md:font-bold text-maroon md:text-maroon/80 leading-tight">${event.startTime}</span>
                                 <span class="md:hidden text-sm text-maroon">-</span>
                                 <span class="text-sm md:text-sm font-medium md:font-normal text-maroon md:text-gray-500 leading-tight">${event.endTime}</span>
@@ -612,7 +677,7 @@
                     }
 
                     return `
-                        <div id="event-${event.id}" class="${roundedClass} group relative p-6 md:p-8 flex flex-col md:flex-row gap-1 md:gap-8 bg-white/95 backdrop-blur-xl hover:bg-white transition-colors duration-300">
+                        <div id="event-${event.id}" class="${roundedClass} group relative p-6 md:p-8 flex flex-col md:flex-row desktop-row gap-1 md:gap-8 desktop-gap-8 bg-white/95 backdrop-blur-xl hover:bg-white transition-colors duration-300 overflow-hidden">
                             <div id="event-live-${event.id}" class="hidden absolute top-4 right-4 md:static md:hidden flex items-center gap-1 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse z-10"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> LIVE</div>
 
                             <!-- Time Column -->
@@ -620,13 +685,13 @@
 
                             <!-- Content Column -->
                             <div class="flex-1 min-w-0 flex flex-col gap-2">
-                                <div class="text-center md:text-left">
+                                <div class="text-center md:text-left desktop-text-left">
                                     <h3 class="text-2xl md:text-[25px] font-serif font-bold text-gray-900 leading-tight mb-1 group-hover:text-gold transition-colors">
                                         ${event.title}${event.isNew ? `
                                         <span class="ml-2 inline-flex items-center px-2.5 py-1 rounded text-[10px] md:text-xs font-sans font-bold tracking-wider text-white bg-maroon uppercase align-middle -translate-y-0.5 shadow-sm">New</span>` : ''}
                                     </h3>
                                     ${event.subhead ? `<p class="text-base md:text-lg text-maroon/80 font-serif italic mb-2 leading-relaxed">${event.subhead}</p>` : ''}
-                                    ${showVenue ? `<div class="flex items-center justify-center md:justify-start gap-2 text-xs md:text-sm font-medium text-gray-500"><i data-lucide="map-pin" class="w-3 h-3 md:w-4 md:h-4 text-gold"></i> ${event.venue}</div>` : ''}
+                                    ${showVenue ? `<div class="flex items-center justify-center md:justify-start desktop-justify-start gap-2 text-xs md:text-sm font-medium text-gray-500"><i data-lucide="map-pin" class="w-3 h-3 md:w-4 md:h-4 text-gold"></i> ${event.venue}</div>` : ''}
                                 </div>
                                 
                                 <!-- Speakers (PRIORITIZED FIRST) -->
@@ -634,7 +699,7 @@
                                     <div class="${eventSpeakers.length > 1 ? 'grid grid-cols-1 lg:grid-cols-2' : 'flex flex-col'} gap-6 mt-3 mb-2">
                                         ${eventSpeakers.map(s => {
                                             const hasBio = event.isConference && s.bio;
-                                            const alignClass = hasBio ? 'items-center md:items-start' : 'items-center md:items-center';
+                                            const alignClass = hasBio ? 'items-center md:items-start desktop-items-start' : 'items-center md:items-center';
                                             
                                             // Find specific links for this speaker
                                             const speakerLinks = allLinks.filter(l => l.speakerId === s.id);
@@ -648,15 +713,15 @@
                                             const showPhoto = (!isRangan || isConferenceDay) && !(isRangan && isConclusion);
                                             
                                             return `
-                                            <div class="flex flex-col sm:flex-row ${alignClass} gap-4">
+                                            <div class="flex flex-col sm:flex-row desktop-row ${alignClass} gap-4">
                                                 ${showPhoto ? `<img src="${s.photo}" alt="${s.name}" class="w-36 h-36 md:w-40 md:h-40 rounded-xl object-cover border border-gold/30 shadow-sm shrink-0 bg-gray-100">` : ''}
-                                                <div class="flex flex-col w-full text-center sm:text-left">
+                                                <div class="flex flex-col w-full text-center sm:text-left desktop-text-left">
                                                     <p class="font-bold text-maroon text-base md:text-lg leading-tight mb-1">${s.name}</p>
                                                     ${hasBio ? `<p class="text-sm md:text-base text-gray-700 leading-relaxed text-justify hyphens-auto md:pr-12">${s.bio}</p>` : ''}
                                                     
                                                     <!-- INLINE SPEAKER BUTTONS -->
                                                     ${speakerLinks.length > 0 ? `
-                                                        <div class="mt-2 flex flex-wrap gap-2 justify-center sm:justify-start">
+                                                        <div class="mt-2 flex flex-wrap gap-2 justify-center sm:justify-start desktop-justify-start">
                                                             ${speakerLinks.map(video => `
                                                                 <a id="event-btn-${event.id}-${video.idx}" href="${video.url}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-xs transition-all shadow-sm bg-gray-100 text-gray-600 hover:bg-gold hover:text-maroon hover:shadow-md">
                                                                     <i data-lucide="youtube" class="w-3 h-3"></i> ${video.label}
@@ -673,7 +738,7 @@
 
                                 <!-- General Bottom Buttons -->
                                 ${hasGeneralVideos ? `
-                                    <div class="mt-2 flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
+                                    <div class="mt-2 flex flex-wrap gap-2 mb-4 justify-center md:justify-start desktop-justify-start">
                                         ${generalLinks.map(video => `
                                             <a id="event-btn-${event.id}-${video.idx}" href="${video.url}" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-sm bg-gray-100 text-gray-600 hover:bg-gold hover:text-maroon hover:shadow-md">
                                                 <i data-lucide="youtube" class="w-4 h-4"></i> ${video.label}
@@ -690,7 +755,7 @@
                                         <div class="absolute right-0 top-0 bottom-0 w-8 z-10 bg-gradient-to-l from-white/90 to-transparent pointer-events-none"></div>
                                         <div class="flex animate-marquee gap-4 py-3 px-3">
                                             ${[...images, ...images].map((img, i) => `
-                                                <img src="${img}" onclick="openGallery(${imagesJson}, ${i % images.length})" class="h-40 md:h-56 w-auto object-cover rounded-lg border border-gold/10 shadow-sm shrink-0 cursor-pointer hover:scale-105 transition-transform duration-300">
+                                                <img src="${img}" onclick="openGallery(${imagesJson}, ${i % images.length})" class="h-40 md:h-56 w-auto object-cover rounded-lg border border-gold/10 shadow-sm shrink-0 cursor-pointer hover:scale-105 transition-transform duration-300" style="height: 160px; width: auto;">
                                             `).join('')}
                                         </div>
                                     </div>
@@ -1071,6 +1136,7 @@
 
                 renderAllDays();
                 initDayStepper();
+                initToran(); // Initialize Toran
                 renderCountdown();
                 updateLiveStatus();
 
@@ -1089,7 +1155,13 @@
                 SCHEDULE_DATA.days.forEach(d => { const el = document.getElementById(`day-section-${d.dayNumber}`); if(el) observer.observe(el); });
 
                 const stepperContainer = document.getElementById('day-stepper-container');
-                if(stepperContainer) { stepperContainer.addEventListener('scroll', updateStepperArrows); window.addEventListener('resize', updateStepperArrows); }
+                if(stepperContainer) { 
+                    stepperContainer.addEventListener('scroll', updateStepperArrows); 
+                    window.addEventListener('resize', () => {
+                        updateStepperArrows();
+                        initToran(); // Re-init Toran on resize
+                    }); 
+                }
 
                 const stickyObserver = new IntersectionObserver(([entry]) => {
                     const brand = document.getElementById('sticky-brand');
