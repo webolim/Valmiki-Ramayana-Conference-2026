@@ -1,4 +1,3 @@
-import './index.css';
 import { createIcons, Menu, X, ChevronLeft, ChevronRight, MapPin, CircleCheck, Phone, Mail, Globe, Copy, CheckCircle, QrCode } from 'lucide';
 
 // Initialize Lucide icons
