@@ -37,6 +37,12 @@
 </head>
 <body class="bg-white min-h-screen font-print-sans">
 
+    <!-- Debug Message: Visible only if Tailwind fails to load -->
+    <!-- This div has inline styles to ensure visibility without Tailwind. The 'hidden' class (from Tailwind) will hide it if CSS loads. -->
+    <div style="background-color: #fee2e2; border: 1px solid #ef4444; color: #b91c1c; padding: 1rem; text-align: center; margin-bottom: 1rem;" class="hidden no-print">
+        <strong>System Check:</strong> If you can see this red box, Tailwind CSS is <u>NOT</u> loaded properly.
+    </div>
+
     <!-- Print Menu -->
     <div id="secret-menu" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center no-print backdrop-blur-sm" onclick="toggleMenu()">
         <div class="bg-white p-8 rounded-2xl shadow-2xl flex flex-col items-center gap-6" onclick="event.stopPropagation()">
