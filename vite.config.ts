@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig(({ mode }) => ({
   base: './',
@@ -11,7 +10,5 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  plugins: [
-    tailwindcss(),
-  ],
+  plugins: [],
 }))
