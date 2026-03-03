@@ -717,6 +717,31 @@
 
             } catch (e) {
                 console.error(e);
+                document.body.innerHTML = `
+                    <div class="flex items-center justify-center min-h-screen bg-gray-50 p-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md text-center border-2 border-red-100">
+                             <div class="text-red-500 mb-4 flex justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800 mb-2">Unable to Load Print View</h2>
+                            <p class="text-gray-600 mb-6">We encountered an issue while loading the schedule data.</p>
+                            
+                            <div class="bg-red-50 p-3 rounded-lg mb-6 text-left">
+                                <p class="text-xs font-bold text-red-800 uppercase tracking-wider mb-1">Need Help?</p>
+                                <p class="text-sm text-red-700">Call support at <a href="tel:9620485849" class="font-bold underline">9620485849</a></p>
+                            </div>
+
+                            <button onclick="window.location.reload()" class="bg-yellow-500 text-white font-bold py-3 px-6 rounded-full hover:bg-yellow-600 transition-colors w-full mb-4 shadow-md">
+                                Reload Page
+                            </button>
+                            
+                            <details class="text-xs text-gray-400 text-left cursor-pointer">
+                                <summary>Technical Details</summary>
+                                <p class="font-mono mt-1 p-2 bg-gray-100 rounded break-words">${e.message}</p>
+                            </details>
+                        </div>
+                    </div>
+                `;
             }
         }
 
