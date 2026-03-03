@@ -1,19 +1,7 @@
-import { createIcons, Printer, X } from 'lucide';
-
 // Initialize Lucide icons
-createIcons({
-  icons: {
-    Printer,
-    X
-  }
-});
-
-// Expose to window for inline scripts
-window.lucide = { 
-  createIcons: () => createIcons({
-    icons: {
-      Printer,
-      X
-    }
-  }) 
-};
+// Assumes lucide.min.js is loaded globally
+if (window.lucide) {
+  window.lucide.createIcons({ icons: window.lucide.icons });
+} else {
+  console.error("Lucide library not loaded");
+}
