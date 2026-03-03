@@ -1,37 +1,7 @@
-import { createIcons, Menu, X, ChevronLeft, ChevronRight, MapPin, CircleCheck, Phone, Mail, Globe, Copy, CheckCircle, QrCode } from 'lucide';
-
 // Initialize Lucide icons
-createIcons({
-  icons: {
-    Menu,
-    X,
-    ChevronLeft,
-    ChevronRight,
-    MapPin,
-    CircleCheck,
-    Phone,
-    Mail,
-    Globe,
-    Copy,
-    CheckCircle,
-    QrCode
-  }
-});
-
-// Expose createIcons to window for dynamic content (like schedule rendering)
-window.lucide = { createIcons: () => createIcons({
-  icons: {
-    Menu,
-    X,
-    ChevronLeft,
-    ChevronRight,
-    MapPin,
-    CircleCheck,
-    Phone,
-    Mail,
-    Globe,
-    Copy,
-    CheckCircle,
-    QrCode
-  }
-}) };
+// Assumes lucide.min.js is loaded globally
+if (window.lucide) {
+  window.lucide.createIcons({ icons: window.lucide.icons });
+} else {
+  console.error("Lucide library not loaded");
+}
