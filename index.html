@@ -293,7 +293,7 @@
                     <div class="flex items-center gap-2 md:gap-4 overflow-hidden w-full md:w-auto">
                         <img id="sticky-logo" src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/studio/assets/WEBOLIM_RGBLogo_20250521.gif" class="h-10 md:h-12 w-auto object-contain flex-shrink-0" style="height: 48px; width: auto;" />
                         <div class="flex flex-col md:flex-row md:items-baseline md:gap-2 overflow-hidden">
-                            <span class="font-serif font-extrabold text-gold text-base md:text-2xl leading-tight drop-shadow-sm">Sri Rama Navami<span class="hidden md:inline"> -</span><br class="md:hidden">Utsavam – 2026</span>
+                            <span class="font-serif font-extrabold text-gold text-base md:text-2xl leading-tight drop-shadow-sm">Sri Rama Navami <span class="hidden md:inline"> -</span><br class="md:hidden">Utsavam – 2026</span>
                         </div>
                     </div>
                     <button onclick="event.stopPropagation(); toggleMobileMenu(true)" class="text-gold p-2 hover:bg-white/10 rounded-full transition-colors flex-shrink-0 ml-2">
@@ -732,7 +732,9 @@
                     </section>
                 `;
             }).join('');
-            lucide.createIcons();
+            if (window.lucide && window.lucide.createIcons) {
+                lucide.createIcons();
+            }
         }
 
         // --- GALLERY / MODAL LOGIC ---
@@ -744,7 +746,7 @@
             const modal = document.getElementById('image-modal');
             modal.classList.remove('hidden');
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
-            if(window.lucide) lucide.createIcons();
+            if(window.lucide && window.lucide.createIcons) lucide.createIcons();
         }
 
         window.closeModal = function() {
@@ -895,7 +897,7 @@
                     });
                 });
             });
-            if (hasChanges) lucide.createIcons();
+            if (hasChanges && window.lucide && window.lucide.createIcons) lucide.createIcons();
         }
 
         window.setDay = function(dayId) {
@@ -1135,9 +1137,6 @@
 
                 setInterval(() => { updateLiveStatus(); renderCountdown(); }, 1000);
 
-                const loader = document.getElementById('app-loader');
-                if (loader) { loader.classList.add('opacity-0', 'pointer-events-none'); setTimeout(() => loader.remove(), 700); }
-
                 // --- STICKY FAB LOGIC ---
                 const fab = document.getElementById('sticky-fab');
                 let fabTimeout;
@@ -1173,7 +1172,44 @@
                     }, { passive: true });
                 }
 
-            } catch (error) { console.error("Failed to load schedule data:", error); }
+            } catch (error) { 
+                console.error("Failed to load schedule data:", error); 
+                const loader = document.getElementById('app-loader');
+                if (loader) {
+                    loader.innerHTML = `
+                        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md mx-4 text-center border-2 border-red-100 relative z-50">
+                            <div class="text-red-500 mb-4 flex justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </div>
+                            <h2 class="text-2xl font-serif font-bold text-maroon mb-2">Unable to Load Content</h2>
+                            <p class="text-gray-600 mb-6">We encountered an issue while loading the conference schedule. Please check your connection and try again.</p>
+                            
+                            <div class="bg-red-50 p-3 rounded-lg mb-6 text-left">
+                                <p class="text-xs font-bold text-red-800 uppercase tracking-wider mb-1">Need Help?</p>
+                                <p class="text-sm text-red-700">Call support at <a href="tel:9620485849" class="font-bold underline">9620485849</a></p>
+                            </div>
+
+                            <button onclick="window.location.reload()" class="bg-gold text-maroon font-bold py-3 px-6 rounded-full hover:bg-yellow-400 transition-colors w-full mb-4 shadow-md">
+                                Reload Page
+                            </button>
+                            
+                            <details class="text-xs text-gray-400 text-left cursor-pointer">
+                                <summary>Technical Details</summary>
+                                <p class="font-mono mt-1 p-2 bg-gray-100 rounded break-words">${error.message}</p>
+                            </details>
+                        </div>
+                    `;
+                    // Remove the click-to-dismiss handler so they interact with the buttons
+                    loader.onclick = null;
+                }
+            } finally {
+                 // If no error (loader doesn't contain the error header), remove it
+                 const loader = document.getElementById('app-loader');
+                 if (loader && !loader.innerHTML.includes('Unable to Load Content')) {
+                     loader.classList.add('opacity-0', 'pointer-events-none'); 
+                     setTimeout(() => loader.remove(), 700);
+                 }
+            }
         });
     </script>
 </body>
