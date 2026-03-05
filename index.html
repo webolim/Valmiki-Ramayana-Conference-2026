@@ -21,7 +21,7 @@
     <meta property="twitter:image" content="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/social2.jpg" />
     
     <!-- Preload Critical Hero Image -->
-    <link rel="preload" as="image" href="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/2026Feb26/assets/KalyanRam.webp">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/studio/assets/KalyanRam.webp">
 
     <!-- Critical Fallback CSS -->
     <style>
@@ -141,7 +141,7 @@
       }
 
       /* Explicit Desktop Overrides for Dev Environment */
-      @media (min-width: 768px) {
+      @media (min-width: 1280px) {
         .desktop-row { flex-direction: row !important; }
         .desktop-col { flex-direction: column !important; }
         .desktop-text-left { text-align: left !important; }
@@ -151,6 +151,52 @@
         .desktop-w-32 { width: 8rem !important; }
         .desktop-gap-8 { gap: 2rem !important; }
         .desktop-justify-between { justify-content: space-between !important; }
+      }
+    </style>
+    <style>
+      /* =========================================
+         HERO SECTION SIZING CONFIGURATION
+         Edit these values to adjust sizes across devices
+         ========================================= */
+      :root {
+          /* --- MOBILE (Default) --- */
+          --h-img-mobile: 320px;
+          --h-spin-outer-w-mobile: 90vw;
+          --h-spin-outer-h-mobile: 90vw;
+          --h-spin-inner-mobile: 80vw;
+          --h-glow-mobile: 280px;
+
+          /* --- TABLET (md: 768px+) --- */
+          --h-img-md: 420px;
+          --h-spin-outer-md: 520px;
+          --h-spin-inner-md: 480px;
+          --h-glow-md: 320px;
+
+          /* --- DESKTOP (lg: 1024px+) --- */
+          --h-img-lg: 500px;
+          --h-spin-outer-lg: 650px;
+          --h-spin-inner-lg: 520px;
+          --h-glow-lg: 420px;
+      }
+
+      /* Apply variables to Hero Elements */
+      .hero-layer-outer { width: var(--h-spin-outer-w-mobile); height: var(--h-spin-outer-h-mobile); }
+      .hero-layer-inner { width: var(--h-spin-inner-mobile); height: var(--h-spin-inner-mobile); }
+      .hero-layer-glow  { width: var(--h-glow-mobile); height: var(--h-glow-mobile); }
+      .hero-main-img    { height: var(--h-img-mobile); }
+
+      @media (min-width: 768px) {
+          .hero-layer-outer { width: var(--h-spin-outer-md); height: var(--h-spin-outer-md); }
+          .hero-layer-inner { width: var(--h-spin-inner-md); height: var(--h-spin-inner-md); }
+          .hero-layer-glow  { width: var(--h-glow-md); height: var(--h-glow-md); }
+          .hero-main-img    { height: var(--h-img-md); }
+      }
+
+      @media (min-width: 1024px) {
+          .hero-layer-outer { width: var(--h-spin-outer-lg); height: var(--h-spin-outer-lg); }
+          .hero-layer-inner { width: var(--h-spin-inner-lg); height: var(--h-spin-inner-lg); }
+          .hero-layer-glow  { width: var(--h-glow-lg); height: var(--h-glow-lg); }
+          .hero-main-img    { height: var(--h-img-lg); }
       }
     </style>
 </head>
@@ -229,7 +275,7 @@
         <!-- Image Container for Touch Gestures -->
         <div id="modal-img-container" class="relative w-full h-full flex items-center justify-center p-0 md:p-4">
             <img id="modal-img" src="" class="max-w-[100vw] max-h-[85vh] md:max-h-[90vh] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300" onclick="event.stopPropagation()" />
-            <p id="modal-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 text-sm font-mono bg-black/50 px-4 py-1.5 rounded-full pointer-events-none backdrop-blur-md border border-white/10">1 / 5</p>
+            <p id="modal-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/8h-img0 text-sm font-mono bg-black/50 px-4 py-1.5 rounded-full pointer-events-none backdrop-blur-md border border-white/10">1 / 5</p>
         </div>
     </div>
 
@@ -237,36 +283,42 @@
     <main class="min-h-screen flex flex-col font-sans bg-cream relative">
         
         <!-- HERO SECTION -->
-        <div id="hero" class="hero-glitter-bg relative w-full overflow-hidden text-gold min-h-[500px] md:min-h-screen lg:min-h-[700px] flex flex-col lg:flex-row desktop-row items-center justify-center pt-12 pb-10 md:pt-8 md:pb-20 lg:pt-24 lg:pb-32 px-4 lg:px-16 gap-4 lg:gap-6">
+        <div id="hero" class="hero-glitter-bg relative w-full overflow-hidden text-gold min-h-[500px] xl:min-h-[700px] flex flex-col xl:flex-row desktop-row items-center justify-center pt-12 pb-10 xl:pt-24 xl:pb-32 px-4 xl:px-16 gap-4 xl:gap-6">
             
             <!-- Hero Left -->
             <div class="relative z-10 w-full lg:w-3/5 flex justify-center items-center order-1 lg:order-1">
                 <div class="relative flex justify-center items-center w-fit mx-auto">
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[100vw] md:w-[720px] md:h-[720px] lg:w-[850px] lg:h-[850px] pointer-events-none z-0">
+                    <!-- Outer Spin Layer -->
+                    <div class="hero-layer-outer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
                         <div class="w-full h-full animate-spin-slow rounded-full blur-[1px]" style="background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.5) 0deg 15deg, transparent 15deg 30deg); mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);"></div>
                     </div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] md:w-[550px] md:h-[550px] lg:w-[580px] lg:h-[580px] pointer-events-none z-0">
+                    
+                    <!-- Inner Spin Layer -->
+                    <div class="hero-layer-inner absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
                         <div class="w-full h-full animate-spin-reverse-medium rounded-full blur-[1px]" style="background: repeating-conic-gradient(from 0deg, rgba(255, 255, 220, 0.4) 0deg 10deg, transparent 10deg 20deg); mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%); -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 70%);"></div>
                     </div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] bg-white/60 blur-[70px] rounded-full z-10"></div>
-                    <img id="hero-img" src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/2026Feb26/assets/KalyanRam.webp" class="h-[220px] md:h-[420px] lg:h-[620px] object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.6)] z-20 relative transform hover:scale-105 transition-transform duration-700" width="480" height="480" />
+                    
+                    <!-- Glow Layer -->
+                    <div class="hero-layer-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/60 blur-[70px] rounded-full z-10"></div>
+                    
+                    <!-- Main Image -->
+                    <img id="hero-img" src="https://raw.githubusercontent.com/webolim/Valmiki-Ramayana-Conference-2026/refs/heads/2026Feb26/assets/KalyanRam.webp" class="hero-main-img object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.6)] z-20 relative transform hover:scale-102 transition-transform duration-700" width="520" height="520" />
                 </div>
             </div>
-
              <!-- Hero Right: Content -->
-            <div class="relative z-10 w-full lg:w-2/5 flex flex-col items-center lg:items-start desktop-items-start text-center lg:text-left desktop-text-left gap-3 md:gap-5 order-2 lg:order-2">
+            <div class="relative z-10 w-full xl:w-2/5 flex flex-col items-center xl:items-start desktop-items-start text-center xl:text-left desktop-text-left gap-3 md:gap-4 order-2 xl:order-2">
                 <div class="space-y-2 md:space-y-3 w-full">
                     <p class="font-serif font-bold text-cream text-xs md:text-xs tracking-[0.3em] uppercase drop-shadow-md mb-2 opacity-90">Webolim Presents</p>
-                    <h1 class="font-serif font-extrabold text-4xl md:text-6xl lg:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-100 to-gold leading-none drop-shadow-sm pb-1">
+                    <h1 class="font-serif font-extrabold text-4xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-100 to-gold leading-none drop-shadow-sm pb-1">
                         Sri Rama Navami Utsavam - 2026
                     </h1>
-                    <h2 class="font-serif font-bold text-2xl md:text-3xl lg:text-2xl text-cream/90 leading-snug drop-shadow-sm mt-1">
+                    <h2 class="font-serif font-bold text-2xl xl:text-2xl text-cream/90 leading-snug drop-shadow-sm mt-1">
                         Sri Ramayana Satram <br> Srimad Valmiki Ramayana Conference - 3
                     </h2>
-                    <div id="hero-countdown" class="flex flex-col items-center lg:items-start desktop-items-start w-full my-2"></div>
-                    <p class="font-sans text-cream text-base md:text-lg lg:text-xl max-w-4xl lg:max-w-none font-medium leading-relaxed drop-shadow px-2 md:whitespace-nowrap lg:whitespace-normal opacity-95">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
+                    <div id="hero-countdown" class="flex flex-col items-center xl:items-start desktop-items-start w-full my-2"></div>
+                    <p class="font-sans text-cream text-base xl:text-xl max-w-4xl xl:max-w-none font-medium leading-relaxed drop-shadow px-2 md:whitespace-nowrap xl:whitespace-normal opacity-95">Theme: Recensions / Readings and Commentaries of Valmiki Ramayana</p>
                 </div>
-                <div class="flex flex-row gap-1 md:gap-2 mt-4 md:mt-6 w-full max-w-full lg:max-w-xl px-0 mb-2 justify-between lg:justify-start desktop-justify-start items-stretch">
+                <div class="flex flex-row gap-1 md:gap-2 mt-4 md:mt-6 w-full max-w-full xl:max-w-xl px-0 mb-2 justify-between xl:justify-start desktop-justify-start items-stretch">
                     <div onclick="setDay(1)" class="flex-1 border border-gold/20 p-2 md:p-2 rounded-[2rem] flex flex-col items-center justify-center shadow-sm hover:shadow-md hover:bg-white/5 cursor-pointer transition-all duration-300 group hover:-translate-y-1 scale-95 opacity-90">
                         <span class="text-gold/80 font-bold text-[9px] sm:text-[10px] md:text-[10px] uppercase tracking-widest mb-1 group-hover:text-gold transition-colors text-center">Pre-Conference</span>
                         <span class="text-cream text-xs sm:text-sm md:text-lg font-serif font-bold tracking-tight whitespace-nowrap">Mar 28 – Apr 3</span>
@@ -282,9 +334,9 @@
                         <span class="text-cream text-xs sm:text-sm md:text-lg font-serif font-bold tracking-tight whitespace-nowrap">Apr 6 – 7</span>
                     </div>
                 </div>
-                <div class="flex flex-col gap-4 w-full items-center lg:items-start desktop-items-start z-20 px-4 lg:px-0 mt-2">
-                    <a id="hero-location-trigger" href="https://maps.app.goo.gl/x5cT4fMKbuzQKkBJ8" target="_blank" class="group relative flex flex-col lg:flex-row desktop-row items-center justify-center lg:justify-start desktop-justify-start gap-1 lg:gap-2 text-cream hover:text-gold transition-all text-center">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-gold group-hover:animate-bounce mb-1 lg:mb-0"></i>
+                <div class="flex flex-col gap-4 w-full items-center xl:items-start desktop-items-start z-20 px-4 xl:px-0 mt-2">
+                    <a id="hero-location-trigger" href="https://maps.app.goo.gl/x5cT4fMKbuzQKkBJ8" target="_blank" class="group relative flex flex-col xl:flex-row desktop-row items-center justify-center xl:justify-start desktop-justify-start gap-1 xl:gap-2 text-cream hover:text-gold transition-all text-center">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-gold group-hover:animate-bounce mb-1 xl:mb-0"></i>
                         <span class="text-base md:text-base font-medium tracking-wide border-b border-transparent group-hover:border-gold">Srimad Valmiki Ashrama, Ragihalli, Bengaluru</span>
                     </a>
                     <a href="https://webolim.github.io/Registration/" target="_blank" class="flex items-center justify-center gap-2 bg-gold hover:bg-yellow-400 text-maroon py-3 md:py-3 px-8 md:px-10 rounded-full font-extrabold text-lg md:text-lg shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:shadow-[0_0_30px_rgba(212,175,55,0.8)] hover:scale-105 transition-all w-full md:w-auto border-2 border-yellow-200">
