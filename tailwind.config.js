@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        maroon: '#800000',
-        gold: '#D4AF37',
+        maroon: '#7A0016',
+        gold: '#E5B322',
         cream: '#FFFDD0',
         deepGreen: '#228B22',
         charcoal: '#333333',
