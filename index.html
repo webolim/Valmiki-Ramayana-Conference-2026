@@ -25,7 +25,7 @@
 
     <!-- Critical Fallback CSS -->
     <style>
-      :root { --color-maroon: #7A0016; --color-gold: #E5B322; --color-cream: #FFFDD0; --color-charcoal: #333333; }
+      :root { --color-maroon: #B31B1B; --color-gold: #FFBF00; --color-cream: #FFFDD0; --color-charcoal: #333333; }
       body { margin: 0; font-family: sans-serif; background-color: var(--color-cream); color: var(--color-charcoal); }
       img { max-width: 100%; height: auto; display: block; }
       .hidden { display: none !important; }
@@ -38,7 +38,7 @@
     </style>
 
     <!-- Main Module (CSS + JS) -->
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="/src/input.css">
     <!-- Lucide Icons (Local) -->
     <script src="./js/lucide.min.js"></script>
     <!-- Lenis Smooth Scroll (Local) -->
@@ -77,28 +77,28 @@
       }
       .hero-glitter-bg::after {
           content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-          background: linear-gradient(125deg, rgba(255,255,255,0) 40%, rgba(229, 179, 34, 0.1) 50%, rgba(255,255,255,0) 60%);
+          background: linear-gradient(125deg, rgba(255,255,255,0) 40%, rgba(255, 191, 0, 0.1) 50%, rgba(255,255,255,0) 60%);
           background-size: 200% 200%; animation: shimmer 6s infinite linear; pointer-events: none;
       }
 
       .hero-glow-border {
-        position: relative; overflow: hidden; border: none; box-shadow: 0 10px 30px -5px rgba(229, 179, 34, 0.5); isolation: isolate;
+        position: relative; overflow: hidden; border: none; box-shadow: 0 10px 30px -5px rgba(255, 191, 0, 0.5); isolation: isolate;
       }
       .hero-glow-border::before {
         content: ''; position: absolute; top: 50%; left: 50%; width: 250%; aspect-ratio: 1;
-        background: conic-gradient(from 0deg, #7A0016 0%, #7A0016 75%, #E5B322 95%, #FFFDD0 100%);
+        background: conic-gradient(from 0deg, #B31B1B 0%, #B31B1B 75%, #FFBF00 95%, #FFFDD0 100%);
         animation: spin-gradient 3s linear infinite; transform: translate(-50%, -50%); z-index: 0;
       }
       .hero-glow-border::after {
-        content: ''; position: absolute; inset: 1.5px; background: #7A0016; border-radius: inherit; z-index: 0;
+        content: ''; position: absolute; inset: 1.5px; background: #B31B1B; border-radius: inherit; z-index: 0;
       }
       .hero-glow-border > * { position: relative; z-index: 1; }
       @keyframes spin-gradient { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
 
-      .sheen-bg { position: relative; overflow: hidden; background-color: #7A0016; }
+      .sheen-bg { position: relative; overflow: hidden; background-color: #B31B1B; }
       .sheen-bg::before {
         content: ''; position: absolute; top: 0; left: 0; width: 200%; height: 100%;
-        background: linear-gradient(120deg, transparent 30%, rgba(229, 179, 34, 0.4) 50%, transparent 70%);
+        background: linear-gradient(120deg, transparent 30%, rgba(255, 191, 0, 0.4) 50%, transparent 70%);
         animation: shimmer 4s infinite linear; pointer-events: none;
       }
 
@@ -233,7 +233,7 @@
     <!-- FLOATING STICKY CONFIRM ATTENDANCE BUTTON -->
     <a id="sticky-fab" href="https://webolim.github.io/Registration/" target="_blank" 
        class="fixed bottom-6 right-6 z-[90] flex items-center bg-gold text-maroon rounded-full 
-              shadow-[0_0_20px_rgba(229,179,34,0.6)] hover:shadow-[0_0_30px_rgba(229,179,34,0.8)] 
+              shadow-[0_0_20px_rgba(255,191,0,0.6)] hover:shadow-[0_0_30px_rgba(255,191,0,0.8)] 
               border-2 border-yellow-200 overflow-hidden h-14 translate-y-24 opacity-0">
         <div class="flex-shrink-0 w-[3.25rem] h-full flex items-center justify-center">
             <i data-lucide="circle-check" class="w-6 h-6"></i>
@@ -339,7 +339,7 @@
                         <i data-lucide="map-pin" class="w-5 h-5 text-gold group-hover:animate-bounce mb-1 lg:mb-0"></i>
                         <span class="text-base md:text-base font-medium tracking-wide border-b border-transparent group-hover:border-gold">Srimad Valmiki Ashrama, Ragihalli, Bengaluru</span>
                     </a>
-                    <a href="https://webolim.github.io/Registration/" target="_blank" class="flex items-center justify-center gap-2 bg-gold hover:brightness-110 text-maroon py-3 md:py-3 px-8 md:px-10 rounded-full font-extrabold text-lg md:text-lg shadow-[0_0_20px_rgba(229,179,34,0.6)] hover:shadow-[0_0_30px_rgba(229,179,34,0.8)] hover:scale-105 transition-all w-full md:w-auto border-2 border-yellow-200">
+                    <a href="https://webolim.github.io/Registration/" target="_blank" class="flex items-center justify-center gap-2 bg-gold hover:brightness-110 text-maroon py-3 md:py-3 px-8 md:px-10 rounded-full font-extrabold text-lg md:text-lg shadow-[0_0_20px_rgba(255,191,0,0.6)] hover:shadow-[0_0_30px_rgba(255,191,0,0.8)] hover:scale-105 transition-all w-full md:w-auto border-2 border-yellow-200">
                          <i data-lucide="circle-check" class="w-5 h-5"></i> Confirm Attendance
                     </a>
                 </div>
