@@ -313,7 +313,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/inaguration",
+                "url": "https://www.youtube.com/live/6ASOwk3Ld-Q",
                 "label": "Watch Recording"
               }
             ]
@@ -325,12 +325,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d1",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
