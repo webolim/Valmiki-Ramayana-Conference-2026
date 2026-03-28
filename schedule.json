@@ -325,7 +325,12 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": []
+            "videoLinks": [
+              {
+                "url": "https://www.youtube.com/live/TwKvx3g2de8?si=PaV7EjxgH2yEGE8T",
+                "label": "Watch Recording"
+              }
+            ]
           }
         ]
       },
