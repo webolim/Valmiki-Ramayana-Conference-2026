@@ -372,7 +372,7 @@
           {
             "id": "d2-e0d",
             "start": "2026-03-29T08:45:00+05:30",
-            "end": "2026-03-29T09:15:00+05:30",
+            "end": "2026-03-29T09:00:00+05:30",
             "title": "Breakfast",
             "venue": "Premika Madhura Bhavanam",
             "speakerIds": [],
@@ -380,8 +380,8 @@
           },
           {
             "id": "d2-e1",
-            "start": "2026-03-29T09:15:00+05:30",
-            "end": "2026-03-29T010:15:00+05:30",
+            "start": "2026-03-29T09:00:00+05:30",
+            "end": "2026-03-29T010:00:00+05:30",
             "title": "Pattabhishekha Prarambha",
             "venue": "Ramayana Shala",
             "speakerIds": ["dr_rangan"],
@@ -389,7 +389,7 @@
           },
           {
             "id": "d2-e1b",
-            "start": "2026-03-29T010:15:00+05:30",
+            "start": "2026-03-29T010:00:00+05:30",
             "end": "2026-03-29T10:30:00+05:30",
             "title": "Parayanam",
             "venue": "Ramayana Shala",
