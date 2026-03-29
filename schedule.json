@@ -385,13 +385,7 @@
             "title": "Pattabhishekha Prarambha",
             "venue": "Ramayana Shala",
             "speakerIds": ["dr_rangan"],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/rangan_d1",
-                "label": "Watch Pattabhishekha Prarambha",
-                "speakerId": "dr_rangan"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d2-e1b",
