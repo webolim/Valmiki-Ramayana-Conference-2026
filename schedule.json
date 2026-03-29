@@ -307,7 +307,7 @@
           {
             "id": "d1-e3",
             "start": "2026-03-28T19:30:00+05:30",
-            "end": "2026-03-28T20:30:00+05:30",
+            "end": "2026-03-28T21:00:00+05:30",
             "title": "Inauguration",
             "venue": "Ramayana Shala",
             "speakerIds": [],
@@ -320,8 +320,8 @@
           },
           {
             "id": "d1-e4",
-            "start": "2026-03-28T20:30:00+05:30",
-            "end": "2026-03-28T21:00:00+05:30",
+            "start": "2026-03-28T21:00:00+05:30",
+            "end": "2026-03-28T21:30:00+05:30",
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
@@ -381,7 +381,7 @@
           {
             "id": "d2-e1",
             "start": "2026-03-29T09:00:00+05:30",
-            "end": "2026-03-29T10:00:00+05:30",
+            "end": "2026-03-29T10:30:00+05:30",
             "title": "Pattabhishekha Prarambha",
             "venue": "Ramayana Shala",
             "speakerIds": ["dr_rangan"],
@@ -395,9 +395,9 @@
           },
           {
             "id": "d2-e1b",
-            "start": "2026-03-29T10:00:00+05:30",
+            "start": "2026-03-29T09:30:00+05:30",
             "end": "2026-03-29T10:30:00+05:30",
-            "title": "Parayanam",
+            "title": "Parayanam (Cancelled)",
             "venue": "Ramayana Shala",
             "speakerIds": [],
             "videoLinks": []
