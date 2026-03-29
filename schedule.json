@@ -411,7 +411,7 @@
             "speakerIds": ["shubhankriya", "daksha"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/Shubhankriya",
+                "url": "https://www.youtube.com/live/ujINen9tvR8",
                 "label": "Watch Kausalya Mangalashasana",
                 "speakerId": "shubhankriya"
               },
@@ -458,12 +458,12 @@
             "speakerIds": ["srinidhi", "niharika"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/Shrinidhi",
+                "url": "https://www.youtube.com/live/jT9NSBlAvcE",
                 "label": "Watch Pitruvakya Paripalana",
                 "speakerId": "srinidhi"
               },
               {
-                "url": "https://youtu.be/Niharika",
+                "url": "https://www.youtube.com/live/FbR82gX_DVg",
                 "label": "Watch Pitruvakya Paripalana",
                 "speakerId": "niharika"
               }
@@ -487,7 +487,7 @@
             "speakerIds": ["krishna"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/Krishna",
+                "url": "https://www.youtube.com/live/DXKKDYyJUDw",
                 "label": "Watch Guha Sakhya",
                 "speakerId": "krishna"
               }
@@ -531,7 +531,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/Badhai",
+                "url": "https://www.youtube.com/live/WA84Tf1fIVo",
                 "label": "Watch Recording"
               }
             ]
