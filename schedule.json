@@ -411,15 +411,15 @@
             "speakerIds": ["shubhankriya", "daksha"],
             "videoLinks": [
               {
-                "url": "https://www.youtube.com/live/ujINen9tvR8",
+                "url": "",
                 "label": "Watch Kausalya Mangalashasana",
                 "speakerId": "shubhankriya"
               },
               {
-                "url": "https://www.youtube.com/live/JBnWocRXTwY",
+                "url": "",
                 "label": "Watch Kausalya Mangalashasana",
                 "speakerId": "daksha"
-              },
+              }
             ]
           },
           {
