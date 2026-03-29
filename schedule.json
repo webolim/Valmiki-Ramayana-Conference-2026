@@ -409,18 +409,7 @@
             "title": "Kausalya Mangalashasana",
             "venue": "Ramayana Shala",
             "speakerIds": ["shubhankriya", "daksha"],
-            "videoLinks": [
-              {
-                "url": "",
-                "label": "Watch Kausalya Mangalashasana",
-                "speakerId": "shubhankriya"
-              },
-              {
-                "url": "",
-                "label": "Watch Kausalya Mangalashasana",
-                "speakerId": "daksha"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d2-e2b",
