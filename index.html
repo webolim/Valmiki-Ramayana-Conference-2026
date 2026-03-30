@@ -1165,12 +1165,16 @@
                 renderCountdown();
                 updateLiveStatus();
 
-                // Scroll to current event or day
+                // Disable native scroll restoration to prevent fighting with our auto-scroll
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
+                }
+
+                // After page load is complete, pause, click stepper, pause, scroll to event
                 setTimeout(() => {
                     if (foundDay) {
                         const nowTs = new Date().getTime();
                         let targetEventId = null;
-                        let isFirstEvent = false;
                         
                         for (let i = 0; i < foundDay.events.length; i++) {
                             const event = foundDay.events[i];
@@ -1178,33 +1182,41 @@
                                 if (nowTs <= event._endTs) {
                                     // This event is either live, starting soon, or in the future
                                     targetEventId = event.id;
-                                    isFirstEvent = (i === 0);
                                     break;
                                 }
                             }
                         }
 
-                        if (targetEventId && !isFirstEvent) {
-                            isScrolling = true;
-                            const el = document.getElementById(`event-${targetEventId}`);
-                            if (el) {
-                                const headerOffset = -140;
-                                if (window.lenis) {
-                                    window.lenis.scrollTo(el, { offset: headerOffset });
-                                } else {
-                                    const elementPosition = el.getBoundingClientRect().top;
-                                    const offsetPosition = elementPosition + window.pageYOffset + headerOffset;
-                                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                                }
-                                setTimeout(() => { isScrolling = false; }, 1000);
-                            } else {
-                                isScrolling = false;
-                            }
+                        // First, simulate clicking the stepper to go to the current day
+                        const stepperBtn = document.getElementById(`day-btn-${foundDay.dayNumber}`);
+                        if (stepperBtn) {
+                            stepperBtn.click();
                         } else {
-                            setDay(currentDayId);
+                            setDay(foundDay.dayNumber);
+                        }
+
+                        // If there's a specific event to scroll to, do it after a pause
+                        if (targetEventId) {
+                            setTimeout(() => {
+                                isScrolling = true;
+                                const targetEl = document.getElementById(`event-${targetEventId}`);
+                                if (targetEl) {
+                                    const headerOffset = -140;
+                                    if (window.lenis) {
+                                        window.lenis.scrollTo(targetEl, { offset: headerOffset, immediate: false });
+                                    } else {
+                                        const elementPosition = targetEl.getBoundingClientRect().top;
+                                        const offsetPosition = elementPosition + window.pageYOffset + headerOffset;
+                                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                                    }
+                                    setTimeout(() => { isScrolling = false; }, 1000);
+                                } else {
+                                    isScrolling = false;
+                                }
+                            }, 1500); // Wait for the day scroll to finish (1000ms) plus a small pause
                         }
                     }
-                }, 300);
+                }, 1000); // Initial pause after page load
 
                 const observer = new IntersectionObserver((entries) => {
                     if (isScrolling) return;
