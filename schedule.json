@@ -412,12 +412,12 @@
             "videoLinks": [
               {
                 "url": "https://www.youtube.com/live/ujINen9tvR8",
-                "label": "Watch Kausalya Mangalashasana",
+                "label": "Watch Kausalya Mangalashasana Part - 1",
                 "speakerId": "shubhankriya"
               },
               {
                 "url": "https://www.youtube.com/live/JBnWocRXTwY",
-                "label": "Watch Kausalya Mangalashasanaa",
+                "label": "Watch Kausalya Mangalashasanaa Part - 2",
                 "speakerId": "daksha"
               }
             ]
@@ -459,12 +459,12 @@
             "videoLinks": [
               {
                 "url": "https://www.youtube.com/live/jT9NSBlAvcE",
-                "label": "Watch Pitruvakya Paripalana",
+                "label": "Watch Pitruvakya Paripalana Part - 1",
                 "speakerId": "srinidhi"
               },
               {
                 "url": "https://www.youtube.com/live/FbR82gX_DVg",
-                "label": "Watch Pitruvakya Paripalana",
+                "label": "Watch Pitruvakya Paripalana Part - 2",
                 "speakerId": "niharika"
               }
             ]
@@ -532,7 +532,7 @@
             "videoLinks": [
               {
                 "url": "https://www.youtube.com/live/WA84Tf1fIVo",
-                "label": "Watch Recording"
+                "label": "Watch Badhai Utsava"
               }
             ]
           },
@@ -543,12 +543,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d2",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
@@ -605,7 +600,7 @@
             "speakerIds": ["dr_rangan"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/rangan_d3",
+                "url": "https://www.youtube.com/live/3MSh3zQM2p0",
                 "label": "Watch Dasharatha Bhakti",
                 "speakerId": "dr_rangan"
               }
@@ -629,13 +624,13 @@
             "speakerIds": ["giridharan", "amruttha"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/giri",
-                "label": "Watch Bharatha Bhakti",
+                "url": "https://www.youtube.com/live/j8AJeOpKV4g",
+                "label": "Watch Bharatha Bhakti Part - 1",
                 "speakerId": "giridharan"
               },
               {
                 "url": "https://youtu.be/amruttha",
-                "label": "Watch Bharatha Bhakti",
+                "label": "Watch Bharatha Bhakti Part - 2",
                 "speakerId": "amruttha"
               }
             ]
@@ -675,13 +670,13 @@
             "venue": "Ramayana Shala",
             "speakerIds": ["ananya_a", "ananya_g"],
             "videoLinks": [{
-                "url": "https://youtu.be/ananya_a",
-                "label": "Watch Chitrakuta",
+                "url": "https://www.youtube.com/live/1O9RSjedVeY",
+                "label": "Watch Chitrakuta Part - 1",
                 "speakerId": "ananya_a"
               },
               {
-                "url": "https://youtu.be/ananya_g",
-                "label": "Watch Chitrakuta",
+                "url": "https://www.youtube.com/live/w26bV0vLr-s",
+                "label": "Watch Chitrakuta Part - 2",
                 "speakerId": "ananya_g"
               }
             ]
@@ -704,13 +699,13 @@
             "speakerIds": ["akshaya", "kamakshi"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/akshaya",
-                "label": "Watch Paduka Pattabhishekha",
+                "url": "https://www.youtube.com/live/-OTRzb6z_C4",
+                "label": "Watch Paduka Pattabhishekha Part - 1",
                 "speakerId": "akshaya"
               },
               {
-                "url": "https://youtu.be/kamakshi",
-                "label": "Watch Paduka Pattabhishekha",
+                "url": "https://www.youtube.com/live/2z_9sVbMUyM",
+                "label": "Watch Paduka Pattabhishekha Part - 2",
                 "speakerId": "kamakshi"
               }
             ]
@@ -761,8 +756,8 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/sitakalyanam",
-                "label": "Watch Recording"
+                "url": "https://www.youtube.com/live/YY4-ZLzT76w",
+                "label": "Watch Sita Kalyana Utsava"
               }
             ]
           },
@@ -773,12 +768,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d3",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
