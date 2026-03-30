@@ -1153,7 +1153,9 @@
                 preprocessScheduleData();
                 
                 const now = new Date();
-                const todayStr = now.toLocaleDateString('en-CA'); // YYYY-MM-DD in local time
+                // Convert current time to IST (+05:30)
+                const istTime = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
+                const todayStr = istTime.toISOString().split('T')[0];
                 const foundDay = SCHEDULE_DATA.days.find(d => d.date === todayStr);
                 if (foundDay) currentDayId = foundDay.dayNumber;
 
@@ -1162,6 +1164,47 @@
                 initToran(); // Initialize Toran
                 renderCountdown();
                 updateLiveStatus();
+
+                // Scroll to current event or day
+                setTimeout(() => {
+                    if (foundDay) {
+                        const nowTs = new Date().getTime();
+                        let targetEventId = null;
+                        let isFirstEvent = false;
+                        
+                        for (let i = 0; i < foundDay.events.length; i++) {
+                            const event = foundDay.events[i];
+                            if (event._startTs && event._endTs) {
+                                if (nowTs <= event._endTs) {
+                                    // This event is either live, starting soon, or in the future
+                                    targetEventId = event.id;
+                                    isFirstEvent = (i === 0);
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (targetEventId && !isFirstEvent) {
+                            isScrolling = true;
+                            const el = document.getElementById(`event-${targetEventId}`);
+                            if (el) {
+                                const headerOffset = -140;
+                                if (window.lenis) {
+                                    window.lenis.scrollTo(el, { offset: headerOffset });
+                                } else {
+                                    const elementPosition = el.getBoundingClientRect().top;
+                                    const offsetPosition = elementPosition + window.pageYOffset + headerOffset;
+                                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                                }
+                                setTimeout(() => { isScrolling = false; }, 1000);
+                            } else {
+                                isScrolling = false;
+                            }
+                        } else {
+                            setDay(currentDayId);
+                        }
+                    }
+                }, 300);
 
                 const observer = new IntersectionObserver((entries) => {
                     if (isScrolling) return;
