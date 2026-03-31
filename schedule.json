@@ -849,12 +849,12 @@
             "speakerIds": ["madhavan_shri", "raghavan"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/madhavan",
+                "url": "https://www.youtube.com/live/049xzcEhA6M",
                 "label": "Watch Panchavati",
                 "speakerId": "madhavan_shri"
               },
               {
-                "url": "https://youtu.be/raghavan",
+                "url": "https://www.youtube.com/live/QOTiDTN0sRU",
                 "label": "Watch Panchavati",
                 "speakerId": "raghavan"
               }
@@ -896,12 +896,12 @@
             "speakerIds": ["rishe", "dharanidharan"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/rishe",
+                "url": "https://www.youtube.com/live/D8g6zqiudgA",
                 "label": "Watch Sita Apaharana",
                 "speakerId": "rishe"
               },
               {
-                "url": "https://youtu.be/dharanidharan",
+                "url": "https://www.youtube.com/live/Rv7F8grZkRg",
                 "label": "Watch Sita Apaharana",
                 "speakerId": "dharanidharan"
               }
@@ -925,7 +925,7 @@
             "speakerIds": ["kalpana"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/kalpana",
+                "url": "https://www.youtube.com/live/eEy0JiBhhm4",
                 "label": "Watch Jatayu & Sabari Moksha",
                 "speakerId": "kalpana"
               }
@@ -976,7 +976,7 @@
             "speakerIds": ["meghana"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/bharathanatyam",
+                "url": "https://www.youtube.com/live/-sHQ-06gY0w",
                 "label": "Watch Nikunjotsava Bharatanatyam",
                 "speakerId": "meghana"
               }
