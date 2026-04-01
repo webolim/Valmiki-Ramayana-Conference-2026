@@ -1075,12 +1075,12 @@
             "speakerIds": ["sanjay", "mythili"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/sanjay",
+                "url": "https://www.youtube.com/live/Q7YrxslZ3fk",
                 "label": "Watch Vali Moksha",
                 "speakerId": "sanjay"
               },
               {
-                "url": "https://youtu.be/mythili",
+                "url": "https://www.youtube.com/live/IS80EJRSWlc",
                 "label": "Watch Vali Moksha",
                 "speakerId": "mythili"
               }
@@ -1122,12 +1122,12 @@
             "speakerIds": ["prachi", "vishakha"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/prachi",
+                "url": "https://www.youtube.com/live/G9iDTzvEv5M",
                 "label": "Watch Sugriva Pattabhishekha",
                 "speakerId": "prachi"
               },
               {
-                "url": "https://youtu.be/vishakha",
+                "url": "https://www.youtube.com/live/7yiD7h2OMkg",
                 "label": "Watch Sugriva Pattabhishekha",
                 "speakerId": "vishakha"
               }
@@ -1151,7 +1151,7 @@
             "speakerIds": ["gayatri"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/gayatri",
+                "url": "https://www.youtube.com/live/xbta6V73Dmk",
                 "label": "Watch Sita Anveshana",
                 "speakerId": "gayatri"
               }
