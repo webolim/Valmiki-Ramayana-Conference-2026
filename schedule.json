@@ -850,12 +850,12 @@
             "videoLinks": [
               {
                 "url": "https://www.youtube.com/live/049xzcEhA6M",
-                "label": "Watch Panchavati",
+                "label": "Watch Panchavati Part - 1",
                 "speakerId": "madhavan_shri"
               },
               {
                 "url": "https://www.youtube.com/live/QOTiDTN0sRU",
-                "label": "Watch Panchavati",
+                "label": "Watch Panchavati Part - 2",
                 "speakerId": "raghavan"
               }
             ]
@@ -897,12 +897,12 @@
             "videoLinks": [
               {
                 "url": "https://www.youtube.com/live/D8g6zqiudgA",
-                "label": "Watch Sita Apaharana",
+                "label": "Watch Sita Apaharana Part - 1",
                 "speakerId": "rishe"
               },
               {
                 "url": "https://www.youtube.com/live/Rv7F8grZkRg",
-                "label": "Watch Sita Apaharana",
+                "label": "Watch Sita Apaharana Part - 2",
                 "speakerId": "dharanidharan"
               }
             ]
@@ -989,12 +989,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d4",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
@@ -1076,12 +1071,12 @@
             "videoLinks": [
               {
                 "url": "https://www.youtube.com/live/Q7YrxslZ3fk",
-                "label": "Watch Vali Moksha",
+                "label": "Watch Vali Moksha Part - 1",
                 "speakerId": "sanjay"
               },
               {
                 "url": "https://www.youtube.com/live/IS80EJRSWlc",
-                "label": "Watch Vali Moksha",
+                "label": "Watch Vali Moksha Part - 2",
                 "speakerId": "mythili"
               }
             ]
@@ -1123,12 +1118,12 @@
             "videoLinks": [
               {
                 "url": "https://www.youtube.com/live/G9iDTzvEv5M",
-                "label": "Watch Sugriva Pattabhishekha",
+                "label": "Watch Sugriva Pattabhishekha Part - 1",
                 "speakerId": "prachi"
               },
               {
                 "url": "https://www.youtube.com/live/7yiD7h2OMkg",
-                "label": "Watch Sugriva Pattabhishekha",
+                "label": "Watch Sugriva Pattabhishekha Part - 2",
                 "speakerId": "vishakha"
               }
             ]
@@ -1204,12 +1199,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d5",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
@@ -1291,12 +1281,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/megha",
-                "label": "Watch Trijata Swapna",
+                "label": "Watch Trijata Swapna Part - 1",
                 "speakerId": "megha"
               },
               {
                 "url": "https://youtu.be/pushpa",
-                "label": "Watch Trijata Swapna",
+                "label": "Watch Trijata Swapna Part - 2",
                 "speakerId": "pushpa"
               }
             ]
@@ -1338,12 +1328,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/dvaidehi",
-                "label": "Watch Anguliya Pradhana",
+                "label": "Watch Anguliya Pradhana Part - 1",
                 "speakerId": "vaidehi_sridhar"
               },
               {
                 "url": "https://youtu.be/ranganayaki",
-                "label": "Watch Anguliya Pradhana",
+                "label": "Watch Anguliya Pradhana Part - 2",
                 "speakerId": "ranganayaki"
               }
             ]
@@ -1412,12 +1402,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d6",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
@@ -1499,12 +1484,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/soumya",
-                "label": "Watch Abhaya Pradhana",
+                "label": "Watch Abhaya Pradhana Part - 1",
                 "speakerId": "soumya"
               },
               {
                 "url": "https://youtu.be/ramanan",
-                "label": "Watch Abhaya Pradhana",
+                "label": "Watch Abhaya Pradhana Part - 2",
                 "speakerId": "ramanan"
               }
             ]
@@ -1546,12 +1531,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/sai",
-                "label": "Watch Sethu Bandhana",
+                "label": "Watch Sethu Bandhana Part - 1",
                 "speakerId": "sai"
               },
               {
                 "url": "https://youtu.be/balasimhan",
-                "label": "Watch Sethu Bandhana",
+                "label": "Watch Sethu Bandhana Part - 2",
                 "speakerId": "balasimhan"
               }
             ]
@@ -1575,12 +1560,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/damudan",
-                "label": "Watch Ravana Prathama Yuddha",
+                "label": "Watch Ravana Prathama Yuddha Part - 1",
                 "speakerId": "amudan"
               },
               {
                 "url": "https://youtu.be/srinivasan",
-                "label": "Watch Ravana Prathama Yuddha",
+                "label": "Watch Ravana Prathama Yuddha Part - 2",
                 "speakerId": "srinivasan"
               }
             ]
@@ -1636,14 +1621,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d7",
-                "label": "Watch Recording"
-              }
-            ]
-          }
-        ]
+            "videoLinks": []
       },
       {
         "dayNumber": 8,
@@ -1878,12 +1856,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d8",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
@@ -2221,12 +2194,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/nandakumar",
-                "label": "Watch Ravana Vadha",
+                "label": "Watch Ravana Vadha Part - 1",
                 "speakerId": "nandakumar"
               },
               {
                 "url": "https://youtu.be/nandalal",
-                "label": "Watch Ravana Vadha",
+                "label": "Watch Ravana Vadha Part - 2",
                 "speakerId": "nandalal"
               }
             ]
@@ -2268,12 +2241,12 @@
             "videoLinks": [
               {
                 "url": "https://youtu.be/vayidehi",
-                "label": "Watch Agni Pareeksha",
+                "label": "Watch Agni Pareeksha Part - 1",
                 "speakerId": "vayidehi"
               },
               {
                 "url": "https://youtu.be/sethuraman",
-                "label": "Watch Agni Pareeksha",
+                "label": "Watch Agni Pareeksha Part - 2",
                 "speakerId": "sethuraman"
               }
             ]
@@ -2349,12 +2322,7 @@
             "title": "Dolotsava",
             "venue": "Kalyana Rama Sannidhi",
             "speakerIds": [],
-            "videoLinks": [
-              {
-                "url": "https://youtu.be/dolotsava_d10",
-                "label": "Watch Recording"
-              }
-            ]
+            "videoLinks": []
           }
         ]
       },
