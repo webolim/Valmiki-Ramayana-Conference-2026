@@ -1327,12 +1327,12 @@
             "speakerIds": ["vaidehi_sridhar", "ranganayaki"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/dvaidehi",
+                "url": "https://www.youtube.com/watch?v=FScuGQbjoTg",
                 "label": "Watch Anguliya Pradhana Part - 1",
                 "speakerId": "vaidehi_sridhar"
               },
               {
-                "url": "https://youtu.be/ranganayaki",
+                "url": "https://www.youtube.com/watch?v=xppZ7ISvAsc",
                 "label": "Watch Anguliya Pradhana Part - 2",
                 "speakerId": "ranganayaki"
               }
@@ -1356,7 +1356,7 @@
             "speakerIds": ["dhrushya"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/dhrushya",
+                "url": "https://www.youtube.com/watch?v=n9RxrRBSr1Y",
                 "label": "Watch Choodamani Pradhana",
                 "speakerId": "dhrushya"
               }
@@ -1390,7 +1390,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/SudarakandamUtsava",
+                "url": "https://www.youtube.com/watch?v=PEnmkTwlDqk",
                 "label": "Watch Sundarakanda Utsava (Gaja Vahanam)"
               }
             ]
