@@ -1280,12 +1280,12 @@
             "speakerIds": ["megha", "pushpa"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/megha",
+                "url": "https://www.youtube.com/watch?v=qGW5jYls-tc",
                 "label": "Watch Trijata Swapna Part - 1",
                 "speakerId": "megha"
               },
               {
-                "url": "https://youtu.be/pushpa",
+                "url": "https://www.youtube.com/watch?v=ZhaMOJvWA_Q",
                 "label": "Watch Trijata Swapna Part - 2",
                 "speakerId": "pushpa"
               }
