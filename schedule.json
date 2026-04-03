@@ -1559,12 +1559,12 @@
             "speakerIds": ["amudan", "srinivasan"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/damudan",
+                "url": "https://www.youtube.com/watch?v=4_TAUQ9Gg9Q",
                 "label": "Watch Ravana Prathama Yuddha Part - 1",
                 "speakerId": "amudan"
               },
               {
-                "url": "https://youtu.be/srinivasan",
+                "url": "https://www.youtube.com/watch?v=DJi9DL1LPOo",
                 "label": "Watch Ravana Prathama Yuddha Part - 2",
                 "speakerId": "srinivasan"
               }
@@ -1609,7 +1609,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/vibheeshanaSharanagatiUtsava",
+                "url": "https://www.youtube.com/watch?v=ZK8wSuPM8LY",
                 "label": "Watch Vibheeshana Sharanagati Utsava"
               }
             ]
