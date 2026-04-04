@@ -1846,7 +1846,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/theppam",
+                "url": "https://www.youtube.com/watch?v=BmB4j_Q7LZk",
                 "label": "Watch Recording"
               }
             ]
@@ -1908,7 +1908,7 @@
             "speakerIds": ["dr_rangan"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/rangan_c2",
+                "url": "https://www.youtube.com/watch?v=avqfCPSq3Jw",
                 "label": "Watch WEBOLIM's Critical Edition of Valmiki Ramayana (Part 2)",
                 "speakerId": "dr_rangan"
               }
@@ -1934,7 +1934,7 @@
             "speakerIds": ["nilesh"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/nilesh",
+                "url": "https://www.youtube.com/watch?v=AUDEsRgL0E8",
                 "label": "Watch Western Recension of Valmiki Ramayana",
                 "speakerId": "nilesh"
               }
@@ -1950,7 +1950,7 @@
             "speakerIds": ["srikanth"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/Srikanth",
+                "url": "https://www.youtube.com/watch?v=GFDzrx5R7aY",
                 "label": "Watch Goudiya Recension of Valmiki Ramayana",
                 "speakerId": "srikanth"
               }
@@ -1993,7 +1993,7 @@
             "speakerIds": ["santanaraman"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/santanaraman",
+                "url": "https://www.youtube.com/watch?v=Llyycng_aUA",
                 "label": "Watch Sri Trayambakaraya's Commentary",
                 "speakerId": "santanaraman"
               }
@@ -2009,7 +2009,7 @@
             "speakerIds": ["madhavan"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/madhavan",
+                "url": "https://www.youtube.com/watch?v=3OCPf-trXZI",
                 "label": "Watch Sri Maheshwara Tirtha’s Commentary",
                 "speakerId": "madhavan"
               }
@@ -2025,7 +2025,7 @@
             "speakerIds": ["gauranga"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/gauranga",
+                "url": "https://www.youtube.com/live/MOn5709U17Q",
                 "label": "Watch On Sri Satyadharma Tirtha's commentary and the Rupa Raghunatha Vani edition of Sri Valmiki Ramayana",
                 "speakerId": "gauranga"
               }
@@ -2041,7 +2041,7 @@
             "speakerIds": ["ma_venkatakrishnan"],
             "videoLinks": [
               {
-                "url": "https://youtu.be/speaker",
+                "url": "https://www.youtube.com/live/Hx7vgrKsMEc",
                 "label": "Watch Commentary by Shri Udaali Varadaraja",
                 "speakerId": "ma_venkatakrishnan"
               }
