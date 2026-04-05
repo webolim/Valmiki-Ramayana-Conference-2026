@@ -1669,13 +1669,7 @@
             "venue": "Ramayana Shala",
             "isConference": true,
             "speakerIds": ["dr_rangan"],
-            "videoLinks": [
-              {
-                "url": "https://www.youtube.com/live/9I1bUqMrRkU",
-                "label": "Watch WEBOLIM's Critical Edition of Valmiki Ramayana (Part 1)",
-                "speakerId": "dr_rangan"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d8-e1b",
@@ -1694,13 +1688,7 @@
             "venue": "Ramayana Shala",
             "isConference": true,
             "speakerIds": ["wakankar"],
-            "videoLinks": [
-              {
-                "url": "https://www.youtube.com/watch?v=lJMSJSuo3og",
-                "label": "Watch Bori's Critical Edition of Valmiki Ramayana",
-                "speakerId": "wakankar"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d8-e3",
@@ -1710,13 +1698,7 @@
             "venue": "Ramayana Shala",
             "isConference": true,
             "speakerIds": ["gawde"],
-            "videoLinks": [
-              {
-                "url": "https://www.youtube.com/watch?v=a2YdWhJ7JDc",
-                "label": "Watch Different Editions of Valmiki Ramayana",
-                "speakerId": "gawde"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d8-e3b",
@@ -1906,13 +1888,7 @@
             "venue": "Ramayana Shala",
             "isConference": true,
             "speakerIds": ["dr_rangan"],
-            "videoLinks": [
-              {
-                "url": "https://www.youtube.com/watch?v=avqfCPSq3Jw",
-                "label": "Watch WEBOLIM's Critical Edition of Valmiki Ramayana (Part 2)",
-                "speakerId": "dr_rangan"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d9-e1b",
@@ -1932,13 +1908,7 @@
             "venue": "Ramayana Shala",
             "isConference": true,
             "speakerIds": ["nilesh"],
-            "videoLinks": [
-              {
-                "url": "https://www.youtube.com/watch?v=AUDEsRgL0E8",
-                "label": "Watch Western Recension of Valmiki Ramayana",
-                "speakerId": "nilesh"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d9-e3",
@@ -1948,13 +1918,7 @@
             "venue": "Ramayana Shala",
             "isConference": true,
             "speakerIds": ["srikanth"],
-            "videoLinks": [
-              {
-                "url": "https://www.youtube.com/watch?v=GFDzrx5R7aY",
-                "label": "Watch Goudiya Recension of Valmiki Ramayana",
-                "speakerId": "srikanth"
-              }
-            ]
+            "videoLinks": []
           },
           {
             "id": "d9-e3b",
