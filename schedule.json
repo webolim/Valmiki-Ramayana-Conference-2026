@@ -2341,7 +2341,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://www.youtube.com/live/6kMGpc_tbVM?si=P3hwpXE5uEf5J5l1",
+                "url": "https://www.youtube.com/watch?v=6kMGpc_tbVM",
                 "label": "Watch Pattabhishekha",
                 "speakerId": ""
               }
@@ -2356,7 +2356,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/Ashtavadanam",
+                "url": "https://www.youtube.com/watch?v=zPQC4sPthSk",
                 "label": "Watch Ashtavadanam & Sadas"
               }
             ]
@@ -2370,7 +2370,7 @@
             "speakerIds": [],
             "videoLinks": [
               {
-                "url": "https://youtu.be/purapaadu",
+                "url": "https://www.youtube.com/watch?v=CVjzqRiKvFI",
                 "label": "Watch Purapaadu"
               }
             ]
