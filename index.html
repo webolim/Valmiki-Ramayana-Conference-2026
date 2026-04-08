@@ -109,14 +109,7 @@
         animation: shimmer 4s infinite linear; pointer-events: none;
       }
 
-      /* Sticky Floating Button Animations */
-      #sticky-fab { 
-        max-width: 3.5rem; 
-        transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s ease, opacity 0.5s ease; 
-      }
-      #sticky-fab.expanded { max-width: 20rem; }
-      #sticky-fab span { opacity: 0; padding-right: 0; transition: opacity 0.3s ease-in-out, padding 0.3s ease-in-out; }
-      #sticky-fab.expanded span { opacity: 1; padding-right: 1.5rem; }
+ 
 
       /* --- SOUTH INDIAN ART PATTERNS --- */
 
@@ -237,18 +230,7 @@
         <i data-lucide="menu" class="w-6 h-6"></i>
     </button>
     
-    <!-- FLOATING STICKY CONFIRM ATTENDANCE BUTTON -->
-    <a id="sticky-fab" href="https://webolim.github.io/Registration/" target="_blank" 
-       class="fixed bottom-6 right-6 z-[90] flex items-center bg-gold text-maroon rounded-full 
-              shadow-[0_0_20px_rgba(229,179,34,0.6)] hover:shadow-[0_0_30px_rgba(229,179,34,0.8)] 
-              border-2 border-yellow-200 overflow-hidden h-14 translate-y-24 opacity-0">
-        <div class="flex-shrink-0 w-[3.25rem] h-full flex items-center justify-center">
-            <i data-lucide="circle-check" class="w-6 h-6"></i>
-        </div>
-        <span class="whitespace-nowrap font-bold text-lg">
-            Confirm Attendance
-        </span>
-    </a>
+ 
 
     <!-- MOBILE MENU OVERLAY -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] text-white flex flex-col items-center justify-center space-y-8 backdrop-blur-md hidden transition-opacity duration-300 opacity-0" style="background: rgba(128, 0, 0, 0.95);">
@@ -257,7 +239,6 @@
         </button>
         <a href="#hero" onclick="toggleMobileMenu(false)" class="text-2xl font-serif font-bold text-gold hover:text-white transition-colors">Home</a>
         <a href="javascript:void(0)" onclick="setDay(1); toggleMobileMenu(false)" class="text-2xl font-serif font-bold text-gold hover:text-white transition-colors">Schedule</a>
-        <a href="https://webolim.github.io/Registration/" target="_blank" class="text-2xl font-serif font-bold text-gold flex items-center gap-2 bg-white/10 px-6 py-2 rounded-full border border-gold/50"> <i data-lucide="circle-check" class="w-6 h-6"></i> Confirm Attendance</a>
         <a href="#donate" onclick="toggleMobileMenu(false)" class="text-2xl font-serif font-bold text-gold hover:text-white transition-colors">Donate</a>
         <a href="#contact" onclick="toggleMobileMenu(false)" class="text-2xl font-serif font-bold text-gold hover:text-white transition-colors">Contact</a>
     </div>
@@ -346,9 +327,17 @@
                         <i data-lucide="map-pin" class="w-5 h-5 text-gold group-hover:animate-bounce mb-1 lg:mb-0"></i>
                         <span class="text-base md:text-base font-medium tracking-wide border-b border-transparent group-hover:border-gold">Srimad Valmiki Ashrama, Ragihalli, Bengaluru</span>
                     </a>
-                    <a href="https://webolim.github.io/Registration/" target="_blank" class="flex items-center justify-center gap-2 bg-gold hover:brightness-110 text-maroon py-3 md:py-3 px-8 md:px-10 rounded-full font-extrabold text-lg md:text-lg shadow-[0_0_20px_rgba(229,179,34,0.6)] hover:shadow-[0_0_30px_rgba(229,179,34,0.8)] hover:scale-105 transition-all w-full md:w-auto border-2 border-yellow-200">
-                         <i data-lucide="circle-check" class="w-5 h-5"></i> Confirm Attendance
-                    </a>
+                    <div class="bg-maroon/80 border border-gold/40 rounded-2xl p-4 shadow-lg backdrop-blur-sm w-full max-w-lg text-center lg:text-left mt-2">
+                        <h3 class="text-gold font-serif text-xl font-bold mb-2 flex items-center justify-center lg:justify-start gap-2">
+                            <i data-lucide="party-popper" class="w-5 h-5"></i> Event Concluded
+                        </h3>
+                        <p class="text-cream/90 text-sm font-medium mb-4">
+                            Thank you for your overwhelming support! See you again next year.
+                        </p>
+                        <a href="https://webolim.org/ramayana-conference/" target="_blank" class="inline-flex items-center justify-center gap-2 bg-gold hover:brightness-110 text-maroon py-2 px-6 rounded-full font-bold text-sm shadow-md transition-all border border-yellow-200">
+                            <i data-lucide="external-link" class="w-4 h-4"></i> View presented Conference Papers
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1244,21 +1233,13 @@
                 const stickyObserver = new IntersectionObserver(([entry]) => {
                     const brand = document.getElementById('sticky-brand');
                     const floatBtn = document.getElementById('float-menu-btn');
-                    const fab = document.getElementById('sticky-fab'); // Get FAB
 
                     if (entry.boundingClientRect.top < 0 && !entry.isIntersecting) {
                         brand.classList.remove('max-h-0', 'opacity-0'); brand.classList.add('max-h-24', 'opacity-100');
                         floatBtn.classList.add('opacity-0', 'pointer-events-none');
-                        // Show FAB
-                        if(fab) fab.classList.remove('translate-y-24', 'opacity-0');
                     } else {
                         brand.classList.add('max-h-0', 'opacity-0'); brand.classList.remove('max-h-24', 'opacity-100');
                         floatBtn.classList.remove('opacity-0', 'pointer-events-none');
-                        // Hide FAB
-                        if(fab) {
-                            fab.classList.add('translate-y-24', 'opacity-0');
-                            fab.classList.remove('expanded'); // Also collapse if hiding
-                        }
                     }
                 }, { threshold: 0 });
                 const trigger = document.getElementById('hero-location-trigger');
@@ -1266,40 +1247,7 @@
 
                 setInterval(() => { updateLiveStatus(); renderCountdown(); }, 1000);
 
-                // --- STICKY FAB LOGIC ---
-                const fab = document.getElementById('sticky-fab');
-                let fabTimeout;
-                if (fab) {
-                    fab.addEventListener('click', (e) => {
-                        // Expand on first click, navigate on second
-                        if (!fab.classList.contains('expanded')) {
-                            e.preventDefault();
-                            fab.classList.add('expanded');
-                            
-                            // Auto collapse
-                            if(fabTimeout) clearTimeout(fabTimeout);
-                            fabTimeout = setTimeout(() => {
-                                fab.classList.remove('expanded');
-                            }, 3000);
-                        }
-                    });
-                    
-                    // Collapse when clicking outside
-                    document.addEventListener('click', (e) => {
-                        if (!fab.contains(e.target)) {
-                            fab.classList.remove('expanded');
-                            if(fabTimeout) clearTimeout(fabTimeout);
-                        }
-                    });
-
-                    // Collapse on scroll
-                    window.addEventListener('scroll', () => {
-                        if (fab.classList.contains('expanded')) {
-                            fab.classList.remove('expanded');
-                            if(fabTimeout) clearTimeout(fabTimeout);
-                        }
-                    }, { passive: true });
-                }
+ 
 
             } catch (error) { 
                 console.error("Failed to load schedule data:", error); 
